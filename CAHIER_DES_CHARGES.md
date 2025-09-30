@@ -12,6 +12,7 @@ Formulaire avec :
 - Email
 - Mot de passe
 - Bouton d'envoie
+- Une fois le compte créé, on doit pouvoir vérifier l'email
 
 #### Page de connexion
 Formulaire avec :
@@ -20,7 +21,7 @@ Formulaire avec :
 - Option de choix de connection : prof ou élève
 - Bouton d'envoie
 
-#### Page de consultation DES cours (version déconnectée)
+#### Page de consultation DES cours
 Affiche tous les cours disponibles avec les informations suivants :
 - Titre du cours
 - Matière du cours
@@ -28,6 +29,7 @@ Affiche tous les cours disponibles avec les informations suivants :
 - Le nombre d'inscrits
 - La date
 - L'heure
+
 *Facultatif : Il doit y avoir la possibilité de trier les cours par matière et afficher uniquement la matière sélectionnée.*
 
 #### Page de consultation D'UN cours (version déconnectée)
@@ -58,3 +60,18 @@ Avec un formulaire qui contient les champs suivants :
 - La description
 - Le lieu
 - Le prix
+
+#### Page de consultation D'UN cours (version connectée)
+Changement du bouton "se connecter" en bouton d'inscription au cours
+
+#### Page de profil utilisateur
+On y retrouve :
+- Le nom
+- Le prénom
+- L'email
+- L'historique des cours pris et des cours données
+- Option pour passer le compte en compte professeur
+
+#### (Optionnel) Page de modification du mot du passe
+
+#### (Optionnel) Page de modification de cours
