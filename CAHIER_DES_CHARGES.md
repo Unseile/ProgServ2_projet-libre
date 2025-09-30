@@ -7,43 +7,54 @@ Mettre en relation des élèves entre eux, afin de leur offrir une option pour q
 ### Pages ouvertes (sans être connecté)
 #### Page d'inscription
 Formulaire avec :
-* Nom
-* Prénom
-* Email
-* Mot de passe
-* Bouton d'envoie
+- Nom
+- Prénom
+- Email
+- Mot de passe
+- Bouton d'envoie
 
 #### Page de connexion
 Formulaire avec :
-* Email
-* Mot de passe
-* Option de choix de connection : prof ou élève
-* Bouton d'envoie
+- Email
+- Mot de passe
+- Option de choix de connection : prof ou élève
+- Bouton d'envoie
 
 #### Page de consultation DES cours (version déconnectée)
 Affiche tous les cours disponibles avec les informations suivants :
-* Titre du cours
-* Matière du cours
-* Le professeur
-* Le nombre d'inscrits
-* La date
-* L'heure
-Facultatif : Il doit y avoir la possibilité de trier les cours par matière et afficher uniquement la matière sélectionnée.
+- Titre du cours
+- Matière du cours
+- Le professeur
+- Le nombre d'inscrits
+- La date
+- L'heure
+*Facultatif : Il doit y avoir la possibilité de trier les cours par matière et afficher uniquement la matière sélectionnée.*
 
 #### Page de consultation D'UN cours (version déconnectée)
 Affiche les informations d'un cours avec les informations suivantes :
-* Titre du cours
-* Matière du cours
-* Le professeur
-* Le nombre d'inscrits
-* La date
-* L'heure
-* La description
-* La durée
-* Le lieu
-* Le prix
-* Un bouton pour se connecter
+- Titre du cours
+- Matière du cours
+- Le professeur
+- Le nombre d'inscrits
+- La date
+- L'heure de début
+- L'heure de fin
+- La description
+- La durée
+- Le lieu
+- Le prix
+- Un bouton pour se connecter
 
 ### Pages privées (doit être connecté)
 #### Page de création de cours
-Avec un formulaire 
+Avec un formulaire qui contient les champs suivants :
+- Titre du cours
+- Matière du cours
+- Le professeur
+- Le nombre d'inscrits
+- La date
+- L'heure de début
+- L'heure de fin
+- La description
+- Le lieu
+- Le prix
