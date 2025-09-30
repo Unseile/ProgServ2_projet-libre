@@ -28,6 +28,7 @@ Affiche tous les cours disponibles avec les informations suivants :
 * Le nombre d'inscrits
 * La date
 * L'heure
++ Il doit y avoir la possibilité de trier les cours par matière et afficher uniquement la matière sélectionnée.
 
 #### Page de consultation D'UN cours (version déconnectée)
 Affiche les informations d'un cours avec les informations suivantes :
@@ -43,3 +44,6 @@ Affiche les informations d'un cours avec les informations suivantes :
 * Le prix
 * Un bouton pour se connecter
 
+### Pages privées (doit être connecté)
+#### Page de création de cours
+Avec un formulaire 
