@@ -1,7 +1,7 @@
 # Cahier des charges du projet libre de ProgServ2
 
 ## But du site
-Mettre en relation des élèves entre eux, afin de leur offrir une option pour qu'ils s'entraider.
+Mettre en relation des élèves entre eux, afin de leur offrir une option pour qu'ils s'entraident.
 
 ## Les contenus
 ### Pages ouvertes (sans être connecté)
