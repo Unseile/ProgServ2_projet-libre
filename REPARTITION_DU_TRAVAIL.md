@@ -1,4 +1,4 @@
-#liste des tâches
+# Liste des tâches
 
 ## Fichiers sources
 
