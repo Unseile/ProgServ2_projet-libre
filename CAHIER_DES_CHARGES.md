@@ -88,7 +88,9 @@ On y retrouve :
 - L'email
 - (Optionnel) Une option pour passer le compte en compte professeur
 
-### L'historique des cours pris et des cours données
+### Page de déconnexion (à voir si c'est possible)
+
+### (Optionnel) L'historique des cours pris et des cours données
 
 #### (Optionnel) Page de modification du mot du passe
 
