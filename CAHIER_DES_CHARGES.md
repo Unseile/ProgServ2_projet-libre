@@ -61,7 +61,7 @@ Affiche les informations d'un cours avec les informations suivantes :
 
 ### Pages privées (doit être connecté)
 
-#### Page de création de cours
+#### Page de création de cours (si connecté en tant que professeur)
 
 Avec un formulaire qui contient les champs suivants :
 
@@ -69,9 +69,8 @@ Avec un formulaire qui contient les champs suivants :
 - Matière du cours
 - Le professeur
 - Le nombre d'inscrits
-- La date
-- L'heure de début
-- L'heure de fin
+- La date et l'heure de début
+- La durée
 - La description
 - Le lieu
 - Le prix
@@ -86,6 +85,7 @@ On y retrouve :
 
 - Le nom
 - Le prénom
+- Pseudo
 - L'email
 - (Optionnel) Une option pour passer le compte en compte professeur
 
@@ -108,5 +108,5 @@ La connexion à la session doit être maintenue une fois connecté
 Un bouton de déconnexion dois être disponible une fois connecté
 Stockage des mots de passes de façon sécurisée
 Le code PHP doit être typé
-L'application doit être en orienté objet, les classes sont chargées automatiquement (avec autoloader ?).
+L'application doit être en orienté objet, les classes sont chargées automatiquement (avec autoloader).
 Fichier database.ini pour les infos de connexion à la base de donnée
