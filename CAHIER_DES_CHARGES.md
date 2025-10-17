@@ -14,6 +14,7 @@ Formulaire avec :
 
 - Nom
 - Prénom
+- Pseudo
 - Email
 - Mot de passe
 - Bouton d'envoi
