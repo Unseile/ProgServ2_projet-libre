@@ -19,7 +19,7 @@ class Database{
         CREATE TABLE IF NOT EXISTS course (
             id SERIAL PRIMARY KEY AUTOINCREMENT,
             title VARCHAR(40) NOT NULL,
-            matière ENUM('Mathématiques', 'Physique', 'Informatique', 'Chimie') NOT NULL,
+            matière ENUM('BaseProg1', 'BaseMath1','DeDonAInf1','FondMedias','ComHum','IntNeuro','OutMéth','MarkDig1','MarDévProd','RechAnPub','DocWeb','RésEnv','Ang1','MedSerGam') NOT NULL,
             start_date_hour DATETIME NOT NULL,
             duration INT NOT NULL,
             description TEXT,
