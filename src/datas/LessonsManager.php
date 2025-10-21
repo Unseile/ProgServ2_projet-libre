@@ -24,4 +24,11 @@ class LessonsManager
     {
         return null;
     }
+    public function getLessons(): array
+    {
+        $sql = "SELECT * FROM lesson INNER JOIN user ON user.id = lesson.user_id WHERE lesson.end_datetime > now() ORDER BY lesson.start_datetime ASC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
