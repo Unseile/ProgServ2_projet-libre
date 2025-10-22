@@ -7,7 +7,7 @@ require_once __DIR__ . '../utils/autoloader.php';
 
 use datas\Database, PDO, classes\User;
 
-class UsersManager
+class UsersController
 {
     private PDO $pdo;
 

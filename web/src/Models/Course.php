@@ -6,7 +6,7 @@ namespace classes;
 require_once __DIR__ . '../utils/autoloader.php';
 
 
-class Lesson
+class Course
 {
     private int $id;
     private int $teacherId;

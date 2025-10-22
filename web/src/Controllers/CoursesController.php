@@ -8,7 +8,7 @@ require_once __DIR__ . '../utils/autoloader.php';
 use datas\Database, PDO, classes\Lesson;
 
 
-class LessonsManager
+class CoursesController
 {
     private PDO $pdo;
 
