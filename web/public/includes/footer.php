@@ -1,3 +1,13 @@
+<?php
+require_once __DIR__ . '../../src/Config/autoloader.php';
+
+namespace includes;
+
+class Footer
+{
+    public static function content(): string
+    {
+        return `
 </main>
 
 <footer>
@@ -6,4 +16,6 @@
 
 </body>
 
-</html>
+</html>`;
+    }
+}

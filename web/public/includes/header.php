@@ -1,3 +1,13 @@
+<?php
+require_once __DIR__ . '../../src/Config/autoloader.php';
+
+namespace includes;
+
+class Header
+{
+    public static function content(): string
+    {
+        return `
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -19,4 +29,6 @@
         </nav>
     </header>
 
-    <main>
+    <main>`;
+    }
+}

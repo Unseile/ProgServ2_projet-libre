@@ -1,8 +1,11 @@
 <?php
 
 //Page d'accueil / liste de tous les cours
+require_once __DIR__ . '../src/Config/autoloader.php';
 
-include 'includes/header.php'; ?>
+use includes\Header, includes\Footer;
+
+Header::content(); ?>
 
 <h2>Ceci est le contenu du site</h2>
 
@@ -18,4 +21,6 @@ include 'includes/header.php'; ?>
     </div>
 </a>
 
-<?php include 'includes/footer.php'; ?>
+<?php
+Footer::content();
+?>

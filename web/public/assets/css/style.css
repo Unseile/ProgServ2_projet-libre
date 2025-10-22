@@ -41,7 +41,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 300px;
+    width: 400px;
     margin: 10px;
     text-decoration: none;
 
@@ -59,7 +59,7 @@ footer {
     .attributes {
         display: flex;
         gap: 10px;
-        font-size: 0.5rem;
+        font-size: 0.7rem;
 
         p {
             color: #555555;
