@@ -8,7 +8,7 @@ class Header
 {
     public static function content(): string
     {
-        return `
+        return '
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -30,6 +30,6 @@ class Header
         </nav>
     </header>
 
-    <main>`;
+    <main>';
     }
 }
