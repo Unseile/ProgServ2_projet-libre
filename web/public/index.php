@@ -5,8 +5,8 @@ require_once __DIR__ . '/../src/Config/autoloader.php';
 
 use includes\Header, includes\Footer;
 
-Header::content(); ?>
-
+?>
+<?= Header::content(); ?>
 <h2>Ceci est le contenu du site</h2>
 
 <a href="" class="coursebox">
@@ -20,7 +20,4 @@ Header::content(); ?>
         <p class="duration">Durée: 2h</p>
     </div>
 </a>
-
-<?php
-Footer::content();
-?>
+<?= Footer::content(); ?>
