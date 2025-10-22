@@ -29,3 +29,30 @@ footer {
     background-color: #23242e;
     color: #ffffff;
 }
+
+.coursebox {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #fff;
+
+    .title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .shortdescr {
+        font-size: 1em;
+        color: #666;
+    }
+
+    .attributes {
+        margin-top: 10px;
+        font-size: 0.9em;
+        color: #999;
+
+        p {
+            margin: 5px 0;
+        }
+    }
+}
