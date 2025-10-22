@@ -31,28 +31,29 @@ footer {
 }
 
 .coursebox {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
     .title {
         font-size: 1.5em;
-        margin-bottom: 10px;
+        font-weight: bold;
     }
 
     .shortdescr {
         font-size: 1em;
-        color: #666;
+        color: #555555;
     }
 
     .attributes {
-        margin-top: 10px;
-        font-size: 0.9em;
-        color: #999;
+        display: flex;
+        gap: 10px;
 
         p {
-            margin: 5px 0;
+            color: #555555;
         }
     }
 }
