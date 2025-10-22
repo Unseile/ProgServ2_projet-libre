@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #23242e;
+}
+
+header {
+    nav {
+        display: flex;
+        justify-content: space-between;
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #23242e;
+    color: #ffffff;
+}
