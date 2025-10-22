@@ -1,7 +1,6 @@
 <?php
+namespace Includes;
 require_once __DIR__ . '/../../src/Config/autoloader.php';
-
-namespace includes;
 
 class Footer
 {

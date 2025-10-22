@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__ . '/../../src/Config/autoloader.php';
 
-namespace includes;
+namespace Includes;
+
+require_once __DIR__ . '/../../src/Config/autoloader.php';
 
 class Header
 {
