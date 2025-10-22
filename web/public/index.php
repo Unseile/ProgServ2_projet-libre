@@ -10,11 +10,11 @@ include 'includes/header.php'; ?>
     <h2 class="title">Cours d'appui en vue du 2eme examen</h2>
     <p class="shortdescr">Cours d'appui en mathématiques pour préparer le 2eme examen de mathématiques de l'année académique 2025-2026.</p>
     <div class="attributes">
-        <p class="price"></p>
-        <p class="subject">BaseMath2</p>
-        <p class="startdatetime">12 décembre 2025 à 15:00</p>
-        <p class="enddatetime">12 décembre 2025 à 17:00</p>
-        <p class="duration">2h</p>
+        <p class="price">Prix: 25 CHF</p>
+        <p class="subject">Sujet: BaseMath2</p>
+        <p class="startdatetime">Début: 12 déc à 15:00</p>
+        <p class="enddatetime">Fin: 12 déc à 17:00</p>
+        <p class="duration">Durée: 2h</p>
     </div>
 </a>
 
