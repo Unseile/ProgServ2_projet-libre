@@ -8,7 +8,7 @@ use Includes\Header, Includes\Footer, Utils\Language;
 $language = new Language();
 ?>
 <?= Header::content(); ?>
-<h2><?= $language->getContent('fr', 'home') ?></h2>
+<h2><?= $language->getContent('fr', 'home')['welcome'] ?></h2>
 
 <a href="" class="coursebox">
     <h2 class="title">Cours d'appui en vue du 2eme examen</h2>
