@@ -6,9 +6,10 @@ require_once __DIR__ . '/../src/Config/autoloader.php';
 use Includes\Header, Includes\Footer, Utils\Language;
 
 $language = new Language();
+$lang = $language->getCookieLanguage();
 ?>
 <?= Header::content(); ?>
-<h2><?= $language->getContent('fr', 'home')['first-content'] ?></h2>
+<h2><?= $language->getContent($lang, 'home')['first-content'] ?></h2>
 
 <a href="" class="coursebox">
     <h2 class="title">Cours d'appui en vue du 2eme examen</h2>

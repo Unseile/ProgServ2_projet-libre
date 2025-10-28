@@ -12,7 +12,7 @@ class Footer
 </main>
 
 <footer>
-    <p>&copy;' .  date('Y') . 'SPEEP - Tous droits réservés</p>
+    <p>&copy;' .  date('Y') . ' SPEEP - Tous droits réservés</p>
 </footer>
 
 </body>

@@ -26,7 +26,7 @@ class CoursesController
     }
     public function getCourses(): array
     {
-        $sql = "SELECT * FROM course INNER JOIN user ON user.id = course.user_id WHERE course.end_datetime > now() ORDER BY course.start_datetime ASC";
+        $sql = "SELECT * FROM course INNER JOIN user ON user.id = course.teacher_id ORDER BY course.start_datetime ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();

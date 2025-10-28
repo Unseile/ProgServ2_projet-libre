@@ -24,4 +24,19 @@ class Language
     {
         return $this->content[$lang][$page];
     }
+
+    public function setCookieLanguage(string $lang): void
+    {
+        setcookie('language', $lang, time() + (86400 * 30));
+    }
+
+    public function getCookieLanguage(): ?string
+    {
+        return $_COOKIE['language'] ?? 'fr';
+    }
+
+    public function getAvailableLanguages(): array
+    {
+        return array_keys($this->content);
+    }
 }
