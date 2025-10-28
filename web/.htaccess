@@ -1,18 +1,13 @@
-# Active le moteur de réécriture d'URL
+# Active le moteur de rÃ©Ã©criture d'URL.
+# Permet de rediriger les requÃªtes vers d'autres emplacements.
 RewriteEngine On
 
-# Blocage d'accès aux répertoires sensibles
+# Blocage d'accÃ¨s aux rÃ©pertoires sensibles.
 RewriteRule ^src/ - [R=404,L]
 
-# Si le fichier ou le répertoire demandé existe dans /public, ne pas réécrire
+# Si le fichier ou le rÃ©pertoire demandÃ© existe dans /public, ne pas rÃ©Ã©crire le chemin d'accÃ¨s (tout ce qui est dans /public reste accessible).
 RewriteCond %{DOCUMENT_ROOT}/public/$1 -f [OR]
 RewriteCond %{DOCUMENT_ROOT}/public/$1 -d
-RewriteRule ^(.*)$ public/$1 [L]
 
-# --- Nouvelle règle pour convertir les URL "propres" vers .php ---
-# Si l'URL demandée ne correspond pas à un fichier ou dossier existant,
-# et qu'un fichier .php du même nom existe, on le charge automatiquement.
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)$ $1.php [L,QSA]
+# Tout le reste des requÃªtes est redirigÃ© vers /public en masquant /public dans l'URL.
+RewriteRule ^(.*)$ public/$1 [L]
