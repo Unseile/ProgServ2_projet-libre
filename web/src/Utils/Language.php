@@ -3,7 +3,7 @@
 //Implémentations des variables de langue
 namespace Utils;
 
-require_once __DIR__ . '../Config/autoloader.php';
+require_once __DIR__ . '/../Config/autoloader.php';
 
 class Language
 {

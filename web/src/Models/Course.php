@@ -3,7 +3,7 @@
 //Implémentations de la logique de l'objet cours
 namespace Models;
 
-require_once __DIR__ . '../utils/autoloader.php';
+require_once __DIR__ . '/../Config/autoloader.php';
 
 
 class Course

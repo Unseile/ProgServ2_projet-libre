@@ -3,7 +3,7 @@
 //Implémentation du gestionnaire de cours
 namespace Controllers;
 
-require_once __DIR__ . '../Config/autoloader.php';
+require_once __DIR__ . '/../Config/autoloader.php';
 
 use Config\Database, PDO, Models\Course;
 

@@ -2,4 +2,4 @@
 
 namespace Utils;
 
-require_once __DIR__ . '/autoloader.php';
+require_once __DIR__ . '/../Config/autoloader.php';
