@@ -1,13 +1,13 @@
 <?php
 
 //Implémentation de la base de données
-namespace datas;
+namespace Config;
 
-require_once __DIR__ . '../utils/autoloader.php';
+require_once __DIR__ . 'autoloader.php';
 
 use PDO, Exception;
 
-const DATABASE_CONFIGURATION_FILE = __DIR__ . '/config/database.ini';
+const DATABASE_CONFIGURATION_FILE = __DIR__ . 'database.ini';
 
 class Database
 {
@@ -27,9 +27,9 @@ class Database
         $password = $config['password'];
         $this->pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $username, $password);
 
-        $sql = "CREATE DATABASE IF NOT EXISTS `$database` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;";
+        /*$sql = "CREATE DATABASE IF NOT EXISTS `$database` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        $stmt->execute();*/
 
         $sql = "USE `$database`;";
         $stmt = $this->pdo->prepare($sql);

@@ -1,11 +1,11 @@
 <?php
 
 //Implémentations du gestionnaire d'utilisateurs
-namespace datas;
+namespace Controllers;
 
-require_once __DIR__ . '../utils/autoloader.php';
+require_once __DIR__ . '../Config/autoloader.php';
 
-use datas\Database, PDO, classes\User;
+use Config\Database, PDO, Models\User;
 
 class UsersController
 {

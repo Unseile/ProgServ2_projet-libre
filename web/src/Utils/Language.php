@@ -1,13 +1,24 @@
 <?php
 
 //Implémentations des variables de langue
-namespace utils;
+namespace Utils;
 
 require_once __DIR__ . '/autoloader.php';
 
 class Language
 {
-    private array $content = ["fr" => [], "en" => []];
+    private array $content = [
+        "fr" => [
+            "home" => [
+                "first-content" => "Bienvenue sur speep.ch !"
+            ]
+        ],
+        "en" => [
+            "home" => [
+                "first-content" => "Welcome on speep.ch !"
+            ]
+        ]
+    ];
 
     public function getContent(string $lang, string $page): ?array
     {
