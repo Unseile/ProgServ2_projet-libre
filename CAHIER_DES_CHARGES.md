@@ -29,7 +29,7 @@ Formulaire avec :
 - Option de choix de connection : prof ou élève
 - Bouton d'envoie
 
-#### Page de consultation DES cours
+#### Page de consultation DES cours (page d'accueil)
 
 Affiche tous les cours disponibles avec les informations suivants :
 

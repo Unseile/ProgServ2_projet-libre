@@ -11,11 +11,17 @@ class Language
         "fr" => [
             "home" => [
                 "first-content" => "Bienvenue sur speep.ch !"
+            ],
+            "header" => [
+                "home" => "Accueil"
             ]
         ],
         "en" => [
             "home" => [
                 "first-content" => "Welcome on speep.ch !"
+            ],
+            "header" => [
+                "home" => "Home"
             ]
         ]
     ];
