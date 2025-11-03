@@ -8,36 +8,28 @@ include __DIR__ . '/../src/includes//footer.php';
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-</head>
-<body>
-
-<h2>Connexion</h2>
+<<h2><?= $language->getContent($lang, 'signin')['title'] ?></h2>
 
 <form action="managerLogin.php" method="POST">
-    <label>Nom:</label>
+    <label><?= $language->getContent($lang, 'signin')['lastname'] ?></label>
     <input type="text" name="lastName" required><br><br>
     
-    <label>Prénom:</label>
+    <label><?= $language->getContent($lang, 'signin')['firstname'] ?></label>
     <input type="text" name="firstName" required><br><br>
     
-    <label>Nom d'utilisateur:</label>
+    <label><?= $language->getContent($lang, 'signin')['pseudo'] ?></label>
     <input type="text" name="username" required><br><br>
 
-    <label>Mot de passe:</label>
+    <label><?= $language->getContent($lang, 'signin')['password'] ?></label>
     <input type="password" name="password" required><br><br>
 
-    <label>Mot de passe:</label>
+    <label><?= $language->getContent($lang, 'signin')['rePassword'] ?></label>
     <input type="password" name="password" required><br><br>
 
-    <label>Mail:</label>
+    <label><?= $language->getContent($lang, 'signin')['mail'] ?></label>
     <input type="email" name="email" required><br><br>
 
-    <input type="submit" value="Se connecter">
+    <input type="submit" value="inscription">
 </form>
 
 </body>

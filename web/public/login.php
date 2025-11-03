@@ -2,26 +2,27 @@
 
 //Page de connexion
 require_once __DIR__ . '/../src/Config/autoloader.php';
+
+include __DIR__ . '/../src/includes//footer.php';
+include __DIR__ . '/../src/includes//header.php'; 
+
+use Config\Database;
+use Utils\Language;
+
+$language = new Language();
+$lang = $language->getCookieLanguage();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-</head>
-<body>
-
-<h2>Connexion</h2>
+<h2><?= $language->getContent($lang, 'login')['title'] ?></h2>
 
 <form action="managerLogin.php" method="POST">
-    <label>Nom d'utilisateur:</label>
+    <label><?= $language->getContent($lang, 'login')['pseudo'] ?></label>
     <input type="text" name="username" required><br><br>
 
-    <label>Mot de passe:</label>
+    <label><?= $language->getContent($lang, 'login')['password'] ?></label>
     <input type="password" name="password" required><br><br>
 
-    <input type="submit" value="Se connecter">
+    <input type="submit" value="connexion">
 </form>
 
 </body>

@@ -47,6 +47,23 @@ class Language
             "header" => [
                 "home" => "Accueil"
             ],
+            "login" => [
+                "title" => "Connexion",
+                "pseudo" => "Nom d'utilisateur:",
+                "password" => "Pseudo:"
+            ],
+            "logout" => [
+                "deconnexion" => "Déconnexion",
+            ],
+            "signin" => [
+                "title" => "S'inscrire",
+                "lastname" => "Nom:",
+                "firstname" => "Prénom:",
+                "pseudo" => "Nom d'utilisateur:",
+                "password" => "Mot de passe:",
+                "rePassword" => "Reconfirmer le mot de passe:",
+                "mail" => "Mail:",
+            ]
         ],
         "en" => [
             "index" => [
@@ -86,6 +103,23 @@ class Language
             ],
             "header" => [
                 "home" => "Home"
+            ],
+            "login" => [
+                "title" => "Login",
+                "pseudo" => "Username:",
+                "password" => "Password:"
+            ],
+            "logout" => [
+                "deconnexion" => "Deconnexion",
+            ],
+            "signin" => [
+                "title" => "Log out",
+                "lastname" => "Last Name:",
+                "firstname" => "First Name:",
+                "pseudo" => "Username:",
+                "password" => "Password:",
+                "rePassword" => "Confirm Password:",
+                "mail" => "Email:",
             ]
         ]
     ];

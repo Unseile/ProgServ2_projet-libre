@@ -7,5 +7,5 @@ require_once __DIR__ . '/../src/Config/autoloader.php';
 <?php include __DIR__ . '/../src/includes//header.php'; ?>
 
 <form action="logout.php" method="POST">
-    <button type="submit">Déconnexion</button>
+    <button type="submit"><? $language->getContent($lang, 'logout')['deconnexion'] ?></button>
 </form>
