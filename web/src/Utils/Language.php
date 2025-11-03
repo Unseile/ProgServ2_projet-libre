@@ -10,6 +10,7 @@ class Language
     private array $content = [
         "fr" => [
             "index" => [
+                "welcome" => "Bienvenue sur SPEEP.CH, ta référence pour tes cours d'appui !",
                 "available-courses" => "Tous les cours disponibles",
                 "subject" => "sujet",
                 "teacher" => "enseignant",
@@ -49,6 +50,7 @@ class Language
         ],
         "en" => [
             "index" => [
+                "welcome" => "Welcome to SPEEP.CH, your go-to platform for tutoring courses!",
                 "available-courses" => "All available courses",
                 "subject" => "subject",
                 "teacher" => "teacher",
