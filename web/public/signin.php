@@ -3,6 +3,9 @@
 //Page de création de compte
 require_once __DIR__ . '/../src/Config/autoloader.php';
 
+include __DIR__ . '/../src/includes/header.php';
+include __DIR__ . '/../src/includes//footer.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -39,5 +42,3 @@ require_once __DIR__ . '/../src/Config/autoloader.php';
 
 </body>
 </html>
-<?php include __DIR__ . '/../src/includes/header.php'; ?>
-<?php include __DIR__ . '/../src/includes//footer.php'; ?>
