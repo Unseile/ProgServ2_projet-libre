@@ -9,16 +9,78 @@ class Language
 {
     private array $content = [
         "fr" => [
-            "home" => [
-                "first-content" => "Bienvenue sur speep.ch !"
+            "index" => [
+                "available-courses" => "Tous les cours disponibles",
+                "subject" => "sujet",
+                "teacher" => "enseignant",
+                "subscriptions" => "inscriptions",
+                "on" => "le",
+                "at" => "à",
+                "hour" => "heure"
+            ],
+            "course" => [
+                "subject" => "sujet",
+                "teacher" => "enseignant",
+                "subscriptions" => "inscriptions",
+                "on" => "le",
+                "at" => "à",
+                "hour" => "heure",
+                "starts" => "commence",
+                "ends" => "fini",
+                "course-description" => "description du cours",
+                "duration" => "durée",
+                "in-room" => "en salle",
+                "price" => "prix",
+                "login" => "se connecter",
+                "subscribe" => "s'inscrire"
+            ],
+            "subscriptions" => [
+                "user-courses" => "Vos précédents cours suivis",
+                "subject" => "sujet",
+                "teacher" => "enseignant",
+                "subscriptions" => "inscriptions",
+                "on" => "le",
+                "at" => "à",
+                "hour" => "heure"
             ],
             "header" => [
                 "home" => "Accueil"
-            ]
+            ],
         ],
         "en" => [
-            "home" => [
-                "first-content" => "Welcome on speep.ch !"
+            "index" => [
+                "available-courses" => "All available courses",
+                "subject" => "subject",
+                "teacher" => "teacher",
+                "subscriptions" => "subscriptions",
+                "on" => "on",
+                "at" => "at",
+                "hour" => "hour"
+            ],
+            "course" => [
+                "subject" => "subject",
+                "teacher" => "teacher",
+                "subscriptions" => "subscriptions",
+                "on" => "on",
+                "at" => "at",
+                "hour" => "hour",
+                "starts" => "starts",
+                "ends" => "ends",
+                "course-description" => "course description",
+                "duration" => "duration",
+                "in-room" => "in room",
+                "price" => "price",
+                "login" => "log in",
+                "subscribe" => "subscribe"
+            ],
+            "subscriptions" => [
+                "user-courses" => "Your previous enrolled courses",
+                "subject" => "subject",
+                "teacher" => "teacher",
+                "subscriptions" => "subscriptions",
+                "on" => "on",
+                "at" => "at",
+                "hour" => "hour"
             ],
             "header" => [
                 "home" => "Home"
