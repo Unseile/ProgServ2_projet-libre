@@ -74,6 +74,19 @@ class Language
                 "password" => "Mot de passe:",
                 "rePassword" => "Reconfirmer le mot de passe:",
                 "mail" => "Mail:",
+            ],
+            "create_course" => [
+                "title" => "Créer un cours",
+                "course_title" => "Titre du cours*",
+                "course_subject" => "Matière du cours*",
+                "course_description" => "Description*",
+                "course_price" => "Prix par étudiant (CHF)*",
+                "course_place" => "Lieu du cours*",
+                "course_start_datetime" => "Date et heure de début*",
+                "course_duration" => "Durée du cours*",
+                "course_max_students" => "Nombre maximum d'étudiants*",
+                "create_button" => "Créer le cours",
+                "cancel_button" => "Annuler"
             ]
         ],
         "en" => [
@@ -142,6 +155,19 @@ class Language
                 "password" => "Password:",
                 "rePassword" => "Confirm Password:",
                 "mail" => "Email:",
+            ],
+            "create_course" => [
+                "title" => "Create a course",
+                "course_title" => "Course Title*",
+                "course_subject" => "Course Subject*",
+                "course_description" => "Description*",
+                "course_price" => "Price per student (CHF)*",
+                "course_place" => "Course Location*",
+                "course_start_datetime" => "Start Date and Time*",
+                "course_duration" => "Course Duration*",
+                "course_max_students" => "Maximum Number of Students*",
+                "create_button" => "Create Course",
+                "cancel_button" => "Cancel"
             ]
         ]
     ];
