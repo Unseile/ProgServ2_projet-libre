@@ -4,12 +4,9 @@
 require_once __DIR__ . '/../src/Config/autoloader.php';
 
 use Config\Database;
-use Utils\Language;
 
 $database = new Database();
 
-$language = new Language();
-$lang = $language->getCookieLanguage();
 ?>
 
 <?php include __DIR__ . '/../src/includes/header.php'; ?>
