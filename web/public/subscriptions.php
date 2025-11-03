@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../src/Config/autoloader.php';
+
 use Includes\Header, Includes\Footer;
 ?>
-<?= Header::content(); ?>
-<?= Footer::content(); ?>
+<?php include '/../src/includes/header.php'; ?>
+<?php include '/../src/includes/footer.php'; ?>

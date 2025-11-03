@@ -8,7 +8,8 @@ use Includes\Header, Includes\Footer, Utils\Language;
 $language = new Language();
 $lang = $language->getCookieLanguage();
 ?>
-<?= Header::content(); ?>
+
+<?php include '/../src/includes/header.php'; ?>
 <h2><?= $language->getContent($lang, 'home')['first-content'] ?></h2>
 
 <a href="" class="coursebox">
@@ -22,4 +23,4 @@ $lang = $language->getCookieLanguage();
         <p class="duration">Durée: 2h</p>
     </div>
 </a>
-<?= Footer::content(); ?>
+<?php include '/../src/includes/footer.php'; ?>
