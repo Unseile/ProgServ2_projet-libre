@@ -57,6 +57,23 @@ class Language
                 "lang-choice" => "Choisissez votre langue",
                 "change" => "Changer",
                 "project" => "SPEEP est un projet d'étudiant de la HEIG-VD, tous droits résérvés."
+            ],
+            "login" => [
+                "title" => "Connexion",
+                "pseudo" => "Nom d'utilisateur:",
+                "password" => "Pseudo:"
+            ],
+            "logout" => [
+                "deconnexion" => "Déconnexion",
+            ],
+            "signin" => [
+                "title" => "S'inscrire",
+                "lastname" => "Nom:",
+                "firstname" => "Prénom:",
+                "pseudo" => "Nom d'utilisateur:",
+                "password" => "Mot de passe:",
+                "rePassword" => "Reconfirmer le mot de passe:",
+                "mail" => "Mail:",
             ]
         ],
         "en" => [
@@ -108,6 +125,23 @@ class Language
                 "lang-choice" => "Choose your language",
                 "change" => "Change",
                 "project" => "SPEEP is a project made by students at HEIG-VD, all rights reserved."
+            ],
+            "login" => [
+                "title" => "Login",
+                "pseudo" => "Username:",
+                "password" => "Password:"
+            ],
+            "logout" => [
+                "deconnexion" => "Deconnexion",
+            ],
+            "signin" => [
+                "title" => "Log out",
+                "lastname" => "Last Name:",
+                "firstname" => "First Name:",
+                "pseudo" => "Username:",
+                "password" => "Password:",
+                "rePassword" => "Confirm Password:",
+                "mail" => "Email:",
             ]
         ]
     ];
