@@ -45,8 +45,19 @@ class Language
                 "hour" => "heure"
             ],
             "header" => [
-                "home" => "Accueil"
+                "home" => "Accueil",
+                "profile" => "Profil",
+                "login" => "Se connecter",
+                "signin" => "S'inscrire",
+                "logout" => "Se déconnecter"
             ],
+            "footer" => [
+                "fr" => "français",
+                "en" => "anglais",
+                "lang-choice" => "Choisissez votre langue",
+                "change" => "Changer",
+                "project" => "SPEEP est un projet d'étudiant de la HEIG-VD, tous droits résérvés."
+            ]
         ],
         "en" => [
             "index" => [
@@ -85,7 +96,18 @@ class Language
                 "hour" => "hour"
             ],
             "header" => [
-                "home" => "Home"
+                "home" => "Home",
+                "profile" => "Profile",
+                "login" => "Login",
+                "signin" => "Signin",
+                "logout" => "Logout"
+            ],
+            "footer" => [
+                "fr" => "french",
+                "en" => "english",
+                "lang-choice" => "Choose your language",
+                "change" => "Change",
+                "project" => "SPEEP is a project made by students at HEIG-VD, all rights reserved."
             ]
         ]
     ];
@@ -95,9 +117,16 @@ class Language
         return $this->content[$lang][$page];
     }
 
-    public function setCookieLanguage(string $lang): void
+    public function setCookieLanguage(string $lang = ''): string
     {
-        setcookie('language', $lang, time() + (86400 * 30));
+        if (empty($lang)) {
+            $lang = $this->getCookieLanguage();
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['language']) {
+            $lang = $_POST['language'] ?? $lang;
+        }
+        setcookie('language', $lang, time() + 10);
+        return $lang;
     }
 
     public function getCookieLanguage(): ?string

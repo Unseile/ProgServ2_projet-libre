@@ -1,6 +1,12 @@
 <?php
 
+use Utils\Language;
+
 require_once __DIR__ . '/../../src/Config/autoloader.php';
+
+$language = new Language();
+$lang = $language->setCookieLanguage();
+$headerContent = $language->getContent($lang, "header");
 
 ?>
 <!DOCTYPE html>
@@ -17,9 +23,9 @@ require_once __DIR__ . '/../../src/Config/autoloader.php';
     <header>
         <nav>
             <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="profile.php">Profil</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
+                <li><a href="index.php"><?= $headerContent["home"] ?></a></li>
+                <li><a href="profile.php"><?= $headerContent["profile"] ?></a></li>
+                <li><a href="logout.php"><?= $headerContent["signin"] ?></a></li>
             </ul>
         </nav>
     </header>
