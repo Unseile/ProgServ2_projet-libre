@@ -87,6 +87,15 @@ class Language
                 "course_max_students" => "Nombre maximum d'étudiants*",
                 "create_button" => "Créer le cours",
                 "cancel_button" => "Annuler"
+            ],
+            "profile" => [
+                "title" => "Profil Utilisateur",
+                "user_lastname" => "Nom:",
+                "user_firstname" => "Prénom:",
+                "user_username" => "Pseudo:",
+                "user_email" => "Email:",
+                "teacher" => "Professeur",
+                "student" => "Étudiant"
             ]
         ],
         "en" => [
@@ -168,6 +177,15 @@ class Language
                 "course_max_students" => "Maximum Number of Students*",
                 "create_button" => "Create Course",
                 "cancel_button" => "Cancel"
+            ],
+            "profile" => [
+                "title" => "User Profile",
+                "user_lastname" => "Last Name:",
+                "user_firstname" => "First Name:",
+                "user_username" => "Username:",
+                "user_email" => "Email:",
+                "teacher" => "Teacher",
+                "student" => "Student"
             ]
         ]
     ];

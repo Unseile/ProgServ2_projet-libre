@@ -1,29 +1,49 @@
 <?php
+//Page du profil utilisateur
 require_once __DIR__ . '/../src/Config/autoloader.php';
 
-use Utils\Language;
+include __DIR__ . '/../src/includes//header.php';
 
-$language = new Language();
-$languages = $language->getAvailableLanguages();
+$profileContent = $language->getContent($lang, 'profile');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['language'])) {
-    if (in_array($_POST['language'], ['fr', 'en'])) {
-        $language->setCookieLanguage($_POST['language']);
-        header("Location: /");
-        exit();
-    }
-}
-
+$user = $userController->getUserById($_SESSION['user']['id']);
 ?>
-<?php include __DIR__ . '/../src/includes/header.php'; ?>
-<div class="language-switcher">
-    <?php foreach ($languages as $lang) { ?>
-        <form action="" method="post">
-            <input type="hidden" name="language" value="<?= $lang ?>">
-            <button type="submit"><?= $lang ?></button>
-        </form>
 
-    <?php } ?>
-</div>
+<body>
+    <h2 class="title"><?= $profileContent["title"]?></h2>
+
+    <?php if ($message): ?>
+        <div><?= htmlspecialchars($message) ?></div>
+    <?php endif; ?>
+
+    <div class="user_informations">
+        <div class="user_lastname">
+            <strong><?= $profileContent["user_information"]?></strong>
+            <?= htmlspecialchars($user['lastname']) ?>
+        </div>
+
+        <div class="user_firstname">
+            <strong><?= $profileContent["user_firstname"]?></strong>
+            <?= htmlspecialchars($user['firstname']) ?>
+        </div>
+
+        <div class="user_username">
+            <strong><?= $profileContent["user_username"]?></strong>
+            <?= htmlspecialchars($user['username']) ?>
+        </div>
+
+        <div class="user_email">
+            <strong><?= $profileContent["user_email"]?></strong>
+            <?= htmlspecialchars($user['email']) ?>
+        </div>
+
+        <div class="user_role">
+            <strong>Rôle:</strong>
+            <?= htmlspecialchars($user['is_teacher'] ? $profileContent["teacher"] : $profileContent["student"]) ?>
+        </div>
+    </div>
+</body>
+
+
 
 <?php include __DIR__ . '/../src/includes/footer.php'; ?>
