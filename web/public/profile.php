@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['language'])) {
 }
 
 ?>
-<?php include __DIR__ . '/../src/includes//header.php'; ?>
+<?php include __DIR__ . '/../src/includes/header.php'; ?>
 <div class="language-switcher">
     <?php foreach ($languages as $lang) { ?>
         <form action="" method="post">
@@ -26,4 +26,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['language'])) {
     <?php } ?>
 </div>
 
-<?php include __DIR__ . '/../src/includes//footer.php'; ?>
+<?php include __DIR__ . '/../src/includes/footer.php'; ?>
