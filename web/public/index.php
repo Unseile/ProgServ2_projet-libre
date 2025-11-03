@@ -13,7 +13,6 @@ $lang = $language->getCookieLanguage();
 ?>
 
 <?php include __DIR__ . '/../src/includes/header.php'; ?>
-<h2><?= $language->getContent($lang, 'home')['first-content'] ?></h2>
 
 <a href="" class="coursebox">
     <h2 class="title">Cours d'appui en vue du 2eme examen</h2>
