@@ -2,10 +2,8 @@
 
 //Page de création de compte
 require_once __DIR__ . '/../src/Config/autoloader.php';
-use Includes\Header, Includes\Footer;
+
 ?>
-<?= Header::content(); ?>
-<?= Footer::content(); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -41,3 +39,5 @@ use Includes\Header, Includes\Footer;
 
 </body>
 </html>
+<?php include __DIR__ . '/../src/includes/header.php'; ?>
+<?php include __DIR__ . '/../src/includes//footer.php'; ?>

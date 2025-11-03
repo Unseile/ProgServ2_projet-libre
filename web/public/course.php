@@ -2,7 +2,6 @@
 
 //Page d'affichage d'UN cours
 require_once __DIR__ . '/../src/Config/autoloader.php';
-use Includes\Header, Includes\Footer;
 ?>
-<?= Header::content(); ?>
-<?= Footer::content(); ?>
+<?php include __DIR__ . '../src/includes/header.php'; ?>
+<?php include __DIR__ . '../src/includes/footer.php'; ?>

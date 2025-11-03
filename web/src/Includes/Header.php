@@ -1,14 +1,8 @@
 <?php
 
-namespace Includes;
-
 require_once __DIR__ . '/../../src/Config/autoloader.php';
 
-class Header
-{
-    public static function content(): string
-    {
-        return '
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -30,6 +24,4 @@ class Header
         </nav>
     </header>
 
-    <main>';
-    }
-}
+    <main>

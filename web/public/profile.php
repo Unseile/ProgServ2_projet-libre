@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../src/Config/autoloader.php';
 
-use Includes\Header, Includes\Footer, Utils\Language;
+use Utils\Language;
 
 $language = new Language();
 $languages = $language->getAvailableLanguages();
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['language'])) {
 }
 
 ?>
-<?= Header::content(); ?>
+<?php include __DIR__ . '/../src/includes//header.php'; ?>
 <div class="language-switcher">
     <?php foreach ($languages as $lang) { ?>
         <form action="" method="post">
@@ -25,4 +25,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['language'])) {
 
     <?php } ?>
 </div>
-<?= Footer::content(); ?>
+
+<?php include __DIR__ . '/../src/includes//footer.php'; ?>
