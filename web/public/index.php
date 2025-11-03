@@ -3,13 +3,16 @@
 //Page d'accueil / liste de tous les cours
 require_once __DIR__ . '/../src/Config/autoloader.php';
 
-use Includes\Header, Includes\Footer, Utils\Language;
+use Config\Database;
+use Utils\Language;
+
+$database = new Database();
 
 $language = new Language();
 $lang = $language->getCookieLanguage();
 ?>
 
-<?php include '/../src/includes/header.php'; ?>
+<?php include __DIR__ . '/../src/includes/header.php'; ?>
 <h2><?= $language->getContent($lang, 'home')['first-content'] ?></h2>
 
 <a href="" class="coursebox">
@@ -23,4 +26,4 @@ $lang = $language->getCookieLanguage();
         <p class="duration">Durée: 2h</p>
     </div>
 </a>
-<?php include '/../src/includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/includes/footer.php'; ?>

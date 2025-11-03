@@ -7,14 +7,14 @@ require_once __DIR__ . '/autoloader.php';
 
 use PDO, Exception;
 
-const DATABASE_CONFIGURATION_FILE = __DIR__ . 'database.ini';
+const DATABASE_CONFIGURATION_FILE = __DIR__ . '/database.ini';
 
 class Database
 {
     private PDO $pdo;
 
 
-    public function __construct(): void
+    public function __construct()
     {
         $config = parse_ini_file(DATABASE_CONFIGURATION_FILE, true);
         if (!$config) {
