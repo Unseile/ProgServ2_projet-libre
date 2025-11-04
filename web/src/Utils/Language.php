@@ -60,22 +60,22 @@ class Language
             ],
             "login" => [
                 "title" => "Connexion",
-                "pseudo" => "Nom d'utilisateur:",
-                "password" => "Pseudo:",
+                "pseudo" => "Nom d'utilisateur",
+                "password" => "Pseudo",
                 "button" => "Se connecter"
             ],
             "logout" => [
                 "deconnexion" => "Déconnexion",
-                "deconnexionText" => "Vous vous êtes bien déconnecté"
+                "deconnexionText" => "Vous vous êtes bien déconnecté."
             ],
             "signin" => [
                 "title" => "Inscription",
-                "lastname" => "Nom:",
-                "firstname" => "Prénom:",
-                "pseudo" => "Nom d'utilisateur:",
-                "password" => "Mot de passe:",
-                "rePassword" => "Reconfirmer le mot de passe:",
-                "mail" => "Mail:",
+                "lastname" => "Nom",
+                "firstname" => "Prénom",
+                "pseudo" => "Nom d'utilisateur",
+                "password" => "Mot de passe",
+                "rePassword" => "Reconfirmer le mot de passe",
+                "mail" => "Mail",
                 "button" => "S'inscrire"
             ],
             "create_course" => [
@@ -153,8 +153,8 @@ class Language
             ],
             "login" => [
                 "title" => "Login",
-                "pseudo" => "Username:",
-                "password" => "Password:",
+                "pseudo" => "Username",
+                "password" => "Password",
                 "button" => "Login"
             ],
             "logout" => [
@@ -163,12 +163,12 @@ class Language
             ],
             "signin" => [
                 "title" => "Inscription",
-                "lastname" => "Last Name:",
-                "firstname" => "First Name:",
-                "pseudo" => "Username:",
-                "password" => "Password:",
+                "lastname" => "Last Name",
+                "firstname" => "First Name",
+                "pseudo" => "Username",
+                "password" => "Password",
                 "rePassword" => "Confirm Password:",
-                "mail" => "Email:",
+                "mail" => "Email",
                 "button" => "Sign in"
             ],
             "create_course" => [
@@ -186,10 +186,10 @@ class Language
             ],
             "profile" => [
                 "title" => "User Profile",
-                "user_lastname" => "Last Name:",
-                "user_firstname" => "First Name:",
-                "user_username" => "Username:",
-                "user_email" => "Email:",
+                "user_lastname" => "Last Name",
+                "user_firstname" => "First Name",
+                "user_username" => "Username",
+                "user_email" => "Email",
                 "teacher" => "Teacher",
                 "student" => "Student"
             ]
