@@ -169,7 +169,7 @@ class Language
                 "password" => "Password:",
                 "rePassword" => "Confirm Password:",
                 "mail" => "Email:",
-                "button" => "Sign-in"
+                "button" => "Sign in"
             ],
             "create_course" => [
                 "title" => "Create a course",
