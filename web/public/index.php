@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include __DIR__ . '/../src/includes/header.php';
 
 //Page d'accueil / liste de tous les cours
