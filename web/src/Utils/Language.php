@@ -83,8 +83,8 @@ class Language
                 "course_price" => "Prix par étudiant (CHF)*",
                 "course_place" => "Lieu du cours*",
                 "course_start_datetime" => "Date et heure de début*",
-                "course_duration" => "Durée du cours*",
-                "course_max_students" => "Nombre maximum d'étudiants*",
+                "course_duration" => "Durée du cours (15 minutes minimum)*",
+                "course_max_students" => "Nombre maximum d'étudiants (entre 1 et 30) *",
                 "create_button" => "Créer le cours",
                 "cancel_button" => "Annuler"
             ],
@@ -173,8 +173,8 @@ class Language
                 "course_price" => "Price per student (CHF)*",
                 "course_place" => "Course Location*",
                 "course_start_datetime" => "Start Date and Time*",
-                "course_duration" => "Course Duration*",
-                "course_max_students" => "Maximum Number of Students*",
+                "course_duration" => "Course Duration (15 minutes minimum)*",
+                "course_max_students" => "Maximum Number of Students* (between 1 and 30)",
                 "create_button" => "Create Course",
                 "cancel_button" => "Cancel"
             ],
