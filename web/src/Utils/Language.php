@@ -61,19 +61,21 @@ class Language
             "login" => [
                 "title" => "Connexion",
                 "pseudo" => "Nom d'utilisateur:",
-                "password" => "Pseudo:"
+                "password" => "Pseudo:",
+                "button" => "Se connecter"
             ],
             "logout" => [
-                "deconnexion" => "Déconnexion",
+                "deconnexion" => "Déconnexion"
             ],
             "signin" => [
-                "title" => "S'inscrire",
+                "title" => "Inscription",
                 "lastname" => "Nom:",
                 "firstname" => "Prénom:",
                 "pseudo" => "Nom d'utilisateur:",
                 "password" => "Mot de passe:",
                 "rePassword" => "Reconfirmer le mot de passe:",
                 "mail" => "Mail:",
+                "button" => "S'inscrire"
             ],
             "create_course" => [
                 "title" => "Créer un cours",
@@ -151,19 +153,21 @@ class Language
             "login" => [
                 "title" => "Login",
                 "pseudo" => "Username:",
-                "password" => "Password:"
+                "password" => "Password:",
+                "button" => "Login"
             ],
             "logout" => [
                 "deconnexion" => "Deconnexion",
             ],
             "signin" => [
-                "title" => "Log out",
+                "title" => "Inscription",
                 "lastname" => "Last Name:",
                 "firstname" => "First Name:",
                 "pseudo" => "Username:",
                 "password" => "Password:",
                 "rePassword" => "Confirm Password:",
                 "mail" => "Email:",
+                "button" => "Sign-in"
             ],
             "create_course" => [
                 "title" => "Create a course",
