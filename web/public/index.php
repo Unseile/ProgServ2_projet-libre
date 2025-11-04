@@ -20,7 +20,7 @@ $homeContent = $language->getContent($lang, 'index');
         <h2 class="title">Cours d'appui en vue du 2eme examen</h2>
         <p class="shortdescr">Cours d'appui en mathématiques pour préparer le 2eme examen de mathématiques de l'année académique 2025-2026.</p>
         <div class="attributes">
-            <p class="teacher"><?= $homeContent["teacher"] ?>: 7</p>
+            <p class="teacher"><?= $homeContent["teacher"] ?>: Laurent Boli</p>
             <p class="subject"><?= $homeContent["subject"] ?>: BaseMath2</p>
             <p class="startdatetime"><?= $homeContent["on"] ?>: 12 déc <?= $homeContent["at"] ?> 15 <?= $homeContent["hour"] ?> </p>
             <p class="subscriptions"><?= $homeContent["subscriptions"] ?>: 7</p>

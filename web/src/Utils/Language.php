@@ -60,20 +60,23 @@ class Language
             ],
             "login" => [
                 "title" => "Connexion",
-                "pseudo" => "Nom d'utilisateur:",
-                "password" => "Pseudo:"
+                "pseudo" => "Nom d'utilisateur",
+                "password" => "Pseudo",
+                "button" => "Se connecter"
             ],
             "logout" => [
                 "deconnexion" => "Déconnexion",
+                "deconnexionText" => "Vous vous êtes bien déconnecté."
             ],
             "signin" => [
-                "title" => "S'inscrire",
-                "lastname" => "Nom:",
-                "firstname" => "Prénom:",
-                "pseudo" => "Nom d'utilisateur:",
-                "password" => "Mot de passe:",
-                "rePassword" => "Reconfirmer le mot de passe:",
-                "mail" => "Mail:",
+                "title" => "Inscription",
+                "lastname" => "Nom",
+                "firstname" => "Prénom",
+                "pseudo" => "Nom d'utilisateur",
+                "password" => "Mot de passe",
+                "rePassword" => "Reconfirmer le mot de passe",
+                "mail" => "Mail",
+                "button" => "S'inscrire"
             ],
             "create_course" => [
                 "title" => "Créer un cours",
@@ -150,20 +153,23 @@ class Language
             ],
             "login" => [
                 "title" => "Login",
-                "pseudo" => "Username:",
-                "password" => "Password:"
+                "pseudo" => "Username",
+                "password" => "Password",
+                "button" => "Login"
             ],
             "logout" => [
                 "deconnexion" => "Deconnexion",
+                "deconnexionText" => "You are well deconnected"
             ],
             "signin" => [
-                "title" => "Log out",
-                "lastname" => "Last Name:",
-                "firstname" => "First Name:",
-                "pseudo" => "Username:",
-                "password" => "Password:",
+                "title" => "Inscription",
+                "lastname" => "Last Name",
+                "firstname" => "First Name",
+                "pseudo" => "Username",
+                "password" => "Password",
                 "rePassword" => "Confirm Password:",
-                "mail" => "Email:",
+                "mail" => "Email",
+                "button" => "Sign in"
             ],
             "create_course" => [
                 "title" => "Create a course",
@@ -180,10 +186,10 @@ class Language
             ],
             "profile" => [
                 "title" => "User Profile",
-                "user_lastname" => "Last Name:",
-                "user_firstname" => "First Name:",
-                "user_username" => "Username:",
-                "user_email" => "Email:",
+                "user_lastname" => "Last Name",
+                "user_firstname" => "First Name",
+                "user_username" => "Username",
+                "user_email" => "Email",
                 "teacher" => "Teacher",
                 "student" => "Student"
             ]
@@ -202,8 +208,8 @@ class Language
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['language']) {
             $lang = $_POST['language'] ?? $lang;
+            setcookie('language', $lang, time() + 10);
         }
-        setcookie('language', $lang, time() + 10);
         return $lang;
     }
 

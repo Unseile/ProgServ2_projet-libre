@@ -7,15 +7,16 @@ include __DIR__ . '/../src/includes/header.php';
 
 ?>
 
-<h2><?= $language->getContent($lang, 'login')['title'] ?></h2>
+<h2><?= $languageLogin = $language->getContent($lang, 'login')['title'] ?></h2>
+
 <form action="managerLogin.php" method="POST">
-    <label><?= $language->getContent($lang, 'login')['pseudo'] ?></label>
+    <label><?= $languageLogin['pseudo'] ?></label>
     <input type="text" name="username" required><br><br>
 
-    <label><?= $language->getContent($lang, 'login')['password'] ?></label>
+    <label><?= $languageLogin['password'] ?></label>
     <input type="password" name="password" required><br><br>
 
-    <input type="submit" value="connexion">
+    <button type="submit"><?= $languageLogin['button']?></button>
 </form>
 
 </body>
