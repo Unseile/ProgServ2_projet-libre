@@ -7,7 +7,7 @@ $userId = $_SESSION['user_id'] ?? null;
 // L'utilisateur n'est pas authentifié
 if (!$userId) {
     // Redirige vers la page de connexion si l'utilisateur n'est pas authentifié
-    header('Location: /login.php');
+    header('Location: login.php');
     exit();
 }
 
