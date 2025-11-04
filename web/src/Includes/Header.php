@@ -19,13 +19,17 @@ $headerContent = $language->getContent($lang, "header");
 </head>
 
 <body>
-
     <header>
         <nav>
             <ul>
                 <li><a href="index.php"><?= $headerContent["home"] ?></a></li>
                 <li><a href="profile.php"><?= $headerContent["profile"] ?></a></li>
-                <li><a href="logout.php"><?= $headerContent["signin"] ?></a></li>
+                <? if (!isset($_SESSION['user_id'])) { ?>
+                    <li><a href="login.php"><?= $headerContent["login"] ?></a></li>
+                    <li><a href="signin.php"><?= $headerContent["signin"] ?></a></li>
+                <? } else { ?>
+                    <li><a href="logout.php"><?= $headerContent["logout"] ?></a></li>
+                <? } ?>
             </ul>
         </nav>
     </header>
