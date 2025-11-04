@@ -12,15 +12,60 @@ class User
     private string $firstname;
     private string $username;
     private string $email;
+    private bool $isEmailVerified;
     private bool $isTeacher;
     private string $passwordHash;
     private string $entredPassword;
 
-    public function __construct(/* args*/): void {}
+    public function __construct($lastname, $firstname, $username, $email, $isTeacher = false)
+    {
+        $this->lastname = trim($lastname);
+        $this->firstname = trim($firstname);
+        $this->username = trim($username);
+        $this->email = trim($email);
+        $this->isEmailVerified = false;
+        $this->isTeacher = $isTeacher;
+    }
+
+    public function setClearPassword(string $entredPassword): void
+    {
+        $this->entredPassword = trim($entredPassword);
+    }
+    public function setHashPassword(string $passwordHash): void
+    {
+        $this->passwordHash = $passwordHash;
+    }
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+    public function setEmailVerified(): void
+    {
+        $this->isEmailVerified = true;
+    }
 
     public function verify(): array
     {
-        return [];
+        $errors = [];
+        if (empty($this->lastname) || strlen($this->lastname) < 1) {
+            array_push($errors, "Nom obligatoire de au moins 1 caractère");
+        }
+        if (empty($this->firstname) || strlen($this->firstname) < 1) {
+            array_push($errors, "Prénom obligatoire de au moins 1 caractère");
+        }
+        if (strlen($this->username) < 2) {
+            array_push($errors, "Le nom d'utilisateur doit avoir plus de 2 caractères");
+        }
+        if (!isset($this->isTeacher) || ($this->isTeacher != true && $this->isTeacher != false)) {
+            array_push($errors, "Valeur d'enseignement invalide");
+        }
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            array_push($errors, "Email invalide");
+        }
+        if (empty($this->entredPassword) || strlen($this->entredPassword) < 5) {
+            array_push($errors, "Le mot de passe doit avoir au moins 5 caractères");
+        }
+        return $errors;
     }
 
     public function getId(bool $specialCharacters = false): ?int
@@ -81,6 +126,14 @@ class User
             }
         }
         return '';
+    }
+
+    public function getIsEmailVerified(): ?bool
+    {
+        if (isset($this->isEmailVerified) && is_bool($this->isEmailVerified)) {
+            return $this->isEmailVerified;
+        }
+        return null;
     }
 
     public function getIsTeacher(): ?bool
