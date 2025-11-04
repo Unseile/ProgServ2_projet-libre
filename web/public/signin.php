@@ -8,28 +8,28 @@ include __DIR__ . '/../src/includes//footer.php';
 
 ?>
 
-<<h2><?= $language->getContent($lang, 'signin')['title'] ?></h2>
+<<h2><?= $languageSignin = $language->getContent($lang, 'signin')['title'] ?></h2>
 
 <form action="managerLogin.php" method="POST">
-    <label><?= $language->getContent($lang, 'signin')['lastname'] ?></label>
+    <label><?= $languageSignin['lastname'] ?></label>
     <input type="text" name="lastName" required><br><br>
     
-    <label><?= $language->getContent($lang, 'signin')['firstname'] ?></label>
+    <label><?= $languageSignin['firstname'] ?></label>
     <input type="text" name="firstName" required><br><br>
     
-    <label><?= $language->getContent($lang, 'signin')['pseudo'] ?></label>
+    <label><?= $languageSignin['pseudo'] ?></label>
     <input type="text" name="username" required><br><br>
 
-    <label><?= $language->getContent($lang, 'signin')['password'] ?></label>
+    <label><?= $languageSignin['password'] ?></label>
     <input type="password" name="password" required><br><br>
 
-    <label><?= $language->getContent($lang, 'signin')['rePassword'] ?></label>
+    <label><?= $languageSignin['rePassword'] ?></label>
     <input type="password" name="password" required><br><br>
 
-    <label><?= $language->getContent($lang, 'signin')['mail'] ?></label>
+    <label><?= $languageSignin['mail'] ?></label>
     <input type="email" name="email" required><br><br>
 
-    <input type="submit" value="inscription">
+    <button type="submit"><?= $languageSignin['button']?></button>
 </form>
 
 </body>
