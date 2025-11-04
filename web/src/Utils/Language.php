@@ -65,7 +65,8 @@ class Language
                 "button" => "Se connecter"
             ],
             "logout" => [
-                "deconnexion" => "Déconnexion"
+                "deconnexion" => "Déconnexion",
+                "deconnexionText" => "Vous vous êtes bien déconnecté"
             ],
             "signin" => [
                 "title" => "Inscription",
@@ -158,6 +159,7 @@ class Language
             ],
             "logout" => [
                 "deconnexion" => "Deconnexion",
+                "deconnexionText" => "You are well deconnected"
             ],
             "signin" => [
                 "title" => "Inscription",
