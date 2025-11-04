@@ -10,7 +10,7 @@ $headerContent = $language->getContent($lang, "header");
 
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= $lang ?>">
 
 <head>
     <meta charset="UTF-8">
