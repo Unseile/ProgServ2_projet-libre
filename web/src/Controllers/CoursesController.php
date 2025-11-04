@@ -12,14 +12,12 @@ class CoursesController
 {
     private PDO $pdo;
 
-    public function __construct(): void
+    public function __construct()
     {
         $this->pdo = new Database()->getPDO();
     }
 
     public function addCourse(Course $course): void {}
-    public function followCourse(int $courseId, int $userId): void {}
-    public function unfollowCourse(int $courseId, int $userId): void {}
     public function getCourse(int $id): ?Course
     {
         return null;
@@ -31,4 +29,6 @@ class CoursesController
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function updateCourse(Course $course): void {}
+    public function deleteCourse(Course $course): void {}
 }
