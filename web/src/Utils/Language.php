@@ -97,8 +97,11 @@ class Language
                 "user_firstname" => "Prénom:",
                 "user_username" => "Pseudo:",
                 "user_email" => "Email:",
+                "user_role" => "Rôle",
                 "teacher" => "Professeur",
-                "student" => "Étudiant"
+                "student" => "Étudiant",
+                "user_email_verified" => "Le mail est vérifié.",
+                "user_email_not_verified" => "Le mail n'est pas vérifié."
             ]
         ],
         "en" => [
@@ -190,8 +193,11 @@ class Language
                 "user_firstname" => "First Name",
                 "user_username" => "Username",
                 "user_email" => "Email",
+                "user_role" => "Role",
                 "teacher" => "Teacher",
-                "student" => "Student"
+                "student" => "Student",
+                "user_email_verified" => "The email is verified.",
+                "user_email_not_verified" => "The email is not verified."
             ]
         ]
     ];

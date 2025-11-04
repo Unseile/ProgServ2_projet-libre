@@ -1,12 +1,30 @@
 <?php
+session_start();
+
+// Vérifie si l'utilisateur est authentifié
+$userId = $_SESSION['user_id'] ?? null;
+
+// L'utilisateur n'est pas authentifié
+if (!$userId) {
+    // Redirige vers la page de connexion si l'utilisateur n'est pas authentifié
+    header('Location: /login.php');
+    exit();
+}
+
+// Sinon, récupère les autres informations de l'utilisateur
+$lastname = $_SESSION['lastname'];
+$firstname = $_SESSION['firstname'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+$emailVerified = $_SESSION['emailVerified'];
+$isTeacher = $_SESSION['isTeacher'];
+
 //Page du profil utilisateur
 require_once __DIR__ . '/../src/Config/autoloader.php';
 
 include __DIR__ . '/../src/includes//header.php';
 
 $profileContent = $language->getContent($lang, 'profile');
-
-$user = $userController->getUserById($_SESSION['user']['id']);
 ?>
 
 <body>
@@ -19,27 +37,27 @@ $user = $userController->getUserById($_SESSION['user']['id']);
     <div class="user_informations">
         <div class="user_lastname">
             <strong><?= $profileContent["user_information"]?></strong>
-            <?= htmlspecialchars($user['lastname']) ?>
+            <?= htmlspecialchars($lastname) ?>
         </div>
 
         <div class="user_firstname">
             <strong><?= $profileContent["user_firstname"]?></strong>
-            <?= htmlspecialchars($user['firstname']) ?>
+            <?= htmlspecialchars($firstname) ?>
         </div>
 
         <div class="user_username">
             <strong><?= $profileContent["user_username"]?></strong>
-            <?= htmlspecialchars($user['username']) ?>
+            <?= htmlspecialchars($username) ?>
         </div>
 
         <div class="user_email">
             <strong><?= $profileContent["user_email"]?></strong>
-            <?= htmlspecialchars($user['email']) ?>
+            <?= htmlspecialchars((isset($emailVerified)) ? $profileContent["user_email_verified"] : $profileContent["user_email_not_verified"]) ?>
         </div>
 
         <div class="user_role">
-            <strong>Rôle:</strong>
-            <?= htmlspecialchars($user['is_teacher'] ? $profileContent["teacher"] : $profileContent["student"]) ?>
+            <strong><?= $profileContent["user_role"]?></strong>
+            <?= htmlspecialchars($isTeacher ? $profileContent["teacher"] : $profileContent["student"]) ?>
         </div>
     </div>
 </body>
