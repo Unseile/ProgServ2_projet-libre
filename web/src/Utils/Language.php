@@ -140,9 +140,9 @@ class Language
             "header" => [
                 "home" => "Home",
                 "profile" => "Profile",
-                "login" => "Login",
-                "signin" => "Signin",
-                "logout" => "Logout"
+                "login" => "Log in",
+                "signin" => "Sign in",
+                "logout" => "Log out"
             ],
             "footer" => [
                 "fr" => "french",
