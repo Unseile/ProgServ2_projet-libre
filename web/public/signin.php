@@ -7,7 +7,7 @@ include __DIR__ . '/../src/includes/header.php';
 
 ?>
 
-<<h2><?= $languageSignin = $language->getContent($lang, 'signin')['title'] ?></h2>
+<h2><?= $languageSignin = $language->getContent($lang, 'signin')['title'] ?></h2>
 
 <form action="managerLogin.php" method="POST">
     <label><?= $languageSignin['lastname'] ?></label>
