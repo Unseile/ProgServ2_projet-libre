@@ -56,10 +56,12 @@ class CoursesController
             ":number_stud_sub" => $course->getSubStudents()
         ]);
     }
+
     public function getCourse(int $id): ?Course
     {
         $sql = "SELECT 
         id.course,
+        fk_teacher_id,
         firstname AS \"teacher_firstname\",
         lastname AS \"teacher_lastname\",
         title, subject,
@@ -76,17 +78,34 @@ class CoursesController
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
-        $course = $stmt->fetch();
-        return $course;
+        $result = $stmt->fetch();
+        return $this->toCourse($result);
     }
+
     public function getCourses(): array
     {
-        $sql = "SELECT * FROM course ORDER BY course.start_datetime ASC";
+        $sql = "SELECT 
+        course.id,
+        fk_teacher_id,
+        first_name AS \"teacher_firstname\",
+        last_name AS \"teacher_lastname\",
+        title, subject,
+        start_datetime,
+        duration,
+        descr,
+        location,
+        price_per_student,
+        number_stud_max,
+        number_stud_sub
+        FROM course
+        INNER JOIN user ON user.id = course.fk_teacher_id
+        ORDER BY course.start_datetime ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $courses = $stmt->fetchAll();
-        return $courses;
+        return $this->toCourses($courses);
     }
+
     public function updateCourse(Course $course): void
     {
         $sql = "UPDATE course SET 
@@ -115,10 +134,39 @@ class CoursesController
             ":number_stud_sub" => $course->getSubStudents()
         ]);
     }
+
     public function deleteCourse(int $id): void
     {
         $sql = "DELETE course WHERE id = :id;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
+    }
+
+    private function toCourses($results): array
+    {
+        $courses = [];
+        foreach ($results as $result) {
+            array_push($courses, $this->toCourse($result));
+        }
+        return $courses;
+    }
+
+    private function toCourse($result): Course
+    {
+        $course = new Course(
+            $result['fk_teacher_id'],
+            $result['title'],
+            $result['subject'],
+            $result['start_datetime'],
+            $result['duration'],
+            $result['descr'],
+            $result['location'],
+            $result['price_per_student'],
+            $result['number_stud_max'],
+            $result['number_stud_sub']
+        );
+        $course->setId($result['id']);
+        $course->setTeacher($result['teacher_firstname'], $result['teacher_lastname']);
+        return $course;
     }
 }
