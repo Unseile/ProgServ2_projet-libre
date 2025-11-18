@@ -14,7 +14,7 @@ class CoursesController
 
     public function __construct()
     {
-        $this->pdo = new Database()->getPDO();
+        $this->pdo = (new Database())->getPDO();
     }
 
     public function addCourse(Course $course): void
