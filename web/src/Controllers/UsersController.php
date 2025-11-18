@@ -13,7 +13,8 @@ class UsersController
 
     public function __construct()
     {
-        $this->pdo = (new Database())->getPDO();
+        $database = new Database();
+        $this->pdo = $database->getPDO();
     }
 
     public function addUser(User $user): void
