@@ -19,15 +19,18 @@ class UsersController
 
     public function addUser(User $user): void
     {
-        $sql = "INSERT INTO user (firstname, lastname, username, email, email_verified, is_teacher)
-        VALUES (:firstname, :lastname, :username, :email, 0, 0);";
+        $sql = "INSERT INTO user (first_name, last_name, password, username, email, email_verified, is_teacher)
+        VALUES (:firstname, :lastname, :password, :username, :email, 0, 0);";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ":firstname" => $user->getFirstname(),
-            ":lastname" => $user->getLastname(),
-            ":username" => $user->getUsername(),
-            ":email" => $user->getEmail()
-        ]);
+        $stmt->execute(
+            [
+                ":firstname" => $user->getFirstname(),
+                ":lastname" => $user->getLastname(),
+                ":username" => $user->getUsername(),
+                ":email" => $user->getEmail(),
+                ":password" => password_hash($user->getEntredPassword(), PASSWORD_DEFAULT)
+            ]
+        );
     }
     /*public function getUser(int $id): ?User { return null; }*/
     public function getUserCourses(int $id): array
@@ -72,4 +75,5 @@ class UsersController
     }
     public function deleteUser(string $username): void {}
     public function updateUser(User $user): void {}
+    public function setEmailValidate(): void {}
 }
