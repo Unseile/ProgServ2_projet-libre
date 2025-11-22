@@ -26,14 +26,15 @@ class Language
                 "on" => "le",
                 "at" => "à",
                 "hour" => "heure",
-                "starts" => "commence",
-                "ends" => "fini",
+                // "starts" => "commence",
+                // "ends" => "fini",
                 "course-description" => "description du cours",
                 "duration" => "durée",
                 "in-room" => "en salle",
                 "price" => "prix",
                 "login" => "se connecter",
-                "subscribe" => "s'inscrire"
+                "subscribe" => "s'inscrire",
+                "unsubscribe" => "se désinscrire"
             ],
             "subscriptions" => [
                 "user-courses" => "Vos précédents cours suivis",
@@ -42,7 +43,8 @@ class Language
                 "subscriptions" => "inscriptions",
                 "on" => "le",
                 "at" => "à",
-                "hour" => "heure"
+                "hour" => "heure",
+                "course" => "Voir le cours"
             ],
             "header" => [
                 "home" => "Accueil",
@@ -60,8 +62,8 @@ class Language
             ],
             "login" => [
                 "title" => "Connexion",
-                "pseudo" => "Nom d'utilisateur",
-                "password" => "Pseudo",
+                "username" => "Nom d'utilisateur",
+                "password" => "Mot de passe",
                 "button" => "Se connecter"
             ],
             "logout" => [
@@ -72,7 +74,7 @@ class Language
                 "title" => "Inscription",
                 "lastname" => "Nom",
                 "firstname" => "Prénom",
-                "pseudo" => "Nom d'utilisateur",
+                "username" => "Nom d'utilisateur",
                 "password" => "Mot de passe",
                 "rePassword" => "Reconfirmer le mot de passe",
                 "mail" => "Mail",
@@ -122,14 +124,15 @@ class Language
                 "on" => "on",
                 "at" => "at",
                 "hour" => "hour",
-                "starts" => "starts",
-                "ends" => "ends",
+                // "starts" => "starts",
+                // "ends" => "ends",
                 "course-description" => "course description",
                 "duration" => "duration",
                 "in-room" => "in room",
                 "price" => "price",
                 "login" => "log in",
-                "subscribe" => "subscribe"
+                "subscribe" => "subscribe",
+                "unsubscribe" => "se désinscrire"
             ],
             "subscriptions" => [
                 "user-courses" => "Your previous enrolled courses",
@@ -138,7 +141,8 @@ class Language
                 "subscriptions" => "subscriptions",
                 "on" => "on",
                 "at" => "at",
-                "hour" => "hour"
+                "hour" => "hour",
+                "course" => "View course"
             ],
             "header" => [
                 "home" => "Home",
@@ -156,7 +160,7 @@ class Language
             ],
             "login" => [
                 "title" => "Login",
-                "pseudo" => "Username",
+                "username" => "Username",
                 "password" => "Password",
                 "button" => "Login"
             ],
@@ -168,7 +172,7 @@ class Language
                 "title" => "Inscription",
                 "lastname" => "Last Name",
                 "firstname" => "First Name",
-                "pseudo" => "Username",
+                "username" => "Username",
                 "password" => "Password",
                 "rePassword" => "Confirm Password:",
                 "mail" => "Email",

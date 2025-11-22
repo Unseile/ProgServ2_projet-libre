@@ -37,6 +37,8 @@ class Course
     private float $pricePerStudent;
     private int $maxStudents;
     private int $subStudents;
+    private string $teacherFirstname;
+    private string $teacherLastname;
 
     public function __construct(
         int $teacherId,
@@ -65,6 +67,12 @@ class Course
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function setTeacher(string $firstname, string $lastname): void
+    {
+        $this->teacherFirstname = $firstname;
+        $this->teacherLastname = $lastname;
     }
 
     public function verify(): array
@@ -241,6 +249,30 @@ class Course
                 return htmlspecialchars($this->subStudents);
             } else {
                 return $this->subStudents;
+            }
+        }
+        return '';
+    }
+
+    public function getTeacherFirstname(bool $specialCharacters = false): ?string
+    {
+        if (isset($this->teacherFirstname) && is_string($this->teacherFirstname)) {
+            if ($specialCharacters) {
+                return htmlspecialchars($this->teacherFirstname);
+            } else {
+                return $this->teacherFirstname;
+            }
+        }
+        return '';
+    }
+
+    public function getTeacherLastname(bool $specialCharacters = false): ?string
+    {
+        if (isset($this->teacherLastname) && is_string($this->teacherLastname)) {
+            if ($specialCharacters) {
+                return htmlspecialchars($this->teacherLastname);
+            } else {
+                return $this->teacherLastname;
             }
         }
         return '';
