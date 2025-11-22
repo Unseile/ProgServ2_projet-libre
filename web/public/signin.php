@@ -27,6 +27,43 @@ if ($username && $emailVerified) { //Si l'utilisateur est connecté et qu'il a l
     exit();
 }
 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && !$username) { //Si l'utilisateur n'est pas connecté et qu'il à envoyé le formulaire pour créer le comptre
+    if (isset($_POST["password"]) && isset($_POST["repassword"]) && $_POST["password"] === $_POST["repassword"]) {
+        $user = new User(
+            $_POST["lastname"] ?? "",
+            $_POST["firstname"] ?? "",
+            $_POST["username"] ?? "",
+            $_POST["email"] ?? ""
+        );
+        $user->setClearPassword(
+            $_POST["password"] ?? ""
+        );
+        $errors = $user->verify();
+        if (empty($errors)) {
+            try {
+                $usercontroller->addUser($user);
+                $_SESSION['user_id'] = $usercontroller->getUser($user->getUsername())["id"];
+                $_SESSION['lastname'] = $user->getLastname();
+                $_SESSION['firstname'] = $user->getFirstname();
+                $_SESSION['username'] = $user->getUsername();
+                $_SESSION['email'] = $user->getEmail();
+                $_SESSION['emailVerified'] = $user->getIsEmailVerified();
+                $_SESSION['isTeacher'] = $user->getIsTeacher();
+            } catch (PDOException $e) {
+                if ($e->getCode() === "23000") {
+                    $errors[] = $signInContent["err_exist_user"];
+                } else {
+                    $errors[] = $signInContent["err_add_user"];
+                }
+            } catch (Exception $e) {
+                $errors[] = $signInContent["err_unexpected"];
+            }
+        }
+    } else {
+        $errors = [$signInContent["err_password"]];
+    }
+}
+
 if ($username && !$emailVerified && !isset($_POST["send"])) { //si l'utilisateur existe et que l'email est pas vérifé et que l'utilisateur n'a pas tenté d'envoyer le code de vérification
     $config = parse_ini_file(MAIL_CONFIGURATION_FILE, true);
 
@@ -90,42 +127,7 @@ if (
     }
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && !$username) { //Si l'utilisateur n'est pas connecté et qu'il à envoyé le formulaire pour créer le comptre
-    if (isset($_POST["password"]) && isset($_POST["repassword"]) && $_POST["password"] === $_POST["repassword"]) {
-        $user = new User(
-            $_POST["lastname"] ?? "",
-            $_POST["firstname"] ?? "",
-            $_POST["username"] ?? "",
-            $_POST["email"] ?? ""
-        );
-        $user->setClearPassword(
-            $_POST["password"] ?? ""
-        );
-        $errors = $user->verify();
-        if (empty($errors)) {
-            try {
-                $usercontroller->addUser($user);
-                $_SESSION['user_id'] = $usercontroller->getUser($user->getUsername())["id"];
-                $_SESSION['lastname'] = $user->getLastname();
-                $_SESSION['firstname'] = $user->getFirstname();
-                $_SESSION['username'] = $user->getUsername();
-                $_SESSION['email'] = $user->getEmail();
-                $_SESSION['emailVerified'] = $user->getIsEmailVerified();
-                $_SESSION['isTeacher'] = $user->getIsTeacher();
-            } catch (PDOException $e) {
-                if ($e->getCode() === "23000") {
-                    $errors[] = $signInContent["err_exist_user"];
-                } else {
-                    $errors[] = $signInContent["err_add_user"];
-                }
-            } catch (Exception $e) {
-                $errors[] = $signInContent["err_unexpected"];
-            }
-        }
-    } else {
-        $errors = [$signInContent["err_password"]];
-    }
-}
+
 
 ?>
 
