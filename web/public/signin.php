@@ -1,4 +1,10 @@
 <?php
+function codeUnique(string $texte): string //fonction pour générer un nombre par rapport à l'username (avec un hash pour être difficile à deviner)
+{
+    $hash = crc32($texte);
+    $num  = $hash % 1000000;
+    return str_pad($num, 6, '0', STR_PAD_LEFT);
+}
 
 //Page de création de compte
 session_start();
@@ -10,26 +16,18 @@ use Models\User;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-function codeUnique(string $texte): string
-{
-    $hash = crc32($texte);            // Hash déterministe
-    $num  = $hash % 1000000;          // Réduction à 6 chiffres
-    return str_pad($num, 6, '0', STR_PAD_LEFT);
-}
-
 const MAIL_CONFIGURATION_FILE = __DIR__ . '/../src/Utils/PHPMailer/mail.ini';
-
 $signInContent = $language->getContent($lang, 'signin');
 $usercontroller = new UsersController();
-
 $username = $_SESSION['username'] ?? null;
 $emailVerified = $_SESSION["emailVerified"];
-if ($username && $emailVerified) { //si l'utilisateur est déjà authentifié, il ne peut pas accèdé à la page de création de compte
+
+if ($username && $emailVerified) { //Si l'utilisateur est connecté et qu'il a l'email vérifié on le renvoie à l'accueil
     header('Location: /');
     exit();
 }
 
-if ($username && !$emailVerified && !isset($_POST["send"])) {
+if ($username && !$emailVerified && !isset($_POST["send"])) { //si l'utilisateur existe et que l'email est pas vérifé et que l'utilisateur n'a pas tenté d'envoyer le code de vérification
     $config = parse_ini_file(MAIL_CONFIGURATION_FILE, true);
 
     if (!$config) {
@@ -83,7 +81,8 @@ if (
     && !$emailVerified
     && isset($_POST["send"])
     && $_POST["send"] === "true"
-) {
+) // SI l'utilisateur a envoyé le code de vérification et qu'il n'a pas encore l'email vérifié
+{
     if (isset($_POST["code"]) && $_POST["code"] === codeUnique($_SESSION["username"])) {
         $usercontroller->setEmailValidate($username);
     } else {
@@ -91,7 +90,7 @@ if (
     }
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && !$username) {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && !$username) { //Si l'utilisateur n'est pas connecté et qu'il à envoyé le formulaire pour créer le comptre
     if (isset($_POST["password"]) && isset($_POST["repassword"]) && $_POST["password"] === $_POST["repassword"]) {
         $user = new User(
             $_POST["lastname"] ?? "",
