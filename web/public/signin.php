@@ -20,16 +20,16 @@ function codeUnique(string $texte): string
 const MAIL_CONFIGURATION_FILE = __DIR__ . '/../src/Utils/PHPMailer/mail.ini';
 
 $signInContent = $language->getContent($lang, 'signin');
-                $usercontroller = new UsersController();
+$usercontroller = new UsersController();
 
-$userId = $_SESSION['user_id'] ?? null;
+$username = $_SESSION['username'] ?? null;
 $emailVerified = $_SESSION["emailVerified"];
-if ($userId && $emailVerified) { //si l'utilisateur est déjà authentifié, il ne peut pas accèdé à la page de création de compte
+if ($username && $emailVerified) { //si l'utilisateur est déjà authentifié, il ne peut pas accèdé à la page de création de compte
     header('Location: /');
     exit();
 }
 
-if ($userId && !$emailVerified && !isset($_POST["send"])) {
+if ($username && !$emailVerified && !isset($_POST["send"])) {
     $config = parse_ini_file(MAIL_CONFIGURATION_FILE, true);
 
     if (!$config) {
@@ -79,19 +79,19 @@ if ($userId && !$emailVerified && !isset($_POST["send"])) {
 
 if (
     $_SERVER["REQUEST_METHOD"] === "POST"
-    && $userId
+    && $username
     && !$emailVerified
     && isset($_POST["send"])
     && $_POST["send"] === "true"
 ) {
     if (isset($_POST["code"]) && $_POST["code"] === codeUnique($_SESSION["username"])) {
-        $usercontroller->setEmailValidate();
+        $usercontroller->setEmailValidate($username);
     } else {
         $errors = ["INVALIDE CODE"];
     }
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && !$userId) {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && !$username) {
     if (isset($_POST["password"]) && isset($_POST["repassword"]) && $_POST["password"] === $_POST["repassword"]) {
         $user = new User(
             $_POST["lastname"] ?? "",
@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !$userId) {
     }
 } ?>
 <form action="" method="POST">
-    <?php if (!$userId) { ?>
+    <?php if (!$username) { ?>
         <label for="lastname"><?= $signInContent['lastname'] ?></label>
         <input type="text" name="lastname" required><br><br>
 
