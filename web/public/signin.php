@@ -15,6 +15,7 @@ $signInContent = $language->getContent($lang, 'signin');
 $usercontroller = new UsersController();
 $username = $_SESSION['username'] ?? null;
 $emailVerified = $_SESSION["emailVerified"] ?? null;
+$validateEmail = false;
 
 if ($username && $emailVerified) { //Si l'utilisateur est connecté et qu'il a l'email vérifié on le renvoie à l'accueil
     header('Location: /');
@@ -140,8 +141,10 @@ if (
 {
     if (isset($_POST["code"]) && $_POST["code"] === codeUnique($_SESSION["username"])) {
         $usercontroller->setEmailValidate($username);
+        $_SESSION["emailVerified"] = true;
+        $validateEmail = true;
     } else {
-        $errors = ["INVALIDE CODE"];
+        $errors = [$signInContent["invalide_code"]];
     }
 }
 
@@ -156,7 +159,7 @@ if (
     }
 } ?>
 <form action="" method="POST">
-    <?php if (!isset($_SESSION['username'])) { ?>
+    <?php if (!isset($_SESSION['username']) && !$validateEmail) { ?>
         <label for="lastname"><?= $signInContent['lastname'] ?></label>
         <input type="text" name="lastname" value="<?= isset($user) ? $user->getLastname(true) : '' ?>" required><br><br>
 
@@ -176,11 +179,16 @@ if (
         <input type="email" name="email" value="<?= isset($user) ? $user->getEmail(true) : '' ?>" required><br><br>
 
         <button type="submit"><?= $signInContent['button'] ?></button>
-    <?php } else { ?>
+    <?php }
+    if (isset($_SESSION['username']) && !$validateEmail) { ?>
         <label for="code"><?= $signInContent['code'] ?></label>
         <input type="text" name="code" required><br><br>
         <input type="hidden" name="send" value="true">
         <button type="submit"><?= $signInContent['send_code'] ?></button>
+    <?php }
+    if (isset($_SESSION['username']) && $validateEmail) { ?>
+        <p><?= $signInContent["valide_code"] ?></p>
+        <a href="/"><?= $signInContent["return_home"] ?></a>
     <?php } ?>
 </form>
 

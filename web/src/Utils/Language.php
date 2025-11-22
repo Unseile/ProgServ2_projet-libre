@@ -87,8 +87,9 @@ class Language
                 "email_content" => "Merci de saisir le code ci-dessous pour valider votre adresse email.",
                 "send_code" => "Vérifier",
                 "code" => "Votre code reçu par email",
-                "invalide_code" => "Code invalide"
-
+                "invalide_code" => "Code invalide",
+                "valide_code" => "Succès, votre email est maintenant vérifié",
+                "return_home" => "Retourner à l'accueil"
             ],
             "create_course" => [
                 "title" => "Créer un cours",
@@ -195,7 +196,9 @@ class Language
                 "email_content" => "Please, enter the code bellow to validate your email address.",
                 "send_code" => "Check",
                 "code" => "Your code received on your email",
-                "invalide_code" => "Invalide code"
+                "invalide_code" => "Invalide code",
+                "valide_code" => "Success, your email is now verified",
+                "return_home" => "Return to home"
             ],
             "create_course" => [
                 "title" => "Create a course",
