@@ -67,13 +67,56 @@ class UsersController
         $teacherCourses = $stmt->fetchAll();
         return $teacherCourses;
     }
-    public function followCourse(int $courseId, string $username): void {}
-    public function unfollowCourse(int $courseId, string $username): void {}
+    public function followCourse(int $courseId, string $username): void
+    {
+        // JE PENSE QU'IL FAUT MODIFIER ICI
+        $sql = "INSERT INTO subscription (fk_course_id, fk_student_id)
+                VALUES (:course, (SELECT user.id FROM user WHERE user.username = :username))";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ":course" => $courseId,
+            ":student" => $username
+        ]);
+    }
+    public function unfollowCourse(int $courseId, string $username): void
+    {
+        $sql = "DELETE subscription
+                INNER JOIN user
+                ON user.id = subscription.fk_student_id
+                WHERE subscription.id = :course
+                AND user.username = :username";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ":course" => $courseId,
+            ":username" => $username
+        ]);
+    }
     public function getUser(string $username): ?User
     {
-        return null;
+        $sql = "SELECT *
+                FROM user
+                WHERE username = :username
+                LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":username" => $username]);
+        $result = $stmt->fetch();
+        $user = new User(
+            $result["last_name"],
+            $result["first_name"],
+            $result["username"],
+            $result["email"],
+            $result["is_teacher"]
+        );
+        $user->setEmailVerified($result["email_verified"]);
+        $user->setHashPassword($result["password"]);
+        return $user;
     }
-    public function deleteUser(string $username): void {}
-    public function updateUser(User $user): void {}
-    public function setEmailValidate(): void {}
+    public function setEmailValidate($username): void
+    {
+        $sql = "UPDATE user
+                SET email_verified = 1 
+                WHERE username = :username";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":username" => $username]);
+    }
 }
