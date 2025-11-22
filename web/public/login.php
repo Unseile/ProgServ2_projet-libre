@@ -5,11 +5,12 @@ require_once __DIR__ . '/../src/Config/autoloader.php';
 
 include __DIR__ . '/../src/includes/header.php';
 
+$languageLogin = $language->getContent($lang, 'login');
 ?>
 
-<h2><?= $languageLogin = $language->getContent($lang, 'login')['title'] ?></h2>
+<h2><?= $languageLogin['title'] ?></h2>
 
-<form action="managerLogin.php" method="POST">
+<form action="index.php" method="POST">
     <label><?= $languageLogin['pseudo'] ?></label>
     <input type="text" name="username" required><br><br>
 

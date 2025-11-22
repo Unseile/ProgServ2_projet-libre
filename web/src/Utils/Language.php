@@ -26,14 +26,15 @@ class Language
                 "on" => "le",
                 "at" => "à",
                 "hour" => "heure",
-                "starts" => "commence",
-                "ends" => "fini",
+                // "starts" => "commence",
+                // "ends" => "fini",
                 "course-description" => "description du cours",
                 "duration" => "durée",
                 "in-room" => "en salle",
                 "price" => "prix",
                 "login" => "se connecter",
-                "subscribe" => "s'inscrire"
+                "subscribe" => "s'inscrire",
+                "unsubscribe" => "se désinscrire"
             ],
             "subscriptions" => [
                 "user-courses" => "Vos précédents cours suivis",
@@ -122,14 +123,15 @@ class Language
                 "on" => "on",
                 "at" => "at",
                 "hour" => "hour",
-                "starts" => "starts",
-                "ends" => "ends",
+                // "starts" => "starts",
+                // "ends" => "ends",
                 "course-description" => "course description",
                 "duration" => "duration",
                 "in-room" => "in room",
                 "price" => "price",
                 "login" => "log in",
-                "subscribe" => "subscribe"
+                "subscribe" => "subscribe",
+                "unsubscribe" => "unsubscribe"
             ],
             "subscriptions" => [
                 "user-courses" => "Your previous enrolled courses",
