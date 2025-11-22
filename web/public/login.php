@@ -11,7 +11,7 @@ $languageLogin = $language->getContent($lang, 'login');
 <h2><?= $languageLogin['title'] ?></h2>
 
 <form action="index.php" method="POST">
-    <label><?= $languageLogin['pseudo'] ?></label>
+    <label><?= $languageLogin['username'] ?></label>
     <input type="text" name="username" required><br><br>
 
     <label><?= $languageLogin['password'] ?></label>

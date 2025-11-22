@@ -2,21 +2,37 @@
 session_start();
 //Page d'affichage d'UN cours
 require_once __DIR__ . '/../src/Config/autoloader.php';
-
 include __DIR__ . '/../src/includes/header.php';
-include __DIR__ . '/../src/includes/footer.php';
 
 $courseContent = $language->getContent($lang, 'course');
+
+$courseId = $_GET['id'] ?? null;
+if (!$courseId) {
+    exit;
+}
+
+use Controllers\CoursesController;
+
+$courseController = new CoursesController();
+$courses = $courseController->getCourses();
+
+$course = null;
+foreach ($courses as $c) {
+    if ($c->getId(true) == $courseId) {
+        $course = $c;
+        break;
+    }
+}
 ?>
 
 <h2 class="title"><?= $course->getTitle(true) ?></h2>
 <p class="shortdescr"><?= $course->getDescr(true) ?></p>
 <div class="attributes">
-    <p class="teacher"><?= $homeContent["teacher"] ?>: <?= $course->getTeacherFirstname(true) . " " . $course->getTeacherLastname(true) ?></p>
-    <p class="subject"><?= $homeContent["subject"] ?>: <?= $course->getSubject(true) ?></p>
+    <p class="teacher"><?= $courseContent["teacher"] ?>: <?= $course->getTeacherFirstname(true) . " " . $course->getTeacherLastname(true) ?></p>
+    <p class="subject"><?= $courseContent["subject"] ?>: <?= $course->getSubject(true) ?></p>
     <p class="course-description"><?= $courseContent["course-description"] ?>: <?= htmlspecialchars($course->getDescr(true)) ?></p>
-    <p class="startdatetime"><?= $homeContent["on"] ?>: <?= htmlspecialchars(date('d M', strtotime($course->getStartDatetime()))) ?> <?= $homeContent["at"] ?> <?= htmlspecialchars(date('G', strtotime($course->getStartDatetime()))) ?> <?= $homeContent["hour"] ?> <?= htmlspecialchars(date('i', strtotime($course->getStartDatetime()))) ?> </p>
-    <p class="subscriptions"><?= $homeContent["subscriptions"] ?>: <?= $course->getSubStudents(true) ?></p>
+    <p class="startdatetime"><?= $courseContent["on"] ?>: <?= htmlspecialchars(date('d M', strtotime($course->getStartDatetime()))) ?> <?= $courseContent["at"] ?> <?= htmlspecialchars(date('G', strtotime($course->getStartDatetime()))) ?> <?= $courseContent["hour"] ?> <?= htmlspecialchars(date('i', strtotime($course->getStartDatetime()))) ?> </p>
+    <p class="subscriptions"><?= $courseContent["subscriptions"] ?>: <?= $course->getSubStudents(true) ?></p>
     <p class="duration"><?= $courseContent["duration"] ?>: <?= htmlspecialchars($course->getDuration(true)) ?></p>
     <p class="price"><?= $courseContent["price"] ?>: <?= htmlspecialchars($course->getPricePerStudent(true)) ?> CHF</p>
 </div>
@@ -27,3 +43,5 @@ $courseContent = $language->getContent($lang, 'course');
 <?php } else { ?>
     <button><?= $courseContent["login"] ?></button>
 <?php } ?>
+
+<?php include __DIR__ . '/../src/includes/footer.php';?>

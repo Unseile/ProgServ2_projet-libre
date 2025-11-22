@@ -43,7 +43,8 @@ class Language
                 "subscriptions" => "inscriptions",
                 "on" => "le",
                 "at" => "à",
-                "hour" => "heure"
+                "hour" => "heure",
+                "course" => "Voir le cours"
             ],
             "header" => [
                 "home" => "Accueil",
@@ -61,8 +62,8 @@ class Language
             ],
             "login" => [
                 "title" => "Connexion",
-                "pseudo" => "Nom d'utilisateur",
-                "password" => "Pseudo",
+                "username" => "Nom d'utilisateur",
+                "password" => "Mot de passe",
                 "button" => "Se connecter"
             ],
             "logout" => [
@@ -77,19 +78,7 @@ class Language
                 "password" => "Mot de passe",
                 "rePassword" => "Reconfirmer le mot de passe",
                 "mail" => "Mail",
-                "button" => "S'inscrire",
-                "err_password" => "Soyez sûr de taper le bon mot de passe dans les deux champs.",
-                "err_exist_user" => "Le nom d'utilisateur est déjà pris.",
-                "err_add_user" => "Erreur lors de l'ajout de l'utilisateur.",
-                "err_unexpected" => "Erreur inatendue.",
-                "email_error" => "Email pas envoyé",
-                "email_sucess" => "Email envoyé avec succès",
-                "email_subject" => "Verifiez votre adresse email",
-                "email_content" => "Merci de saisir le code ci-dessous pour valider votre adresse email.",
-                "send_code" => "Vérifier",
-                "code" => "Votre code reçu par email",
-                "invalide_code" => "Code invalide"
-
+                "button" => "S'inscrire"
             ],
             "create_course" => [
                 "title" => "Créer un cours",
@@ -143,7 +132,7 @@ class Language
                 "price" => "price",
                 "login" => "log in",
                 "subscribe" => "subscribe",
-                "unsubscribe" => "unsubscribe"
+                "unsubscribe" => "se désinscrire"
             ],
             "subscriptions" => [
                 "user-courses" => "Your previous enrolled courses",
@@ -152,7 +141,8 @@ class Language
                 "subscriptions" => "subscriptions",
                 "on" => "on",
                 "at" => "at",
-                "hour" => "hour"
+                "hour" => "hour",
+                "course" => "View course"
             ],
             "header" => [
                 "home" => "Home",
@@ -170,7 +160,7 @@ class Language
             ],
             "login" => [
                 "title" => "Login",
-                "pseudo" => "Username",
+                "username" => "Username",
                 "password" => "Password",
                 "button" => "Login"
             ],
@@ -186,18 +176,7 @@ class Language
                 "password" => "Password",
                 "rePassword" => "Confirm Password:",
                 "mail" => "Email",
-                "button" => "Sign in",
-                "err_password" => "Be sure to type the correct password in the two fields.",
-                "err_exist_user" => "The username is taken.",
-                "err_add_user" => "Error when adding new user.",
-                "err_unexpected" => "Unexpected error.",
-                "email_error" => "Email not sent",
-                "email_sucess" => "Email sent",
-                "email_subject" => "Verify your email address",
-                "email_content" => "Please, enter the code bellow to validate your email address.",
-                "send_code" => "Check",
-                "code" => "Your code received on your email",
-                "invalide_code" => "Invalide code"
+                "button" => "Sign in"
             ],
             "create_course" => [
                 "title" => "Create a course",
