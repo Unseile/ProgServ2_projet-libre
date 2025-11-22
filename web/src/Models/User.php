@@ -37,7 +37,7 @@ class User
     }
     public function setId(int $id): void
     {
-        $this->id = $id;
+        $this->id = intval($id);
     }
     public function setEmailVerified(): void
     {
@@ -77,7 +77,7 @@ class User
                 return $this->id;
             }
         }
-        return '';
+        return null;
     }
 
     public function getLastname(bool $specialCharacters = false): ?string
@@ -89,7 +89,7 @@ class User
                 return $this->lastname;
             }
         }
-        return '';
+        return null;
     }
 
     public function getFirstname(bool $specialCharacters = false): ?string
@@ -101,7 +101,7 @@ class User
                 return $this->firstname;
             }
         }
-        return '';
+        return null;
     }
 
     public function getUsername(bool $specialCharacters = false): ?string
@@ -113,7 +113,7 @@ class User
                 return $this->username;
             }
         }
-        return '';
+        return null;
     }
 
     public function getEmail(bool $specialCharacters = false): ?string
@@ -125,7 +125,7 @@ class User
                 return $this->email;
             }
         }
-        return '';
+        return null;
     }
 
     public function getIsEmailVerified(): ?bool
