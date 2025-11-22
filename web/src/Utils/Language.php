@@ -216,7 +216,7 @@ class Language
         if (empty($lang)) {
             $lang = $this->getCookieLanguage();
         }
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['language']) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['language'])) {
             $lang = $_POST['language'] ?? $lang;
             setcookie('language', $lang, time() + 10);
         }
