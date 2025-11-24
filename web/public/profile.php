@@ -30,10 +30,6 @@ $profileContent = $language->getContent($lang, 'profile');
 <body>
     <h2 class="title"><?= $profileContent["title"]?></h2>
 
-    <?php if ($message): ?>
-        <div><?= htmlspecialchars($message) ?></div>
-    <?php endif; ?>
-
     <div class="user_informations">
         <div class="user_lastname">
             <strong><?= $profileContent["user_lastname"]?></strong>
