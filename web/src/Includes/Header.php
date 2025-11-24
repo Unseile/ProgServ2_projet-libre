@@ -1,5 +1,4 @@
 <?php
-
 use Utils\Language;
 
 require_once __DIR__ . '/../../src/Config/autoloader.php';
@@ -24,12 +23,12 @@ $headerContent = $language->getContent($lang, "header");
             <ul>
                 <li><a href="index.php"><?= $headerContent["home"] ?></a></li>
                 <li><a href="profile.php"><?= $headerContent["profile"] ?></a></li>
-                <? if (!isset($_SESSION['username'])) { ?>
+                <?php if (!isset($_SESSION['username'])) { ?>
                     <li><a href="login.php"><?= $headerContent["login"] ?></a></li>
                     <li><a href="signin.php"><?= $headerContent["signin"] ?></a></li>
-                <? } else { ?>
+                <?php } else { ?>
                     <li><a href="logout.php"><?= $headerContent["logout"] ?></a></li>
-                <? } ?>
+                <?php } ?>
             </ul>
         </nav>
     </header>

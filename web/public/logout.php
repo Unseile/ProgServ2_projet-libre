@@ -16,4 +16,4 @@ $languageLogout = $language->getContent($lang, 'logout')
     <button type="submit">Ok</button>
 </form>
 
-<?php include __DIR__ . '/../src/includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/includes/footer.php';?>
