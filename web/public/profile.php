@@ -2,10 +2,10 @@
 session_start();
 
 // Vérifie si l'utilisateur est authentifié
-$userId = $_SESSION['user_id'] ?? null;
+$username = $_SESSION['username'] ?? null;
 
 // L'utilisateur n'est pas authentifié
-if (!$userId) {
+if (!$username) {
     // Redirige vers la page de connexion si l'utilisateur n'est pas authentifié
     header('Location: login.php');
     exit();
