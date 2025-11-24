@@ -13,14 +13,14 @@ $loginError = null;
 // Handle login POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['password'])) {
     $username = trim((string) ($_POST['username'] ?? ''));
-    $password = (string) ($_POST['password'] ?? '');
+    $password = $_POST['password'] ?? '';
 
     $userController = new UsersController();
     $user = $userController->getUser($username);
 
-    if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
+    if (isset($user) && !empty($user->getUsername()) && password_verify($password, $user->getPasswordHash())) {
         // Authentication successful
-        $_SESSION['user_id'] = $user->getUsername()["id"];
+        $_SESSION['user_id'] = $user->getId();
         $_SESSION['lastname'] = $user->getLastname();
         $_SESSION['firstname'] = $user->getFirstname();
         $_SESSION['username'] = $user->getUsername();
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
     <label><?= $languageLogin['password'] ?></label>
     <input type="password" name="password" required><br><br>
 
-    <button type="submit"><?= $languageLogin['button']?></button>
+    <button type="submit"><?= $languageLogin['button'] ?></button>
 </form>
 
 </body>
