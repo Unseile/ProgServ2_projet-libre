@@ -48,7 +48,7 @@ $profileContent = $language->getContent($lang, 'profile');
 
         <div class="user_email">
             <strong><?= $profileContent["user_email"]?></strong>
-            <?= htmlspecialchars((isset($emailVerified)) ? $profileContent["user_email_verified"] : $profileContent["user_email_not_verified"]) ?>
+            <?= htmlspecialchars($emailVerified ? $profileContent["user_email_verified"] : $profileContent["user_email_not_verified"]) ?>
         </div>
 
         <div class="user_role">
