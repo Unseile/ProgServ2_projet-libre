@@ -100,16 +100,20 @@ class UsersController
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([":username" => $username]);
         $result = $stmt->fetch();
-        $user = new User(
-            $result["last_name"],
-            $result["first_name"],
-            $result["username"],
-            $result["email"],
-            $result["is_teacher"]
-        );
-        $user->setEmailVerified($result["email_verified"]);
-        $user->setHashPassword($result["password"]);
-        return $user;
+        if (!empty($result)) {
+            $user = new User(
+                $result["last_name"],
+                $result["first_name"],
+                $result["username"],
+                $result["email"],
+                $result["is_teacher"]
+            );
+            $user->setId($result['id']);
+            $user->setEmailVerified($result["email_verified"]);
+            $user->setHashPassword($result["password"]);
+            return $user;
+        }
+        return null;
     }
     public function setEmailValidate($username): void
     {
