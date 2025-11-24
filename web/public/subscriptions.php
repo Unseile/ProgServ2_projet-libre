@@ -7,8 +7,8 @@ include __DIR__ . '/../src/includes/header.php';
 use Controllers\CoursesController;
 
 // Vérifier que l'utilisateur est connecté
-$userId = $_SESSION['user_id'] ?? null;
-if (!$userId) {
+$userUsername = $_SESSION['username'] ?? null;
+if (!$userUsername) {
     header('Location: index.php');
     exit;
 }
