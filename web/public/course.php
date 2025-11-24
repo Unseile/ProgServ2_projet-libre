@@ -36,7 +36,7 @@ foreach ($courses as $c) {
     <p class="duration"><?= $courseContent["duration"] ?>: <?= htmlspecialchars($course->getDuration(true)) ?></p>
     <p class="price"><?= $courseContent["price"] ?>: <?= htmlspecialchars($course->getPricePerStudent(true)) ?> CHF</p>
 </div>
-<?php if (isset($_SESSION['user_id'])) { ?>
+<?php if (isset($_SESSION['username'])) { ?>
     <button><?= $courseContent["subscribe"] ?></button>
 <?php } else if ($course->getSubStudents($_SESSION["user"]["id"] ?? null)) { ?>
     <button><?= $courseContent["unsubscribe"] ?></button>
