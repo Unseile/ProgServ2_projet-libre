@@ -36,7 +36,7 @@ $profileContent = $language->getContent($lang, 'profile');
 
     <div class="user_informations">
         <div class="user_lastname">
-            <strong><?= $profileContent["user_information"]?></strong>
+            <strong><?= $profileContent["user_lastname"]?></strong>
             <?= htmlspecialchars($lastname) ?>
         </div>
 
