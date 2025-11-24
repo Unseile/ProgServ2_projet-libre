@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
 
     $userController = new UsersController();
     $user = $userController->getUser($username);
-
-    if (isset($user) && !empty($user->getUsername()) && password_verify($password, $user->getPasswordHash())) {
+    
+    if ($user && !empty($user->getUsername()) && password_verify($password, $user->getPasswordHash())) {
         // Authentication successful
         $_SESSION['user_id'] = $user->getId();
         $_SESSION['lastname'] = $user->getLastname();
