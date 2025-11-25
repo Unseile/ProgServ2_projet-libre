@@ -39,11 +39,11 @@ if ($userUsername) {
 <div class="attributes">
     <p class="teacher"><?= $courseContent["teacher"] ?>: <?= $course->getTeacherFirstname(true) . " " . $course->getTeacherLastname(true) ?></p>
     <p class="subject"><?= $courseContent["subject"] ?>: <?= $course->getSubject(true) ?></p>
-    <p class="course-description"><?= $courseContent["course-description"] ?>: <?= htmlspecialchars($course->getDescr(true)) ?></p>
+    <p class="course-description"><?= $courseContent["course-description"] ?>: <?= $course->getDescr(true) ?></p>
     <p class="startdatetime"><?= $courseContent["on"] ?> <?= htmlspecialchars(date('d M', strtotime($course->getStartDatetime()))) ?> <?= $courseContent["at"] ?> <?= htmlspecialchars(date('G', strtotime($course->getStartDatetime()))) ?> <?= $courseContent["hour"] ?> <?= htmlspecialchars(date('i', strtotime($course->getStartDatetime()))) ?> </p>
     <p class="subscriptions"><?= $courseContent["subscriptions"] ?>: <?= $course->getSubStudents(true) ?></p>
-    <p class="duration"><?= $courseContent["duration"] ?>: <?= htmlspecialchars($course->getDuration(true)) ?></p>
-    <p class="price"><?= $courseContent["price"] ?>: <?= htmlspecialchars($course->getPricePerStudent(true)) ?> CHF</p>
+    <p class="duration"><?= $courseContent["duration"] ?>: <?= $course->getDuration(true) ?></p>
+    <p class="price"><?= $courseContent["price"] ?>: <?= $course->getPricePerStudent(true) ?> CHF</p>
 </div>
 <?php if (isset($_SESSION['username'])) { ?>
     <button><?= $courseContent['subscribe'] ?></button>
