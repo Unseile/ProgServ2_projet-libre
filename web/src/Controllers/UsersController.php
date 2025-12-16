@@ -104,7 +104,13 @@ class UsersController
 
     public function isSubscribed(int $courseId, string $username): bool
     {
-        $userId = $this->getUser($username);
+        $user = $this->getUser($username);
+
+        if (!$user) {
+            return false;
+        }
+
+        $userId = $user->getId();
 
         $stmt = $this->pdo->prepare(
             "SELECT 1 FROM course_user WHERE course_id = ? AND user_id = ?"
@@ -113,6 +119,7 @@ class UsersController
 
         return (bool) $stmt->fetchColumn();
     }
+
 
     public function getUser(string $username): ?User
     {
