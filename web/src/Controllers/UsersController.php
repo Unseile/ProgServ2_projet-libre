@@ -88,19 +88,25 @@ class UsersController
             ":course" => $courseId
         ]);
     }
-    public function unfollowCourse(int $courseId, string $username): void
-    {
-        $sql = "DELETE subscription
-                INNER JOIN user
-                ON user.id = subscription.fk_student_id
-                WHERE subscription.id = :course
-                AND user.username = :username";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ":course" => $courseId,
-            ":username" => $username
-        ]);
+public function unfollowCourse(int $courseId, string $username): void
+{
+    $user = $this->getUser($username);
+    if (!$user) {
+        return;
     }
+
+    $userId = $user->getId();
+
+    $sql = "DELETE FROM subscription
+            WHERE fk_course_id = :course
+            AND fk_student_id = :user";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([
+        ':course' => $courseId,
+        ':user'   => $userId
+    ]);
+}
 
     public function isSubscribed(int $courseId, string $username): bool
     {
