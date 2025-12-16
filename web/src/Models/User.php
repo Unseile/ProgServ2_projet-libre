@@ -41,7 +41,7 @@ class User
     }
     public function setEmailVerified($isEmailVerified): void
     {
-        $this->isEmailVerified = $isEmailVerified;
+        $this->isEmailVerified = boolval($isEmailVerified);
     }
 
     public function verify(): array
