@@ -5,6 +5,6 @@ $_SESSION = [];
 
 //Page de déconnexion
 require_once __DIR__ . '/../src/Config/autoloader.php';
-header('Location: login.php');
+header('Location: index.php');
 exit();
 ?>
