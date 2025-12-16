@@ -113,7 +113,7 @@ class UsersController
         $userId = $user->getId();
 
         $stmt = $this->pdo->prepare(
-            "SELECT 1 FROM course_user WHERE course_id = ? AND user_id = ?"
+            "SELECT 1 FROM subscription WHERE fk_course_id = ? AND fk_student_id = ?"
         );
         $stmt->execute([$courseId, $userId]);
 
