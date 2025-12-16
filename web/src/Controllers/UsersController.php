@@ -68,26 +68,26 @@ class UsersController
         return $teacherCourses;
     }
     public function followCourse(int $courseId, string $username): void
-{
-    // 1) Récupérer l'ID de l'utilisateur à partir du username
-    $sql = "SELECT id FROM user WHERE username = :username";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([":username" => $username]);
-    $userId = $stmt->fetchColumn();
+    {
+        // 1) Récupérer l'ID de l'utilisateur à partir du username
+        $sql = "SELECT id FROM user WHERE username = :username";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([":username" => $username]);
+        $userId = $stmt->fetchColumn();
 
-    if (!$userId) {
-        throw new \Exception("Utilisateur introuvable");
-    }
+        if (!$userId) {
+            throw new \Exception("Utilisateur introuvable");
+        }
 
-    // 2) Inscrire l'utilisateur au cours
-    $sql = "INSERT INTO subscription (fk_course_id, fk_student_id)
+        // 2) Inscrire l'utilisateur au cours
+        $sql = "INSERT INTO subscription (fk_course_id, fk_student_id)
             VALUES (:course, :user)";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([
-        ":user" => $userId,
-        ":course" => $courseId
-    ]);
-}
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ":user" => $userId,
+            ":course" => $courseId
+        ]);
+    }
     public function unfollowCourse(int $courseId, string $username): void
     {
         $sql = "DELETE subscription
@@ -101,6 +101,19 @@ class UsersController
             ":username" => $username
         ]);
     }
+
+    public function isSubscribed(int $courseId, string $username): bool
+    {
+        $userId = $this->getUser($username);
+
+        $stmt = $this->pdo->prepare(
+            "SELECT 1 FROM course_user WHERE course_id = ? AND user_id = ?"
+        );
+        $stmt->execute([$courseId, $userId]);
+
+        return (bool) $stmt->fetchColumn();
+    }
+
     public function getUser(string $username): ?User
     {
         $sql = "SELECT *

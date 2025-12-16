@@ -36,7 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['unsubscribe']) && isset($_SESSION['username'])) {
         $usersController->unfollowCourse($courseId, $_SESSION['username']);
     }
+    $isSubscribed = false;
+
+    if (isset($_SESSION['username'])) {
+        $isSubscribed = $usersController->isSubscribed($courseId, $_SESSION['username']);
+    }
+
+    header("Location: course.php?id=" . $courseId);
+    exit;
 }
+
+$isSubscribed = false;
+
+if ($userUsername) {
+    $isSubscribed = $usersController->isSubscribed($courseId, $userUsername);
+}
+
 ?>
 
 <h2 class="title"><?= $course->getTitle(true) ?></h2>
@@ -50,18 +65,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p class="duration"><?= $courseContent["duration"] ?>: <?= $course->getDuration(true) ?></p>
     <p class="price"><?= $courseContent["price"] ?>: <?= $course->getPricePerStudent(true) ?> CHF</p>
 </div>
-<?php if (isset($_SESSION['username'])) { ?>
+<?php if ($userUsername): ?>
 
-<form method="post">
-    <button type="submit" name="subscribe">
-        <?= $courseContent['subscribe'] ?>
-    </button>
-</form>
+    <?php if ($isSubscribed): ?>
+        <form method="post">
+            <button type="submit" name="unsubscribe">
+                <?= $courseContent['unsubscribe'] ?>
+            </button>
+        </form>
+    <?php else: ?>
+        <form method="post">
+            <button type="submit" name="subscribe">
+                <?= $courseContent['subscribe'] ?>
+            </button>
+        </form>
+    <?php endif; ?>
 
-<?php } else { ?>
-<a href="login.php">
-    <button><?= $courseContent['login'] ?></button>
-</a>
-<?php } ?>
+<?php else: ?>
+    <a href="login.php">
+        <button><?= $courseContent['login'] ?></button>
+    </a>
+<?php endif; ?>
 
-<?php include __DIR__ . '/../src/includes/footer.php';?>
+<?php include __DIR__ . '/../src/includes/footer.php'; ?>
