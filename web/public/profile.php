@@ -2,10 +2,10 @@
 session_start();
 
 // Vérifie si l'utilisateur est authentifié
-$userId = $_SESSION['user_id'] ?? null;
+$username = $_SESSION['username'] ?? null;
 
 // L'utilisateur n'est pas authentifié
-if (!$userId) {
+if (!$username) {
     // Redirige vers la page de connexion si l'utilisateur n'est pas authentifié
     header('Location: login.php');
     exit();
@@ -30,13 +30,9 @@ $profileContent = $language->getContent($lang, 'profile');
 <body>
     <h2 class="title"><?= $profileContent["title"]?></h2>
 
-    <?php if ($message): ?>
-        <div><?= htmlspecialchars($message) ?></div>
-    <?php endif; ?>
-
     <div class="user_informations">
         <div class="user_lastname">
-            <strong><?= $profileContent["user_information"]?></strong>
+            <strong><?= $profileContent["user_lastname"]?></strong>
             <?= htmlspecialchars($lastname) ?>
         </div>
 
@@ -52,12 +48,15 @@ $profileContent = $language->getContent($lang, 'profile');
 
         <div class="user_email">
             <strong><?= $profileContent["user_email"]?></strong>
-            <?= htmlspecialchars((isset($emailVerified)) ? $profileContent["user_email_verified"] : $profileContent["user_email_not_verified"]) ?>
+            <?= htmlspecialchars($emailVerified ? $profileContent["user_email_verified"] : $profileContent["user_email_not_verified"]) ?>
         </div>
 
         <div class="user_role">
             <strong><?= $profileContent["user_role"]?></strong>
             <?= htmlspecialchars($isTeacher ? $profileContent["teacher"] : $profileContent["student"]) ?>
+        </div>
+        <div>
+            <a href="subscriptions.php"><?= $headerContent["subscriptions"] ?></a>
         </div>
     </div>
 </body>

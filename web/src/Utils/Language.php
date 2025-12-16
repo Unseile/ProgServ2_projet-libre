@@ -78,7 +78,20 @@ class Language
                 "password" => "Mot de passe",
                 "rePassword" => "Reconfirmer le mot de passe",
                 "mail" => "Mail",
-                "button" => "S'inscrire"
+                "button" => "S'inscrire",
+                "err_password" => "Soyez sûr de taper le bon mot de passe dans les deux champs.",
+                "err_exist_user" => "Le nom d'utilisateur est déjà pris.",
+                "err_add_user" => "Erreur lors de l'ajout de l'utilisateur.",
+                "err_unexpected" => "Erreur inatendue.",
+                "email_error" => "Email pas envoyé",
+                "email_sucess" => "Email envoyé avec succès",
+                "email_subject" => "Verifiez votre adresse email",
+                "email_content" => "Merci de saisir le code ci-dessous pour valider votre adresse email.",
+                "send_code" => "Vérifier",
+                "code" => "Votre code reçu par email",
+                "invalide_code" => "Code invalide",
+                "valide_code" => "Succès, votre email est maintenant vérifié",
+                "return_home" => "Retourner à l'accueil"
             ],
             "create_course" => [
                 "title" => "Créer un cours",
@@ -176,7 +189,20 @@ class Language
                 "password" => "Password",
                 "rePassword" => "Confirm Password:",
                 "mail" => "Email",
-                "button" => "Sign in"
+                "button" => "Sign in",
+                "err_password" => "Be sure to type the correct password in the two fields.",
+                "err_exist_user" => "The username is taken.",
+                "err_add_user" => "Error when adding new user.",
+                "err_unexpected" => "Unexpected error.",
+                "email_error" => "Email not sent",
+                "email_sucess" => "Email sent",
+                "email_subject" => "Verify your email address",
+                "email_content" => "Please, enter the code bellow to validate your email address.",
+                "send_code" => "Check",
+                "code" => "Your code received on your email",
+                "invalide_code" => "Invalide code",
+                "valide_code" => "Success, your email is now verified",
+                "return_home" => "Return to home"
             ],
             "create_course" => [
                 "title" => "Create a course",
@@ -216,7 +242,7 @@ class Language
         if (empty($lang)) {
             $lang = $this->getCookieLanguage();
         }
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['language']) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['language'])) {
             $lang = $_POST['language'] ?? $lang;
             setcookie('language', $lang, time() + 10);
         }
