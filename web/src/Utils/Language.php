@@ -49,6 +49,7 @@ class Language
             "header" => [
                 "home" => "Accueil",
                 "profile" => "Profil",
+                "create-course" => "Créer un cours",
                 "login" => "Se connecter",
                 "signin" => "S'inscrire",
                 "logout" => "Se déconnecter"
@@ -160,6 +161,7 @@ class Language
             "header" => [
                 "home" => "Home",
                 "profile" => "Profile",
+                "create-course" => "Create course",
                 "login" => "Log in",
                 "signin" => "Sign in",
                 "logout" => "Log out"
