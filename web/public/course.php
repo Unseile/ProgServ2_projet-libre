@@ -28,11 +28,6 @@ foreach ($courses as $c) {
     }
 }
 
-$isSubscribed = false;
-if ($userUsername) {
-    $isSubscribed = $usersController->followCourse($courseId, $userUsername);
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['subscribe']) && isset($_SESSION['username'])) {
         $usersController->followCourse($courseId, $_SESSION['username']);
