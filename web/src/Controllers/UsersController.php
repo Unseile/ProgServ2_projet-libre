@@ -80,8 +80,8 @@ class UsersController
     }
 
     // 2) Inscrire l'utilisateur au cours
-    $sql = "INSERT INTO subscription (fk_user_id, fk_course_id)
-            VALUES (:user, :course)";
+    $sql = "INSERT INTO subscription (fk_course_id, fk_student_id)
+            VALUES (:course, :user)";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute([
         ":user" => $userId,
