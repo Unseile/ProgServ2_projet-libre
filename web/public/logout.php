@@ -2,7 +2,6 @@
 session_start();
 session_destroy();
 
-
 //Page de déconnexion
 require_once __DIR__ . '/../src/Config/autoloader.php';
 include __DIR__ . '/../src/includes/header.php';
