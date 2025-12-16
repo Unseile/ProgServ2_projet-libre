@@ -39,9 +39,9 @@ class User
     {
         $this->id = intval($id);
     }
-    public function setEmailVerified(): void
+    public function setEmailVerified($isEmailVerified): void
     {
-        $this->isEmailVerified = true;
+        $this->isEmailVerified = $isEmailVerified;
     }
 
     public function verify(): array
