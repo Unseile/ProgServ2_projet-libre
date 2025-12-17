@@ -23,8 +23,8 @@ $headerContent = $language->getContent($lang, "header");
             <ul>
                 <li><a href="index.php"><?= $headerContent["home"] ?></a></li>
                 <li><a href="profile.php"><?= $headerContent["profile"] ?></a></li>
-                <?php if (!isset($_SESSION['isTeacher'])) { ?>
-                <li><a href="create_course.php><?= $headerContent["create-course"] ?></a></li>
+                <?php if (isset($_SESSION['isTeacher'])) { ?>
+                <li><a href="create_course.php>"<?= $headerContent["create-course"] ?></a></li>
                 <?php } ?>
                 <?php if (!isset($_SESSION['username'])) { ?>
                     <li><a href="login.php"><?= $headerContent["login"] ?></a></li>
