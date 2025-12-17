@@ -24,7 +24,7 @@ $headerContent = $language->getContent($lang, "header");
             <ul>
                 <li><a href="index.php"><?= $headerContent["home"] ?></a></li>
                 <li><a href="profile.php"><?= $headerContent["profile"] ?></a></li>
-                <?php if (!empty($_SESSION['isTeacher']) && (int)$_SESSION['isTeacher'] === 1) { ?>
+                <?php if (!empty($_SESSION['isTeacher']) && $_SESSION['isTeacher'] === true) { ?>
                     <li><a href="create_course.php"><?= $headerContent["create-course"] ?></a></li>
                 <?php } ?>
                 <?php if (!isset($_SESSION['username'])) { ?>
