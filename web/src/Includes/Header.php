@@ -33,10 +33,6 @@ $headerContent = $language->getContent($lang, "header");
                 <?php } else { ?>
                     <li><a href="logout.php"><?= $headerContent["logout"] ?></a></li>
                 <?php } ?>
-                <li><?php
-var_dump($_SESSION['isTeacher']);
-exit;
-?></li>
             </ul>
         </nav>
     </header>
