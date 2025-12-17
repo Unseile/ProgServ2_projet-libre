@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -65,8 +65,8 @@ footer {
             color: #555555;
         }
     }
-}
-/* 
+} */
+
 * {
     margin: 0;
     padding: 0;
@@ -283,4 +283,4 @@ form button:hover {
         height: auto;
         gap: 10px;
     }
-} */
+}
