@@ -24,7 +24,7 @@ $headerContent = $language->getContent($lang, "header");
             <ul>
                 <li><a href="index.php"><?= $headerContent["home"] ?></a></li>
                 <li><a href="profile.php"><?= $headerContent["profile"] ?></a></li>
-                <?php  if (($_SESSION['isTeacher'] ?? 0) == 1) { ?>
+                <?php if (!empty($_SESSION['isTeacher']) && $_SESSION['isTeacher'] === true) { ?>
                     <li><a href="create_course.php"><?= $headerContent["create-course"] ?></a></li>
                 <?php } ?>
                 <?php if (!isset($_SESSION['username'])) { ?>
@@ -33,6 +33,10 @@ $headerContent = $language->getContent($lang, "header");
                 <?php } else { ?>
                     <li><a href="logout.php"><?= $headerContent["logout"] ?></a></li>
                 <?php } ?>
+                <li><?php
+var_dump($_SESSION['isTeacher']);
+exit;
+?></li>
             </ul>
         </nav>
     </header>

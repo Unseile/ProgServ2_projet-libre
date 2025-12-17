@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['email'] = $user->getEmail();
         $_SESSION['emailVerified'] = $user->getIsEmailVerified();
-        $_SESSION['isTeacher'] = $user->getIsTeacher() ? 1 : 0;
+        $_SESSION['isTeacher'] = $user->getIsTeacher();
 
         header('Location: profile.php');
         exit();
