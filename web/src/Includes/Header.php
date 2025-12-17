@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 use Utils\Language;
 
 require_once __DIR__ . '/../../src/Config/autoloader.php';
