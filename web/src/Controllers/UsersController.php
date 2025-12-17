@@ -87,6 +87,14 @@ class UsersController
             ":user" => $userId,
             ":course" => $courseId
         ]);
+
+        $sql = "UPDATE course
+            SET number_stud_sub = number_stud_sub - 1
+            WHERE id = :course";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ":course" => $courseId
+        ]);
     }
 public function unfollowCourse(int $courseId, string $username): void
 {
