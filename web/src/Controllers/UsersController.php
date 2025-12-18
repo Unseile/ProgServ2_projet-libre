@@ -20,7 +20,7 @@ class UsersController
     public function addUser(User $user): void
     {
         $sql = "INSERT INTO user (first_name, last_name, password, username, email, email_verified, is_teacher)
-        VALUES (:firstname, :lastname, :password, :username, :email, 0, 0);";
+        VALUES (:firstname, :lastname, :password, :username, :email, 0, :is_teacher);";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(
             [
@@ -28,7 +28,8 @@ class UsersController
                 ":lastname" => $user->getLastname(),
                 ":username" => $user->getUsername(),
                 ":email" => $user->getEmail(),
-                ":password" => password_hash($user->getEntredPassword(), PASSWORD_DEFAULT)
+                ":password" => password_hash($user->getEntredPassword(), PASSWORD_DEFAULT),
+                ":is_teacher" => $user->getIsTeacher()
             ]
         );
     }
