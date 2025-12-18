@@ -49,7 +49,9 @@ $profileContent = $language->getContent($lang, 'profile');
         <div class="user_email">
             <strong><?= $profileContent["user_email"]?></strong>
             <?= htmlspecialchars($emailVerified ? $email . $profileContent["user_email_verified"] : $email . $profileContent["user_email_not_verified"]) ?>
-            <a href="signin.php"><?= $profileContent["verify_email"] ?></a>
+            <?php if (!$emailVerified): ?>
+                <a href="signin.php"><?= $profileContent["verify_email"] ?></a>
+            <?php endif; ?>
         </div>
 
         <div class="user_role">
