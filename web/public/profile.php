@@ -56,7 +56,7 @@ $profileContent = $language->getContent($lang, 'profile');
             <?= htmlspecialchars($isTeacher ? $profileContent["teacher"] : $profileContent["student"]) ?>
         </div>
         <div>
-            <a href="subscriptions.php"><?= $headerContent["subscriptions"] ?></a>
+            <a href="subscriptions.php"><?= $profileContent["subscriptions"] ?></a>
         </div>
     </div>
 </body>

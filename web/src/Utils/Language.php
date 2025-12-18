@@ -119,7 +119,8 @@ class Language
                 "teacher" => "Professeur",
                 "student" => "Étudiant",
                 "user_email_verified" => "Le mail est vérifié.",
-                "user_email_not_verified" => "Le mail n'est pas vérifié."
+                "user_email_not_verified" => "Le mail n'est pas vérifié.",
+                "subscriptions" => "Mes inscriptions"
             ]
         ],
         "en" => [
