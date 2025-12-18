@@ -84,7 +84,7 @@ class Course
         if (empty($this->title) || strlen($this->title) < 2) {
             array_push($errors, "Le titre est obligatoire et doit avoir 5 caractèrs minimum");
         }
-        if (!isset($this->subject) || !array_find(SCHOOL_SUBJECT, $this->subject)) {
+        if (!isset($this->subject) || !in_array($this->subject, SCHOOL_SUBJECT)) {
             array_push($errors, "Le sujet de cours n'existe pas");
         }
 
