@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
         $_SESSION['emailVerified'] = $user->getIsEmailVerified();
         $_SESSION['isTeacher'] = $user->getIsTeacher();
 
-        header('Location: profile.php');
+        header('Location: index.php');
         exit();
     } else {
         $loginError = $languageLogin['error_invalid'] ?? 'Invalid username or password';
