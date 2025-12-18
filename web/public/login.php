@@ -3,7 +3,7 @@
 //Page de connexion
 session_start();
 require_once __DIR__ . '/../src/Config/autoloader.php';
-include __DIR__ . '/../src/includes/header.php';
+include __DIR__ . '/../src/Includes/header.php';
 
 use Controllers\UsersController;
 
@@ -59,4 +59,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
 </body>
 
 </html>
-<?php include __DIR__ . '/../src/includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/Includes/footer.php'; ?>

@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../src/Config/autoloader.php';
 
-include __DIR__ . '/../src/includes/header.php';
+include __DIR__ . '/../src/Includes/header.php';
 
 use Controllers\CoursesController;
 
@@ -54,4 +54,4 @@ try {
     </div>
 <?php endif; ?>
 
-<?php include __DIR__ . '/../src/includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/Includes/footer.php'; ?>
