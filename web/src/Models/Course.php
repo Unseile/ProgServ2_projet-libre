@@ -45,7 +45,7 @@ class Course
         string $title,
         string $subject,
         string $startDatetime,
-        string $duration,
+        int $duration,
         string $descr,
         string $location,
         float $pricePerStudent,
@@ -115,7 +115,7 @@ class Course
         if (empty($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0) {
             array_push($errors, "Le prix est obligatoire et ne peut pas être négatif. 0 = gratuit");
         }
-        if (empty($this->maxStudents) || !is_float($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
+        if (empty($this->maxStudents) || !is_int($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
             array_push($errors, "Le nombre max d'élèves est de 30. Min 1");
         }
 
@@ -182,16 +182,16 @@ class Course
         return '';
     }
 
-    public function getDuration(bool $specialCharacters = false): ?string
+    public function getDuration(bool $specialCharacters = false): ?int
     {
-        if (isset($this->duration) && is_string($this->duration)) {
+        if (isset($this->duration) && is_int($this->duration)) {
             if ($specialCharacters) {
                 return htmlspecialchars($this->duration);
             } else {
                 return $this->duration;
             }
         }
-        return '';
+        return 0;
     }
 
     public function getDescr(bool $specialCharacters = false): ?string

@@ -35,37 +35,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $duration = filter_var($_POST['duration'] ?? 0, FILTER_VALIDATE_INT);
     $maxStudents = filter_var($_POST['max_students'] ?? 0, FILTER_VALIDATE_INT);
 
+    // Validation basique
+    if (empty($title)) {
+        $errors[] = $createCourseContent['error_title'] ?? 'Le titre est requis';
+    }
+    if (empty($subject)) {
+        $errors[] = $createCourseContent['error_subject'] ?? 'Le sujet est requis';
+    }
+    if (empty($startDatetime)) {
+        $errors[] = $createCourseContent['error_date'] ?? 'La date de début est requise';
+    }
+    if ($duration === false || $duration < 15) {
+        $errors[] = $createCourseContent['error_duration'] ?? 'La durée doit être au moins 15 minutes';
+    }
+    if (empty($location)) {
+        $errors[] = $createCourseContent['error_location'] ?? 'Le lieu est requis';
+    }
+    if ($price === false || $price < 0) {
+        $errors[] = $createCourseContent['error_price'] ?? 'Le prix est invalide';
+    }
+    if ($maxStudents === false || $maxStudents < 1 || $maxStudents > 30) {
+        $errors[] = $createCourseContent['error_max_students'] ?? 'Le nombre maximum d\'étudiants doit être entre 1 et 30';
+    }
+
     // Create Course object with all required parameters
-    try {
-        $courseObj = new Course(
-            $_SESSION['user_id'],  // teacherId
-            $title,
-            $subject,
-            $startDatetime,
-            $duration,
-            $description,
-            $location,
-            $price,
-            $maxStudents
-        );
+    if (empty($errors)) {
+        try {
+            $courseObj = new Course(
+                $_SESSION['user_id'],  // teacherId
+                $title,
+                $subject,
+                $startDatetime,
+                $duration,
+                $description,
+                $location,
+                $price,
+                $maxStudents,
+                0  // number_stud_sub = 0 au début
+            );
 
-        // Set teacher info for the course object
-        $courseObj->setTeacher($_SESSION['firstname'], $_SESSION['lastname']);
+            // Set teacher info for the course object
+            $courseObj->setTeacher($_SESSION['firstname'], $_SESSION['lastname']);
 
-        // Verify the course data
-        $errors = $courseObj->verify();
+            // Verify the course data
+            $errors = $courseObj->verify();
 
-        // If no errors, save the course
-        if (empty($errors)) {
-            $coursesController = new CoursesController();
-            $coursesController->addCourse($courseObj);
+            // If no errors, save the course
+            if (empty($errors)) {
+                $coursesController = new CoursesController();
+                $coursesController->addCourse($courseObj);
 
-            $message = $createCourseContent['success_message'] ?? 'Course created successfully';
-            header('Location: user_courses.php');
-            exit();
+                $message = $createCourseContent['success_message'] ?? 'Cours créé avec succès';
+                header('Location: index.php');
+                exit();
+            }
+        } catch (Exception $e) {
+            $errors[] = $createCourseContent['error_unexpected'] ?? 'Une erreur est survenue : ' . $e->getMessage();
         }
-    } catch (Exception $e) {
-        $errors[] = $createCourseContent['error_unexpected'] ?? 'An error occurred: ' . $e->getMessage();
     }
 }
 ?>
@@ -86,8 +112,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="course_subject">
-            <label for="course"><?= $createCourseContent["course_subject"]?></label>
-            <input type="text" id="course" name="course" value="<?= htmlspecialchars($_POST['course'] ?? '') ?>" required>
+            <label for="subject"><?= $createCourseContent["course_subject"]?></label>
+            <select id="subject" name="subject" required>
+                <option value="">-- <?= $createCourseContent["select_subject"] ?? 'Choisir une matière' ?> --</option>
+                <option value="Anglais" <?= ($_POST['subject'] ?? '') === 'Anglais' ? 'selected' : '' ?>>Anglais</option>
+                <option value="AnalysMar" <?= ($_POST['subject'] ?? '') === 'AnalysMar' ? 'selected' : '' ?>>Analyse Marketing</option>
+                <option value="MarkDig" <?= ($_POST['subject'] ?? '') === 'MarkDig' ? 'selected' : '' ?>>Marketing Digital</option>
+                <option value="ComVisuel" <?= ($_POST['subject'] ?? '') === 'ComVisuel' ? 'selected' : '' ?>>Communication Visuelle</option>
+                <option value="EcrireWeb" <?= ($_POST['subject'] ?? '') === 'EcrireWeb' ? 'selected' : '' ?>>Écrire pour le Web</option>
+                <option value="ProdCondMé1" <?= ($_POST['subject'] ?? '') === 'ProdCondMé1' ? 'selected' : '' ?>>Production Contenu Média 1</option>
+                <option value="BaseProg" <?= ($_POST['subject'] ?? '') === 'BaseProg' ? 'selected' : '' ?>>Bases Programmation</option>
+                <option value="BaseMath" <?= ($_POST['subject'] ?? '') === 'BaseMath' ? 'selected' : '' ?>>Bases Mathématiques</option>
+                <option value="DeDonAInf" <?= ($_POST['subject'] ?? '') === 'DeDonAInf' ? 'selected' : '' ?>>De Données à Information</option>
+                <option value="Droit1" <?= ($_POST['subject'] ?? '') === 'Droit1' ? 'selected' : '' ?>>Droit 1</option>
+                <option value="EvolMétMéd" <?= ($_POST['subject'] ?? '') === 'EvolMétMéd' ? 'selected' : '' ?>>Évolution Métiers Médias</option>
+                <option value="GesBudget" <?= ($_POST['subject'] ?? '') === 'GesBudget' ? 'selected' : '' ?>>Gestion Budget</option>
+                <option value="IntroDura" <?= ($_POST['subject'] ?? '') === 'IntroDura' ? 'selected' : '' ?>>Introduction Durabilité</option>
+                <option value="InfraDon1" <?= ($_POST['subject'] ?? '') === 'InfraDon1' ? 'selected' : '' ?>>Infrastructure Données 1</option>
+                <option value="ProgServ1" <?= ($_POST['subject'] ?? '') === 'ProgServ1' ? 'selected' : '' ?>>Programmation Serveur 1</option>
+            </select>
         </div>
 
         <div class="course_description">
@@ -101,13 +144,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="course_place">
-            <label for="place"><?= $createCourseContent["course_place"]?></label>
-            <input type="text" id="place" name="place" value="<?= htmlspecialchars($_POST['place'] ?? '') ?>" required>
+            <label for="location"><?= $createCourseContent["course_place"]?></label>
+            <input type="text" id="location" name="location" value="<?= htmlspecialchars($_POST['location'] ?? '') ?>" required>
         </div>
 
         <div class ="course_start_datetime">
-            <label for="start_date"><?= $createCourseContent["course_start_datetime"]?></label>
-            <input type="datetime-local" id="start_date" name="start_date" value="<?= htmlspecialchars($_POST['start_date'] ?? '') ?>" required>
+            <label for="start_datetime"><?= $createCourseContent["course_start_datetime"]?></label>
+            <input type="datetime-local" id="start_datetime" name="start_datetime" value="<?= htmlspecialchars($_POST['start_datetime'] ?? '') ?>" required>
         </div>
 
         <div class="course_duration">

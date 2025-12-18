@@ -21,7 +21,7 @@ class CoursesController
     public function addCourse(Course $course): void
     {
         $sql = "INSERT INTO course (
-            teacherId,
+            fk_teacher_id,
             title,
             subject, 
             start_datetime, 
