@@ -235,7 +235,8 @@ class Language
                 "teacher" => "Teacher",
                 "student" => "Student",
                 "user_email_verified" => "The email is verified.",
-                "user_email_not_verified" => "The email is not verified."
+                "user_email_not_verified" => "The email is not verified.",
+                "subscriptions" => "My subscriptions"
             ]
         ]
     ];
