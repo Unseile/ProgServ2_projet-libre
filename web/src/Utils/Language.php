@@ -20,6 +20,7 @@ class Language
                 "hour" => "heure"
             ],
             "course" => [
+                "back" => "retour",
                 "subject" => "sujet",
                 "teacher" => "enseignant",
                 "subscriptions" => "inscriptions",
@@ -132,6 +133,7 @@ class Language
                 "hour" => "hour"
             ],
             "course" => [
+                "back" => "back",
                 "subject" => "subject",
                 "teacher" => "teacher",
                 "subscriptions" => "subscriptions",
@@ -146,7 +148,7 @@ class Language
                 "price" => "price",
                 "login" => "log in",
                 "subscribe" => "subscribe",
-                "unsubscribe" => "se désinscrire"
+                "unsubscribe" => "unsubscribe"
             ],
             "subscriptions" => [
                 "user-courses" => "Your previous enrolled courses",

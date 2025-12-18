@@ -42,6 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $isSubscribed = $usersController->isSubscribed($courseId, $_SESSION['username']);
     }
 
+    if (isset($_POST['back'])) {
+        header("Location: index.php");
+        exit;
+    }
+
     header("Location: course.php?id=" . $courseId);
     exit;
 }
@@ -53,6 +58,12 @@ if ($userUsername) {
 }
 
 ?>
+
+<form method="post">
+    <button type="submit" name="back">
+        <?= $courseContent['back'] ?>
+    </button>
+</form>
 
 <h2 class="title"><?= $course->getTitle(true) ?></h2>
 <p class="shortdescr"><?= $course->getDescr(true) ?></p>

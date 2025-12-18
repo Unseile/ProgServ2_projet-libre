@@ -178,7 +178,7 @@ footer form {
     border-radius: 12px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 300px;
-    margin: 20px auto;
+    
 }
 
 form {
@@ -218,6 +218,7 @@ form button {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 10px
 }
 
 form button:hover {
