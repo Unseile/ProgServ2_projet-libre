@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 include __DIR__ . '/../src/Includes/header.php';
 
 use Controllers\CoursesController;

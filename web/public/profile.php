@@ -21,7 +21,6 @@ $isTeacher = $_SESSION['isTeacher'];
 
 //Page du profil utilisateur
 
-
 include __DIR__ . '/../src/Includes/header.php';
 
 $profileContent = $language->getContent($lang, 'profile');
