@@ -87,7 +87,6 @@ header {
 
 header nav {
     display: flex;
-    justify-content: space-between;
     height: 60px;
     align-items: center;
     padding: 0 20px;
