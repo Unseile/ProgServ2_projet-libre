@@ -2,15 +2,18 @@
 session_start();
 require_once __DIR__ . '/../src/Config/autoloader.php';
 
-include __DIR__ . '/../src/includes/header.php'; 
+include __DIR__ . '/../src/includes/header.php';
 
 use Controllers\CoursesController;
 
-// Vérifier que l'utilisateur est connecté
-$userId = $_SESSION['user_id'] ?? null;
-if (!$userId) {
-    header('Location: index.php');
-    exit;
+// Vérifie si l'utilisateur est authentifié
+$username = $_SESSION['username'] ?? null;
+
+// L'utilisateur n'est pas authentifié
+if (!$username) {
+    // Redirige vers la page de connexion si l'utilisateur n'est pas authentifié
+    header('Location: login.php');
+    exit();
 }
 
 use Controllers\UsersController;
@@ -19,7 +22,7 @@ $usersController = new UsersController();
 $subscriptionsContent = $language->getContent($lang, 'subscriptions');
 
 // Récupérer les cours de l'utilisateur
-$userCourses = $usersController->getUserCourses($userId);
+$userCourses = $usersController->getUserCourses($username);
 ?>
 
 <h2><?= $subscriptionsContent["history-title"] ?? "Mes cours" ?></h2>
@@ -28,18 +31,19 @@ $userCourses = $usersController->getUserCourses($userId);
     <p>Vous n'êtes inscrit à aucun cours pour le moment.</p>
 <?php else: ?>
     <div class="course-list">
-        <?php foreach ($userCourses as $course): ?>
-            <div class="coursebox">
-                <h2><?= htmlspecialchars($course['user-courses']) ?></h2>
-                <p><?= htmlspecialchars($course['teacher']) ?>: <?= $course->getTeacherFirstname(true) . " " . $course->getTeacherLastname(true) ?></p>
-                <p><?= htmlspecialchars($course['subject']) ?>: <?= $course->getSubject(true) ?></p>
-                <p><?= $subscriptionsContent["on"] ?>: <?= htmlspecialchars(date('d M', strtotime($course->getStartDatetime()))) ?> <?= $subscriptionsContent["at"] ?> <?= htmlspecialchars(date('G', strtotime($course->getStartDatetime()))) ?> <?= $subscriptionsContent["hour"] ?> <?= htmlspecialchars(date('i', strtotime($course->getStartDatetime()))) ?> </p>
-
-                <a href="/course.php?id=<?= $course['id'] ?>"><?= $subscriptionsContent["course"] ?></a>
-            </div>
-        <?php endforeach; ?>
+        <?php foreach ($userCourses as $course) { ?>
+            <a href="/course.php?id=<?= $course->getId(true) ?>" class="coursebox">
+                <h2 class="title"><?= $course->getTitle(true) ?></h2>
+                <p class="shortdescr"><?= $course->getDescr(true) ?></p>
+                <div class="attributes">
+                    <p class="teacher"><?= $subscriptionsContent["teacher"] ?>: <?= $course->getTeacherFirstname(true) . " " . $course->getTeacherLastname(true) ?></p>
+                    <p class="subject"><?= $subscriptionsContent["subject"] ?>: <?= $course->getSubject(true) ?></p>
+                    <p class="startdatetime"><?= $subscriptionsContent["on"] ?>: <?= htmlspecialchars(date('d M', strtotime($course->getStartDatetime()))) ?> <?= $subscriptionsContent["at"] ?> <?= htmlspecialchars(date('G', strtotime($course->getStartDatetime()))) ?> <?= $subscriptionsContent["hour"] ?> <?= htmlspecialchars(date('i', strtotime($course->getStartDatetime()))) ?> </p>
+                    <p class="subscriptions"><?= $subscriptionsContent["subscriptions"] ?>: <?= $course->getSubStudents(true) ?></p>
+                </div>
+            </a>
+        <?php } ?>
     </div>
 <?php endif; ?>
 
 <?php include __DIR__ . '/../src/includes/footer.php'; ?>
-
