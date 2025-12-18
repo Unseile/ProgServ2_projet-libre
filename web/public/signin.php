@@ -3,7 +3,7 @@
 session_start();
 set_time_limit(60); // Augmente le timeout à 60 secondes pour l'envoi d'email
 require_once __DIR__ . '/../src/Config/autoloader.php';
-include __DIR__ . '/../src/includes/header.php';
+include __DIR__ . '/../src/Includes/header.php';
 
 
 use Controllers\UsersController;
