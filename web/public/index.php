@@ -40,4 +40,4 @@ $homeContent = $language->getContent($lang, 'index');
         </a>
     <?php } ?>
 </div>
-<?php include __DIR__ . '/../src/includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/Includes/footer.php'; ?>

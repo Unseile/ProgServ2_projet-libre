@@ -106,4 +106,4 @@ if ($userUsername) {
     </a>
 <?php endif; ?>
 
-<?php include __DIR__ . '/../src/includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/Includes/footer.php'; ?>
