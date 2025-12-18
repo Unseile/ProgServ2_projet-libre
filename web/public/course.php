@@ -37,7 +37,9 @@ foreach ($courses as $c) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['subscribe']) && isset($_SESSION['username'])) {
+    if (isset($_POST['subscribe']) && isset($_SESSION['username']) && isset($_SESSION['isTeacher'])) {
+        echo "Vous ne pouvez pas vous inscrire à votre propre cours.";
+    } else {
         $usersController->followCourse($courseId, $_SESSION['username']);
     }
 
