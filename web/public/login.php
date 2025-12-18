@@ -15,9 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
     $username = trim((string) ($_POST['username'] ?? ''));
     $password = $_POST['password'] ?? '';
 
-    $userController = new UsersController();
-    $user = $userController->getUser($username);
-    
+    try {
+        $userController = new UsersController();
+        $user = $userController->getUser($username);
+    } catch (Exception $e) {
+        $loginError = "Erreur lors de la connexion"; //A CHANGER LA LANGUE
+    }
+
     if ($user && !empty($user->getUsername()) && password_verify($password, $user->getPasswordHash())) {
         // Authentication successful
         $_SESSION['user_id'] = $user->getId();

@@ -9,9 +9,19 @@ require_once __DIR__ . '/../src/Config/autoloader.php';
 
 use Controllers\CoursesController;
 
-$courseController = new CoursesController();
+try {
+    $courseController = new CoursesController();
+} catch (Exception $e) {
+    $errors = ["erreur lors de la connexion à al base de donnée"]; //A MODIFIER LA LANGUE
+}
+
+try {
+    $courses = $courseController->getCourses();
+} catch (Exception $e) {
+    $errors = ["erreur lors de la récupération des cours"]; // A MODIFIER LA LANGUE
+}
+
 $homeContent = $language->getContent($lang, 'index');
-$courses = $courseController->getCourses();
 ?>
 
 <h2><?= $homeContent["welcome"] ?></h2>

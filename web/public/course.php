@@ -16,9 +16,17 @@ $userUsername = $_SESSION['username'] ?? null;
 use Controllers\CoursesController;
 use Controllers\UsersController;
 
-$usersController = new UsersController();
-$courseController = new CoursesController();
-$courses = $courseController->getCourses();
+try {
+    $usersController = new UsersController();
+    $courseController = new CoursesController();
+} catch (Exception $e) {
+    $errors = ["Erreur lors de la connexion à la base de donnée"]; //A CHANGER LA LANGUE
+}
+try {
+    $courses = $courseController->getCourses();
+} catch (Exception $e) {
+    $errors = ["Erreur lors de la récupération du cours"]; //A CHANGER LA LANGUE
+}
 
 $course = null;
 foreach ($courses as $c) {

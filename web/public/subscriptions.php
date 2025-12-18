@@ -18,11 +18,19 @@ if (!$username) {
 
 use Controllers\UsersController;
 
-$usersController = new UsersController();
+try {
+    $usersController = new UsersController();
+} catch (Exception $e) {
+    $errors = ["erreur lors de la connexion à la base de donnée"]; // A MODIFIER LA LANGUE
+}
 $subscriptionsContent = $language->getContent($lang, 'subscriptions');
 
-// Récupérer les cours de l'utilisateur
-$userCourses = $usersController->getUserCourses($username);
+try {
+    // Récupérer les cours de l'utilisateur
+    $userCourses = $usersController->getUserCourses($username);
+} catch (Exception $e) {
+    $errors = ["erreur lors de la récupération de vos cours"]; // A MODIFIER LA LANGUE
+}
 ?>
 
 <h2><?= $subscriptionsContent["history-title"] ?? "Mes cours" ?></h2>

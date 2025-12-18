@@ -13,7 +13,11 @@ use PHPMailer\PHPMailer\Exception;
 
 const MAIL_CONFIGURATION_FILE = __DIR__ . '/../src/Utils/PHPMailer/mail.ini';
 $signInContent = $language->getContent($lang, 'signin');
-$usercontroller = new UsersController();
+try {
+    $usercontroller = new UsersController();
+} catch (Exception $e) {
+    $errors = ["erreur lors de la connexion à la base de donnée"]; // A CHANGER LA LANGUE DE L'ERREUR
+}
 $username = $_SESSION['username'] ?? null;
 $emailVerified = $_SESSION["emailVerified"] ?? null;
 $validateEmail = false;
@@ -23,7 +27,7 @@ if ($username && $emailVerified) { //Si l'utilisateur est connecté et qu'il a l
     exit();
 }
 
-function codeUnique(string $texte): string //fonction pour générer un nombre par rapport à l'username (avec un hash pour être difficile à deviner)
+function codeUnique(string $texte): string //fonction pour générer un nombre qui servira à valider l'email
 {
     $hash = crc32($texte);
     $num  = $hash % 1000000;
@@ -142,7 +146,10 @@ if (
 ) // SI l'utilisateur a envoyé le code de vérification et qu'il n'a pas encore l'email vérifié
 {
     if (isset($_POST["code"]) && $_POST["code"] === codeUnique($_SESSION["username"])) {
-        $usercontroller->setEmailValidate($username);
+        try{
+        $usercontroller->setEmailValidate($username);}catch(Exception $e){
+            $errors = ["erreur lors de la validation de l'email"]; // A MODIFIER LA LANGUE
+        }
         $_SESSION["emailVerified"] = true;
         $validateEmail = true;
     } else {
