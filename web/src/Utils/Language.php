@@ -93,7 +93,8 @@ class Language
                 "code" => "Votre code reçu par email",
                 "invalide_code" => "Code invalide",
                 "valide_code" => "Succès, votre email est maintenant vérifié",
-                "return_home" => "Retourner à l'accueil"
+                "return_home" => "Retourner à l'accueil",
+                "is_teacher" => "Je m'inscris en tant qu'enseignant"
             ],
             "create_course" => [
                 "title" => "Créer un cours",
@@ -206,7 +207,9 @@ class Language
                 "code" => "Your code received on your email",
                 "invalide_code" => "Invalide code",
                 "valide_code" => "Success, your email is now verified",
-                "return_home" => "Return to home"
+                "return_home" => "Return to home",
+                "is_teacher" => "I register as teacher"
+
             ],
             "create_course" => [
                 "title" => "Create a course",

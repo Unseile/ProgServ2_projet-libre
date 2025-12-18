@@ -91,7 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !$username) { //Si l'utilisateur n'
         isset($_POST["lastname"]) ? $_POST["lastname"] : "",
         isset($_POST["firstname"]) ? $_POST["firstname"] : "",
         isset($_POST["username"]) ? $_POST["username"] : "",
-        isset($_POST["email"]) ? $_POST["email"] : ""
+        isset($_POST["email"]) ? $_POST["email"] : "",
+        isset($_POST["is_teacher"]) ? boolval($_POST["is_teacher"]) : ""
     );
     $user->setClearPassword(
         isset($_POST["password"]) ? $_POST["password"] : ""
@@ -178,6 +179,9 @@ if (
 
         <label for="email"><?= $signInContent['mail'] ?></label>
         <input type="email" name="email" value="<?= isset($user) ? $user->getEmail(true) : '' ?>" required><br><br>
+
+        <input type="checkbox" id="is_teacher" name="is_teacher" <?= isset($user) ? ($user->getIsTeacher() === true ? "checked" : "") : "" ?> />
+        <label for="is_teacher"><?= $signInContent['is_teacher'] ?></label>
 
         <button type="submit"><?= $signInContent['button'] ?></button>
     <?php }

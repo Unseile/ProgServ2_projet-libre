@@ -20,7 +20,7 @@ class UsersController
     public function addUser(User $user): void
     {
         $sql = "INSERT INTO user (first_name, last_name, password, username, email, email_verified, is_teacher)
-        VALUES (:firstname, :lastname, :password, :username, :email, 0, 0);";
+        VALUES (:firstname, :lastname, :password, :username, :email, 0, :is_teacher);";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(
             [
@@ -28,34 +28,39 @@ class UsersController
                 ":lastname" => $user->getLastname(),
                 ":username" => $user->getUsername(),
                 ":email" => $user->getEmail(),
-                ":password" => password_hash($user->getEntredPassword(), PASSWORD_DEFAULT)
+                ":password" => password_hash($user->getEntredPassword(), PASSWORD_DEFAULT),
+                ":is_teacher" => $user->getIsTeacher()
             ]
         );
     }
     /*public function getUser(int $id): ?User { return null; }*/
-    public function getUserCourses(int $id): array
+    public function getUserCourses(string $username): array
     {
         $sql = "SELECT 
-        id.course,
-        firstname AS \"teacher_firstname\",
-        lastname AS \"teacher_lastname\",
-        title, subject,
-        start_datetime,
-        duration,
-        descr,
-        location,
-        price_per_student,
-        number_stud_max,
-        number_stud_sub
+        course.id,
+        course.fk_teacher_id,
+        user.first_name AS \"teacher_firstname\",
+        user.last_name AS \"teacher_lastname\",
+        course.title, 
+        course.subject,
+        course.start_datetime,
+        course.duration,
+        course.descr,
+        course.location,
+        course.price_per_student,
+        course.number_stud_max,
+        course.number_stud_sub
         FROM subscription 
         INNER JOIN course ON subscription.fk_course_id = course.id
-        WHERE subscription.id = :id
+        INNER JOIN user ON user.id = course.fk_teacher_id
+        WHERE subscription.fk_student_id = (SELECT id FROM user WHERE username = :username)
         ORDER BY course.start_datetime ASC;";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":id", $id);
+        $stmt->bindValue(":username", $username);
         $stmt->execute();
         $userCourses = $stmt->fetchAll();
-        return $userCourses;
+        $courses = $this->toCourses($userCourses);
+        return $courses;
     }
 
     public function getTeacherCourses(int $id): array
@@ -174,5 +179,33 @@ class UsersController
                 WHERE username = :username";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([":username" => $username]);
+    }
+
+    private function toCourses($results): array
+    {
+        $courses = [];
+        foreach ($results as $result) {
+            array_push($courses, $this->toCourse($result));
+        }
+        return $courses;
+    }
+
+    private function toCourse($result): Course
+    {
+        $course = new Course(
+            $result['fk_teacher_id'],
+            $result['title'],
+            $result['subject'],
+            $result['start_datetime'],
+            $result['duration'],
+            $result['descr'],
+            $result['location'],
+            $result['price_per_student'],
+            $result['number_stud_max'],
+            $result['number_stud_sub']
+        );
+        $course->setId($result['id']);
+        $course->setTeacher($result['teacher_firstname'], $result['teacher_lastname']);
+        return $course;
     }
 }
