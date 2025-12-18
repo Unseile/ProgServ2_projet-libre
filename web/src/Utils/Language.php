@@ -118,9 +118,10 @@ class Language
                 "user_role" => "Rôle",
                 "teacher" => "Professeur",
                 "student" => "Étudiant",
-                "user_email_verified" => "Le mail est vérifié.",
-                "user_email_not_verified" => "Le mail n'est pas vérifié.",
-                "subscriptions" => "Mes inscriptions"
+                "user_email_verified" => " est vérifié.",
+                "user_email_not_verified" => " n'est pas vérifié.",
+                "subscriptions" => "Mes inscriptions",
+                "verify_email" => "Vérifier mon email"
             ]
         ],
         "en" => [
@@ -234,9 +235,10 @@ class Language
                 "user_role" => "Role",
                 "teacher" => "Teacher",
                 "student" => "Student",
-                "user_email_verified" => "The email is verified.",
-                "user_email_not_verified" => "The email is not verified.",
-                "subscriptions" => "My subscriptions"
+                "user_email_verified" => " is verified.",
+                "user_email_not_verified" => " is not verified.",
+                "subscriptions" => "My subscriptions",
+                "verify_email" => "Verify my email"
             ]
         ]
     ];
