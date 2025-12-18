@@ -1,7 +1,7 @@
 <?php
 // //Page de création d'un cours
 session_start();
-require_once __DIR__ . '/../src/Config/autoloader.php';
+
 include __DIR__ . '/../src/Includes/header.php';
 
 use Controllers\CoursesController;
