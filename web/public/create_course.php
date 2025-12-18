@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <button class="create_button" type="submit"><?= $createCourseContent["create_button"]?></button>
-        <a class="cancel_button" href="user_courses.php"><?= $createCourseContent["cancel_button"]?></a>
+        <a class="cancel_button" href="subscriptions.php"><?= $createCourseContent["cancel_button"]?></a>
     </form>
 </body>
 
