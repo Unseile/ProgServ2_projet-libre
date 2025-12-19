@@ -35,7 +35,8 @@ class Language
                 "price" => "prix",
                 "login" => "se connecter",
                 "subscribe" => "s'inscrire",
-                "unsubscribe" => "se désinscrire"
+                "unsubscribe" => "se désinscrire",
+                "your_are_teaching" => "Vous ne pouvez pas vous inscrire a votre propre cours"
             ],
             "subscriptions" => [
                 "user-courses" => "Vos précédents cours suivis",
@@ -157,7 +158,8 @@ class Language
                 "price" => "price",
                 "login" => "log in",
                 "subscribe" => "subscribe",
-                "unsubscribe" => "unsubscribe"
+                "unsubscribe" => "unsubscribe",
+                "your_are_teaching" => "Your can't subscribe to your own course"
             ],
             "subscriptions" => [
                 "user-courses" => "Your previous enrolled courses",
