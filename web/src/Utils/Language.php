@@ -146,7 +146,9 @@ class Language
                 "connecting_db" => "Erreur de connexion à la base de donnée",
                 "fetch_data" => "Erreur lors de la récupération des données",
                 "adding_data" => "Erreur lors de l'ajout de données",
-                "updating_data" => "Erreur lors de la mise à jour des données"
+                "updating_data" => "Erreur lors de la mise à jour des données",
+                "subscribe_own_course" => "Vous ne pouvez pas vous inscrire à votre propre cours",
+                "unsubscribe_own_course" => "impossible de se désinscrire, vous êtes l'enseignant"
             ]
         ],
         "en" => [
