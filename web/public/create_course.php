@@ -22,7 +22,6 @@ if (!($_SESSION['isTeacher'] ?? false)) {
 }
 
 $errors = [];
-$message = null;
 
 // Handle course creation POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,29 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $startDatetime = $_POST['start_datetime'] ?? '';
     $duration = filter_var($_POST['duration'] ?? 0, FILTER_VALIDATE_INT);
     $maxStudents = filter_var($_POST['max_students'] ?? 0, FILTER_VALIDATE_INT);
-
-    // Validation basique
-    if (empty($title)) {
-        $errors[] = $createCourseContent['error_title'] ?? 'Le titre est requis';
-    }
-    if (empty($subject)) {
-        $errors[] = $createCourseContent['error_subject'] ?? 'Le sujet est requis';
-    }
-    if (empty($startDatetime)) {
-        $errors[] = $createCourseContent['error_date'] ?? 'La date de début est requise';
-    }
-    if ($duration === false || $duration < 15) {
-        $errors[] = $createCourseContent['error_duration'] ?? 'La durée doit être au moins 15 minutes';
-    }
-    if (empty($location)) {
-        $errors[] = $createCourseContent['error_location'] ?? 'Le lieu est requis';
-    }
-    if ($price === false || $price < 0) {
-        $errors[] = $createCourseContent['error_price'] ?? 'Le prix est invalide';
-    }
-    if ($maxStudents === false || $maxStudents < 1 || $maxStudents > 30) {
-        $errors[] = $createCourseContent['error_max_students'] ?? 'Le nombre maximum d\'étudiants doit être entre 1 et 30';
-    }
 
     // Create Course object with all required parameters
     if (empty($errors)) {
@@ -74,9 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 0  // number_stud_sub = 0 au début
             );
 
-            // Set teacher info for the course object
-            $courseObj->setTeacher($_SESSION['firstname'], $_SESSION['lastname']);
-
             // Verify the course data
             $errors = $courseObj->verify();
 
@@ -84,13 +57,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (empty($errors)) {
                 $coursesController = new CoursesController();
                 $coursesController->addCourse($courseObj);
-
-                $message = $createCourseContent['success_message'] ?? 'Cours créé avec succès';
+                
                 header('Location: index.php');
                 exit();
             }
         } catch (Exception $e) {
-            $errors[] = $createCourseContent['error_unexpected'] ?? 'Une erreur est survenue : ' . $e->getMessage();
+            $errors[] = $createCourseContent['error_unexpected'] . ' : ' . htmlspecialchars($e->getMessage());
         }
     }
 }
@@ -114,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="course_subject">
             <label for="subject"><?= $createCourseContent["course_subject"]?></label>
             <select id="subject" name="subject" required>
-                <option value="">-- <?= $createCourseContent["select_subject"] ?? 'Choisir une matière' ?> --</option>
+                <option value="">-- <?= $createCourseContent["select_subject"] ?> --</option>
                 <option value="Anglais" <?= ($_POST['subject'] ?? '') === 'Anglais' ? 'selected' : '' ?>>Anglais</option>
                 <option value="AnalysMar" <?= ($_POST['subject'] ?? '') === 'AnalysMar' ? 'selected' : '' ?>>Analyse Marketing</option>
                 <option value="MarkDig" <?= ($_POST['subject'] ?? '') === 'MarkDig' ? 'selected' : '' ?>>Marketing Digital</option>

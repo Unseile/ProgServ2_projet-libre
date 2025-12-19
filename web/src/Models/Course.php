@@ -78,7 +78,7 @@ class Course
     public function verify(): array
     {
         $errors = [];
-        if (empty($this->teacherId)) {
+        if (!isset($this->teacherId)) {
             array_push($errors, "Un enseignant doit exister");
         }
         if (empty($this->title) || strlen($this->title) < 2) {
@@ -112,10 +112,10 @@ class Course
         if (empty($this->location)) {
             array_push($errors, "La salle est obligatoire");
         }
-        if (empty($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0) {
+        if (!isset($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0) {
             array_push($errors, "Le prix est obligatoire et ne peut pas être négatif. 0 = gratuit");
         }
-        if (empty($this->maxStudents) || !is_int($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
+        if (!isset($this->maxStudents) || !is_int($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
             array_push($errors, "Le nombre max d'élèves est de 30. Min 1");
         }
 
@@ -131,7 +131,7 @@ class Course
                 return $this->id;
             }
         }
-        return '';
+        return null;
     }
 
     public function getTeacherId(bool $specialCharacters = false): ?int
@@ -143,7 +143,7 @@ class Course
                 return $this->teacherId;
             }
         }
-        return '';
+        return null;
     }
 
     public function getTitle(bool $specialCharacters = false): ?string
@@ -191,7 +191,7 @@ class Course
                 return $this->duration;
             }
         }
-        return 0;
+        return null;
     }
 
     public function getDescr(bool $specialCharacters = false): ?string
@@ -227,7 +227,7 @@ class Course
                 return $this->pricePerStudent;
             }
         }
-        return '';
+        return null;
     }
 
     public function getMaxStudents(bool $specialCharacters = false): ?int
@@ -239,7 +239,7 @@ class Course
                 return $this->maxStudents;
             }
         }
-        return '';
+        return null;
     }
 
     public function getSubStudents(bool $specialCharacters = false): ?int
@@ -251,7 +251,7 @@ class Course
                 return $this->subStudents;
             }
         }
-        return '';
+        return null;
     }
 
     public function getTeacherFirstname(bool $specialCharacters = false): ?string

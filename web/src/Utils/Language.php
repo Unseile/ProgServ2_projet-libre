@@ -11,6 +11,7 @@ class Language
         "fr" => [
             "index" => [
                 "welcome" => "Bienvenue sur SPEEP.CH, ta référence pour tes cours d'appui !",
+                "description" => "Où chaque élève peut être à la fois enseignant et apprenant, en donnant ou recevant du soutien dans les matières de son choix. Simple, collaboratif et efficace, SPEEP transforme l’entraide entre élèves en véritable force de réussite.",
                 "available-courses" => "Tous les cours disponibles",
                 "subject" => "sujet",
                 "teacher" => "enseignant",
@@ -115,7 +116,17 @@ class Language
                 "course_duration" => "Durée du cours (15 minutes minimum)*",
                 "course_max_students" => "Nombre maximum d'étudiants (entre 1 et 30) *",
                 "create_button" => "Créer le cours",
-                "cancel_button" => "Annuler"
+                "cancel_button" => "Annuler",
+                "error_title" => "Le titre est requis",
+                "error_subject" => "La matière est requise",
+                "error_date" => "La date de début est requise",
+                "error_duration" => "La durée doit être d'au moins 15 minutes",
+                "error_location" => "Le lieu est requis",
+                "error_price" => "Le prix doit être un nombre valide (0 pour gratuit)",
+                "error_max_students" => "Le nombre d'étudiants doit être entre 1 et 30",
+                "error_unexpected" => "Une erreur inattendue s'est produite",
+                "success_message" => "Cours créé avec succès !",
+                "select_subject" => "Choisir une matière"
             ],
             "profile" => [
                 "title" => "Profil Utilisateur",
@@ -141,6 +152,7 @@ class Language
         "en" => [
             "index" => [
                 "welcome" => "Welcome to SPEEP.CH, your go-to platform for tutoring courses!",
+                "description" => "Where every student can be both a teacher and a learner, giving or receiving support in the subjects of their choice. Simple, collaborative, and effective, SPEEP transforms peer assistance into a true force for success.",
                 "available-courses" => "All available courses",
                 "subject" => "subject",
                 "teacher" => "teacher",
@@ -246,7 +258,17 @@ class Language
                 "course_duration" => "Course Duration (15 minutes minimum)*",
                 "course_max_students" => "Maximum Number of Students* (between 1 and 30)",
                 "create_button" => "Create Course",
-                "cancel_button" => "Cancel"
+                "cancel_button" => "Cancel",
+                "error_title" => "Title is required",
+                "error_subject" => "Subject is required",
+                "error_date" => "Start date is required",
+                "error_duration" => "Duration must be at least 15 minutes",
+                "error_location" => "Location is required",
+                "error_price" => "Price must be a valid number (0 for free)",
+                "error_max_students" => "Number of students must be between 1 and 30",
+                "error_unexpected" => "An unexpected error occurred",
+                "success_message" => "Course created successfully!",
+                "select_subject" => "Choose a subject"
             ],
             "profile" => [
                 "title" => "User Profile",
