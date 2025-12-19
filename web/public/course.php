@@ -8,6 +8,7 @@ $courseContent = $language->getContent($lang, 'course');
 
 $courseId = $_GET['id'] ?? null;
 if (!$courseId) {
+    header("Location: index.php");
     exit;
 }
 
@@ -23,27 +24,26 @@ try {
     $errors = ["Erreur lors de la connexion à la base de donnée"]; //A CHANGER LA LANGUE
 }
 try {
-    $courses = $courseController->getCourses();
+    $course = $courseController->getCourse($courseId);
 } catch (Exception $e) {
     $errors = ["Erreur lors de la récupération du cours"]; //A CHANGER LA LANGUE
 }
 
-$course = null;
-foreach ($courses as $c) {
-    if ($c->getId(true) == $courseId) {
-        $course = $c;
-        break;
-    }
+if (!$course) {
+    header("Location: index.php");
+    exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['subscribe']) && isset($_SESSION['username']) && isset($_SESSION['isTeacher'])) {
-        echo "Vous ne pouvez pas vous inscrire à votre propre cours.";
-    } else {
-        $usersController->followCourse($courseId, $_SESSION['username']);
+    if (isset($_POST['subscribe'])) {
+        if ($course->getTeacherId() === $_SESSION["user_id"]) {
+            echo "Vous ne pouvez pas vous inscrire à votre propre cours."; // CHANGER LA LANGUE ET AJOUTER DANS UNE $ERRORS
+        } else {
+            $usersController->followCourse($courseId, $_SESSION['username']);
+        }
     }
-
-    if (isset($_POST['unsubscribe']) && isset($_SESSION['username'])) {
+if(isset($_POST['unsubscribe'])){
+    if ($course->getTeacherId() === $_SESSION["user_id"]) {
         $usersController->unfollowCourse($courseId, $_SESSION['username']);
     }
     $isSubscribed = false;

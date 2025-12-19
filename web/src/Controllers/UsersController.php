@@ -73,7 +73,7 @@ class UsersController
         $courses = $this->toCourses($teacherCourses);
         return $courses;
     }
-    public function followCourse(int $courseId, string $username): void
+    public function followCourse(int $courseId, string $username): void //A CHANGER IMPÉRATIVEMENT !!!!!
     {
         // 1) Récupérer l'ID de l'utilisateur à partir du username
         $sql = "SELECT id FROM user WHERE username = :username";
@@ -102,7 +102,7 @@ class UsersController
             ":course" => $courseId
         ]);
     }
-    public function unfollowCourse(int $courseId, string $username): void
+    public function unfollowCourse(int $courseId, string $username): void //A CHANGER IMPÉRATIVEMENT !!!!!
     {
         $user = $this->getUser($username);
         if (!$user) {
