@@ -34,29 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $duration = filter_var($_POST['duration'] ?? 0, FILTER_VALIDATE_INT);
     $maxStudents = filter_var($_POST['max_students'] ?? 0, FILTER_VALIDATE_INT);
 
-    // Validation basique
-    if (empty($title)) {
-        $errors[] = $createCourseContent['error_title'];
-    }
-    if (empty($subject)) {
-        $errors[] = $createCourseContent['error_subject'];
-    }
-    if (empty($startDatetime)) {
-        $errors[] = $createCourseContent['error_date'];
-    }
-    if ($duration === false || $duration < 15) {
-        $errors[] = $createCourseContent['error_duration'];
-    }
-    if (empty($location)) {
-        $errors[] = $createCourseContent['error_location'];
-    }
-    if ($price === false || $price < 0) {
-        $errors[] = $createCourseContent['error_price'];
-    }
-    if ($maxStudents === false || $maxStudents < 1 || $maxStudents > 30) {
-        $errors[] = $createCourseContent['error_max_students'];
-    }
-
     // Create Course object with all required parameters
     if (empty($errors)) {
         try {
@@ -72,9 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $maxStudents,
                 0  // number_stud_sub = 0 au début
             );
-
-            // Set teacher info for the course object
-            $courseObj->setTeacher($_SESSION['firstname'], $_SESSION['lastname']);
 
             // Verify the course data
             $errors = $courseObj->verify();
