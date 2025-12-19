@@ -110,3 +110,6 @@ Stockage des mots de passes de façon sécurisée
 Le code PHP doit être typé
 L'application doit être en orienté objet, les classes sont chargées automatiquement (avec autoloader).
 Fichier database.ini pour les infos de connexion à la base de donnée
+
+## Utilisation de l'IA
+Le CSS a été généré par IA et modifié manuellement.
