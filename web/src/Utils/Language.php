@@ -283,7 +283,7 @@ class Language
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['language'])) {
             $lang = $_POST['language'] ?? $lang;
-            setcookie('language', $lang, time() + 10);
+            setcookie('language', $lang, time() + 3600);
         }
         return $lang;
     }
