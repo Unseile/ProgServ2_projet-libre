@@ -61,10 +61,10 @@ class CoursesController
     public function getCourse(int $id): ?Course
     {
         $sql = "SELECT 
-        id.course,
+        course.id,
         fk_teacher_id,
-        firstname AS \"teacher_firstname\",
-        lastname AS \"teacher_lastname\",
+        first_name AS \"teacher_firstname\",
+        last_name AS \"teacher_lastname\",
         title, subject,
         start_datetime,
         duration,
@@ -74,12 +74,16 @@ class CoursesController
         number_stud_max,
         number_stud_sub
         FROM course
-        INNER JOIN user ON user.id = fk_teacher_id.course
-        WHERE id.course = :id;";
+        INNER JOIN user ON user.id = course.fk_teacher_id
+        WHERE course.id = :id
+        ORDER BY course.start_datetime ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         $result = $stmt->fetch();
+        if (empty($result)) {
+            return null;
+        }
         return $this->toCourse($result);
     }
 

@@ -35,6 +35,7 @@ if (!$course) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     if (isset($_POST['subscribe'])) {
         if ($course->getTeacherId() === $_SESSION["user_id"]) {
             echo "Vous ne pouvez pas vous inscrire à votre propre cours."; // CHANGER LA LANGUE ET AJOUTER DANS UNE $ERRORS
@@ -42,23 +43,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usersController->followCourse($courseId, $_SESSION['username']);
         }
     }
-if(isset($_POST['unsubscribe'])){
-    if ($course->getTeacherId() === $_SESSION["user_id"]) {
-        $usersController->unfollowCourse($courseId, $_SESSION['username']);
-    }
-    $isSubscribed = false;
+    if (isset($_POST['unsubscribe'])) {
+        if ($course->getTeacherId() === $_SESSION["user_id"]) {
+            echo "impossible de se désinscrire, vous êtes l'enseignant";
+        } else {
+            $usersController->unfollowCourse($courseId, $_SESSION['username']);
+        }
+        $isSubscribed = false;
 
-    if (isset($_SESSION['username'])) {
-        $isSubscribed = $usersController->isSubscribed($courseId, $_SESSION['username']);
+        if (isset($_SESSION['username'])) {
+            $isSubscribed = $usersController->isSubscribed($courseId, $_SESSION['username']);
+        }
     }
-
-    if (isset($_POST['back'])) {
-        header("Location: index.php");
-        exit;
-    }
-
     header("Location: course.php?id=" . $courseId);
-    exit;
+    exit();
 }
 
 $isSubscribed = false;
@@ -69,11 +67,9 @@ if ($userUsername) {
 
 ?>
 
-<form method="post">
-    <button type="submit" name="back">
-        <?= $courseContent['back'] ?>
-    </button>
-</form>
+<a href="index.php">
+    <?= $courseContent['back'] ?>
+</a>
 
 <h2 class="title"><?= $course->getTitle(true) ?></h2>
 <p class="shortdescr"><?= $course->getDescr(true) ?></p>
