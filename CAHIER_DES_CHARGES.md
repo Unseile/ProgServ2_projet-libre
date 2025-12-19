@@ -1,6 +1,6 @@
 # Cahier des charges du projet libre de ProgServ2         
 
-**Les modifications sont en gras**
+> Les modifications sont en citation
 
 ## But du site
 
