@@ -35,6 +35,8 @@ if (!$course) {
     exit;
 }
 
+$isSubscribed = false;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['subscribe'])) {
         if ($course->getTeacherId() === $_SESSION["user_id"]) {
@@ -49,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $usersController->unfollowCourse($courseId, $_SESSION['username']);
         }
-        $isSubscribed = false;
 
         if (isset($_SESSION['username'])) {
             $isSubscribed = $usersController->isSubscribed($courseId, $_SESSION['username']);
@@ -58,8 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: course.php?id=" . $courseId);
     exit();
 }
-
-$isSubscribed = false;
 
 if ($userUsername) {
     $isSubscribed = $usersController->isSubscribed($courseId, $userUsername);
