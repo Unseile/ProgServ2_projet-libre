@@ -36,7 +36,6 @@ if (!$course) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     if (isset($_POST['subscribe'])) {
         if ($course->getTeacherId() === $_SESSION["user_id"]) {
             echo "Vous ne pouvez pas vous inscrire à votre propre cours."; // CHANGER LA LANGUE ET AJOUTER DANS UNE $ERRORS

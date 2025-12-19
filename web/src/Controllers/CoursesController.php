@@ -111,42 +111,6 @@ class CoursesController
         return $this->toCourses($courses);
     }
 
-    public function updateCourse(Course $course): void
-    {
-        $sql = "UPDATE course SET 
-            teacherId = :teacherId,
-            title = :title,
-            subject = :subject,
-            start_datetime = :start_datetime,
-            duration = :duration,
-            descr = :descr,
-            location = :location,
-            price_per_student = :price_per_student,
-            number_stud_max = :number_stud_max,
-            number_stud_sub = :number_stud_sub
-        WHERE id.course = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ":teacherId" => $course->getTeacherId(),
-            ":title" => $course->getTitle(),
-            ":subject" => $course->getSubject(),
-            ":start_datetime" => $course->getStartDatetime(),
-            ":duration" => $course->getDuration(),
-            ":descr" => $course->getDescr(),
-            ":location" => $course->getLocation(),
-            ":price_per_student" => $course->getPricePerStudent(),
-            ":number_stud_max" => $course->getMaxStudents(),
-            ":number_stud_sub" => $course->getSubStudents()
-        ]);
-    }
-
-    public function deleteCourse(int $id): void
-    {
-        $sql = "DELETE course WHERE id = :id;";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-    }
-
     private function toCourses($results): array
     {
         $courses = [];

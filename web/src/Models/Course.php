@@ -78,7 +78,7 @@ class Course
     public function verify(): array
     {
         $errors = [];
-        if (empty($this->teacherId)) {
+        if (!isset($this->teacherId)) {
             array_push($errors, "Un enseignant doit exister");
         }
         if (empty($this->title) || strlen($this->title) < 2) {
@@ -115,7 +115,7 @@ class Course
         if (!isset($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0) {
             array_push($errors, "Le prix est obligatoire et ne peut pas être négatif. 0 = gratuit");
         }
-        if (empty($this->maxStudents) || !is_int($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
+        if (!isset($this->maxStudents) || !is_int($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
             array_push($errors, "Le nombre max d'élèves est de 30. Min 1");
         }
 
