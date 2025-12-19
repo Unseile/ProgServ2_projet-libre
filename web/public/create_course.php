@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="course_price">
             <label for="price"><?= $createCourseContent["course_price"]?></label>
-            <input type="number" id="price" name="price" step="0.05" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>" required>
+            <input type="number" id="price" name="price" step="0.05" min="0.00" max="30.00" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>" required>
         </div>
 
         <div class="course_place">
@@ -127,12 +127,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="course_duration">
             <label for="duration"><?= $createCourseContent["course_duration"]?></label>
-            <input type="number" id="duration" name="duration" value="<?= htmlspecialchars($_POST['duration'] ?? '') ?>" required>
+            <input type="number" id="duration" name="duration" min="15" max="300" value="<?= htmlspecialchars($_POST['duration'] ?? '') ?>" required>
         </div>
 
         <div class="course_max_students">
             <label for="max_students"><?= $createCourseContent["course_max_students"]?></label>
-            <input type="number" id="max_students" name="max_students" min="1" value="<?= htmlspecialchars($_POST['max_students'] ?? '') ?>" required>
+            <input type="number" id="max_students" name="max_students" min="1" max="30" value="<?= htmlspecialchars($_POST['max_students'] ?? '') ?>" required>
         </div>
 
         <button class="create_button" type="submit"><?= $createCourseContent["create_button"]?></button>

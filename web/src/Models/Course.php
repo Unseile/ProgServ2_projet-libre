@@ -87,7 +87,6 @@ class Course
         if (!isset($this->subject) || !in_array($this->subject, SCHOOL_SUBJECT)) {
             array_push($errors, "Le sujet de cours n'existe pas");
         }
-
         if (empty($this->startDatetime)) {
             array_push($errors, "La date et l'heure de début sont obligatoires");
         } else {
@@ -103,8 +102,8 @@ class Course
                 }
             }
         }
-        if (empty($this->duration) || !is_int($this->duration) || $this->duration < 15) {
-            array_push($errors, "La durée du cours est obligatoire et doit être supérieure à 15mn");
+        if (empty($this->duration) || !is_int($this->duration) || $this->duration < 15 || $this->duration > 300) {
+            array_push($errors, "La durée du cours est obligatoire et doit être copmrise entre 15 minutes et 300 minutes");
         }
         if (empty($this->descr)) {
             array_push($errors, "La description est obligatoire");
@@ -112,8 +111,8 @@ class Course
         if (empty($this->location)) {
             array_push($errors, "La salle est obligatoire");
         }
-        if (!isset($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0) {
-            array_push($errors, "Le prix est obligatoire et ne peut pas être négatif. 0 = gratuit");
+        if (!isset($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0 || $this->pricePerStudent > 30) {
+            array_push($errors, "Le prix est obligatoire, doit être positif et inférieur à 30, 0 = gratuit");
         }
         if (!isset($this->maxStudents) || !is_int($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
             array_push($errors, "Le nombre max d'élèves est de 30. Min 1");
