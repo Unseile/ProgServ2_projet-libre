@@ -18,7 +18,7 @@ class Database
     {
         $config = parse_ini_file(DATABASE_CONFIGURATION_FILE, true);
         if (!$config) {
-            throw new Exception("Error when trying to read " . DATABASE_CONFIGURATION_FILE);
+            throw new Exception("Erreur en essayant de lire " . DATABASE_CONFIGURATION_FILE);
         }
         $host = $config['host'];
         $port = $config['port'];
@@ -34,8 +34,6 @@ class Database
         $sql = "USE `$database`;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
-
-        //Mettre les créations des tables ici. (student, teacher, lesson, student_courses, ...)
     }
 
     public function getPDO(): PDO

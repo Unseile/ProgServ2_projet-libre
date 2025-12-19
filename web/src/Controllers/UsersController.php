@@ -35,7 +35,7 @@ class UsersController
             ]
         );
     }
-    /*public function getUser(int $id): ?User { return null; }*/
+
     public function getUserCourses(string $username): array
     {
         $sql = "SELECT 
@@ -98,7 +98,7 @@ class UsersController
             // Démarrer la transaction
             $this->pdo->beginTransaction();
 
-            // 1) Récupérer l'ID de l'utilisateur à partir du username
+            // Récupérer l'ID de l'utilisateur à partir du username
             $sql = "SELECT id, is_teacher FROM user WHERE username = :username";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([":username" => $username]);
@@ -110,7 +110,7 @@ class UsersController
 
             $userId = $user['id'];
 
-            // 2) Vérifier que le cours existe et récupérer ses informations
+            // Vérifier que le cours existe et récupérer ses informations
             $sql = "SELECT number_stud_sub, number_stud_max, fk_teacher_id 
                     FROM course 
                     WHERE id = :course";
@@ -122,12 +122,12 @@ class UsersController
                 throw new Exception("Cours introuvable");
             }
 
-            // 3) Vérifier qu'il reste de la place dans le cours
+            // Vérifier qu'il reste de la place dans le cours
             if ($course['number_stud_sub'] >= $course['number_stud_max']) {
                 throw new Exception("Le cours est complet");
             }
 
-            // 4) Vérifier que l'utilisateur n'est pas déjà inscrit
+            // Vérifier que l'utilisateur n'est pas déjà inscrit
             $sql = "SELECT COUNT(*) FROM subscription 
                     WHERE fk_course_id = :course AND fk_student_id = :user";
             $stmt = $this->pdo->prepare($sql);
@@ -141,7 +141,7 @@ class UsersController
                 throw new Exception("Vous êtes déjà inscrit à ce cours");
             }
 
-            // 5) Inscrire l'utilisateur au cours
+            // Inscrire l'utilisateur au cours
             $sql = "INSERT INTO subscription (fk_course_id, fk_student_id)
                 VALUES (:course, :user)";
             $stmt = $this->pdo->prepare($sql);
@@ -150,7 +150,7 @@ class UsersController
                 ":course" => $courseId
             ]);
 
-            // 6) Incrémenter le compteur d'étudiants
+            // Incrémenter le compteur d'étudiants
             $sql = "UPDATE course
                 SET number_stud_sub = number_stud_sub + 1
                 WHERE id = :course";
@@ -180,7 +180,7 @@ class UsersController
             // Démarrer la transaction
             $this->pdo->beginTransaction();
 
-            // 1) Supprimer l'inscription
+            // Supprimer l'inscription
             $sql = "DELETE FROM subscription
                 WHERE fk_course_id = :course
                 AND fk_student_id = :user";
@@ -191,7 +191,7 @@ class UsersController
                 ':user'   => $userId
             ]);
 
-            // 2) Décrémenter le compteur d'étudiants
+            // Décrémenter le compteur d'étudiants
             $sql = "UPDATE course
                 SET number_stud_sub = number_stud_sub - 1
                 WHERE id = :course";

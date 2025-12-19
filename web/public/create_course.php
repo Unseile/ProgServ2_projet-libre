@@ -34,43 +34,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $duration = filter_var($_POST['duration'] ?? 0, FILTER_VALIDATE_INT);
     $maxStudents = filter_var($_POST['max_students'] ?? 0, FILTER_VALIDATE_INT);
 
-    // Create Course object with all required parameters
-    if (empty($errors)) {
-        try {
-            $courseObj = new Course(
-                $_SESSION['user_id'],  // teacherId
-                $title,
-                $subject,
-                $startDatetime,
-                $duration,
-                $description,
-                $location,
-                $price,
-                $maxStudents,
-                0  // number_stud_sub = 0 au début
-            );
+    try {
+        $courseObj = new Course(
+            $_SESSION['user_id'],  // teacherId
+            $title,
+            $subject,
+            $startDatetime,
+            $duration,
+            $description,
+            $location,
+            $price,
+            $maxStudents,
+            0  // number_stud_sub = 0 au début
+        );
 
-            // Verify the course data
-            $errors = $courseObj->verify();
+        // Verify the course data
+        $errors = $courseObj->verify();
 
-            // If no errors, save the course
-            if (empty($errors)) {
-                $coursesController = new CoursesController();
-                $coursesController->addCourse($courseObj);
-                
-                header('Location: index.php');
-                exit();
-            }
-        } catch (Exception $e) {
-            $errors[] = $createCourseContent['error_unexpected'] . ' : ' . htmlspecialchars($e->getMessage());
+        // If no errors, save the course
+        if (empty($errors)) {
+            $coursesController = new CoursesController();
+            $coursesController->addCourse($courseObj);
+
+            header('Location: index.php');
+            exit();
         }
+    } catch (Exception $e) {
+        $errors[] = $createCourseContent['error_unexpected'] . ' : ' . htmlspecialchars($e->getMessage());
     }
 }
 ?>
 
 <body>
-    <h2 class="title"><?= $createCourseContent["title"]?></h2>
-    
+    <h2 class="title"><?= $createCourseContent["title"] ?></h2>
+
     <?php if (!empty($errors)): ?>
         <?php foreach ($errors as $error): ?>
             <div class="error_message"><?= htmlspecialchars($error) ?></div>
@@ -79,12 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form class="new_course" method="POST">
         <div class="course_title">
-            <label for="title"><?= $createCourseContent["course_title"]?></label>
+            <label for="title"><?= $createCourseContent["course_title"] ?></label>
             <input type="text" id="title" name="title" value="<?= htmlspecialchars($_POST['title'] ?? '') ?>" required>
         </div>
 
         <div class="course_subject">
-            <label for="subject"><?= $createCourseContent["course_subject"]?></label>
+            <label for="subject"><?= $createCourseContent["course_subject"] ?></label>
             <select id="subject" name="subject" required>
                 <option value="">-- <?= $createCourseContent["select_subject"] ?> --</option>
                 <option value="Anglais" <?= ($_POST['subject'] ?? '') === 'Anglais' ? 'selected' : '' ?>>Anglais</option>
@@ -106,37 +103,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="course_description">
-            <label for="description"><?= $createCourseContent["course_description"]?></label>
+            <label for="description"><?= $createCourseContent["course_description"] ?></label>
             <textarea id="description" name="description" required><?= htmlspecialchars($_POST['description'] ?? '') ?></textarea>
         </div>
 
         <div class="course_price">
-            <label for="price"><?= $createCourseContent["course_price"]?></label>
+            <label for="price"><?= $createCourseContent["course_price"] ?></label>
             <input type="number" id="price" name="price" step="0.05" min="0.00" max="30.00" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>" required>
         </div>
 
         <div class="course_place">
-            <label for="location"><?= $createCourseContent["course_place"]?></label>
+            <label for="location"><?= $createCourseContent["course_place"] ?></label>
             <input type="text" id="location" name="location" value="<?= htmlspecialchars($_POST['location'] ?? '') ?>" required>
         </div>
 
-        <div class ="course_start_datetime">
-            <label for="start_datetime"><?= $createCourseContent["course_start_datetime"]?></label>
+        <div class="course_start_datetime">
+            <label for="start_datetime"><?= $createCourseContent["course_start_datetime"] ?></label>
             <input type="datetime-local" id="start_datetime" name="start_datetime" value="<?= htmlspecialchars($_POST['start_datetime'] ?? '') ?>" required>
         </div>
 
         <div class="course_duration">
-            <label for="duration"><?= $createCourseContent["course_duration"]?></label>
+            <label for="duration"><?= $createCourseContent["course_duration"] ?></label>
             <input type="number" id="duration" name="duration" min="15" max="300" value="<?= htmlspecialchars($_POST['duration'] ?? '') ?>" required>
         </div>
 
         <div class="course_max_students">
-            <label for="max_students"><?= $createCourseContent["course_max_students"]?></label>
+            <label for="max_students"><?= $createCourseContent["course_max_students"] ?></label>
             <input type="number" id="max_students" name="max_students" min="1" max="30" value="<?= htmlspecialchars($_POST['max_students'] ?? '') ?>" required>
         </div>
 
-        <button class="create_button" type="submit"><?= $createCourseContent["create_button"]?></button>
-        <a class="cancel_button" href="subscriptions.php"><?= $createCourseContent["cancel_button"]?></a>
+        <button class="create_button" type="submit"><?= $createCourseContent["create_button"] ?></button>
+        <a class="cancel_button" href="subscriptions.php"><?= $createCourseContent["cancel_button"] ?></a>
     </form>
 </body>
 
