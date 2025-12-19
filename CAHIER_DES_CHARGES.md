@@ -117,4 +117,4 @@ L'application doit être en orienté objet, les classes sont chargées automatiq
 Fichier database.ini pour les infos de connexion à la base de donnée
 
 ## Utilisation de l'IA
-Le CSS a été généré par IA et modifié manuellement.
+Le CSS a été généré par IA et modifié manuellement. Autrement, elle a surtout été utilisé pour contrôler les erreurs et les bugs de notre code, ainsi que pour aider dans l'écriture de code redondant (tel que les getters et traductions).
