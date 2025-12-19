@@ -112,7 +112,7 @@ class Course
         if (empty($this->location)) {
             array_push($errors, "La salle est obligatoire");
         }
-        if (empty($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0) {
+        if (!isset($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0) {
             array_push($errors, "Le prix est obligatoire et ne peut pas être négatif. 0 = gratuit");
         }
         if (empty($this->maxStudents) || !is_int($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
