@@ -48,8 +48,6 @@ class Language
                 "at" => "à",
                 "hour" => "heure",
                 "course" => "Voir le cours",
-                "connexion_err" => "Erreur lors de la connexion à la base de donnée",
-                "fetch_err" => "Erreur lors de la récupération de vos cours",
                 "no_course" => "Vous n'avez pas encore pris de cours",
                 "no_course_given" => "Vous ne donnez pas de cours pour le moment",
                 "history-title" => "Vos cours suivis",
@@ -117,15 +115,6 @@ class Language
                 "course_max_students" => "Nombre maximum d'étudiants (entre 1 et 30) *",
                 "create_button" => "Créer le cours",
                 "cancel_button" => "Annuler",
-                "error_title" => "Le titre est requis",
-                "error_subject" => "La matière est requise",
-                "error_date" => "La date de début est requise",
-                "error_duration" => "La durée doit être d'au moins 15 minutes",
-                "error_location" => "Le lieu est requis",
-                "error_price" => "Le prix doit être un nombre valide (0 pour gratuit)",
-                "error_max_students" => "Le nombre d'étudiants doit être entre 1 et 30",
-                "error_unexpected" => "Une erreur inattendue s'est produite",
-                "success_message" => "Cours créé avec succès !",
                 "select_subject" => "Choisir une matière"
             ],
             "profile" => [
@@ -148,7 +137,12 @@ class Language
                 "adding_data" => "Erreur lors de l'ajout de données",
                 "updating_data" => "Erreur lors de la mise à jour des données",
                 "subscribe_own_course" => "Vous ne pouvez pas vous inscrire à votre propre cours",
-                "unsubscribe_own_course" => "impossible de se désinscrire, vous êtes l'enseignant"
+                "unsubscribe_own_course" => "impossible de se désinscrire, vous êtes l'enseignant",
+                "error_unexpected" => "Une erreur inattendue s'est produite",
+                "login_error" => "Nom d'utilisateur ou mot de passe invalide",
+                "login_connexion" => "Erreur lors de la connexion",
+                "connexion_err" => "Erreur lors de la connexion à la base de donnée",
+                "fetch_err" => "Erreur lors de la récupération de vos cours"
             ]
         ],
         "en" => [
@@ -191,8 +185,6 @@ class Language
                 "at" => "at",
                 "hour" => "hour",
                 "course" => "View course",
-                "connexion_err" => "Error when connecting to databasse",
-                "fetch_err" => "Error when trying to fetch courses",
                 "no_course" => "You don't have course",
                 "no_course_given" => "You didn't created course",
                 "history-title" => "Your following courses",
@@ -261,15 +253,6 @@ class Language
                 "course_max_students" => "Maximum Number of Students* (between 1 and 30)",
                 "create_button" => "Create Course",
                 "cancel_button" => "Cancel",
-                "error_title" => "Title is required",
-                "error_subject" => "Subject is required",
-                "error_date" => "Start date is required",
-                "error_duration" => "Duration must be at least 15 minutes",
-                "error_location" => "Location is required",
-                "error_price" => "Price must be a valid number (0 for free)",
-                "error_max_students" => "Number of students must be between 1 and 30",
-                "error_unexpected" => "An unexpected error occurred",
-                "success_message" => "Course created successfully!",
                 "select_subject" => "Choose a subject"
             ],
             "profile" => [
@@ -290,7 +273,15 @@ class Language
                 "connecting_db" => "Error when connecting to db",
                 "fetch_data" => "Error when trying to fetch data",
                 "adding_data" => "Error when adding data",
-                "updating_data" => "Error when updating data"
+                "updating_data" => "Error when updating data",
+                "subscribe_own_course" => "You can't subscribe to your own course",
+                "unsubscribe_own_course" => "can't unsubscribe, you are the teacher",
+                "error_max_students" => "Number of students must be between 1 and 30",
+                "error_unexpected" => "An unexpected error occurred",
+                "login_error" => "Invalid username or password",
+                "login_connexion" => "Error when connecting",
+                "connexion_err" => "Error when connecting to databasse",
+                "fetch_err" => "Error when trying to fetch courses"
             ]
         ]
     ];
