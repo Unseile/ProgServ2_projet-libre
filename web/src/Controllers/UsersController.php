@@ -63,14 +63,15 @@ class UsersController
         return $courses;
     }
 
-    public function getTeacherCourses(int $id): array
+    public function getTeacherCourses(string $username): array
     {
-        $sql = "SELECT * FROM course WHERE fk_teacher_id = :id ORDER BY course.start_datetime ASC";
+        $sql = "SELECT * FROM course WHERE fk_teacher_id = (SELECT id FROM user WHERE username = :username) ORDER BY course.start_datetime ASC";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":id", $id);
+        $stmt->bindValue(":username", $username);
         $stmt->execute();
         $teacherCourses = $stmt->fetchAll();
-        return $teacherCourses;
+        $courses = $this->toCourses($teacherCourses);
+        return $courses;
     }
     public function followCourse(int $courseId, string $username): void
     {

@@ -48,7 +48,10 @@ class Language
                 "course" => "Voir le cours",
                 "connexion_err" => "Erreur lors de la connexion à la base de donnée",
                 "fetch_err" => "Erreur lors de la récupération de vos cours",
-                "no_course" => "Vous n'avez pas encore pris de cours"
+                "no_course" => "Vous n'avez pas encore pris de cours",
+                "no_course_given" => "Vous ne donnez pas de cours pour le moment",
+                "history-title" => "Vos cours suivis",
+                "history-title-teacher" => "Vos cours donnés"
             ],
             "header" => [
                 "home" => "Accueil",
@@ -167,7 +170,10 @@ class Language
                 "course" => "View course",
                 "connexion_err" => "Error when connecting to databasse",
                 "fetch_err" => "Error when trying to fetch courses",
-                "no_course" => "You don't have course"
+                "no_course" => "You don't have course",
+                "no_course_given" => "You didn't created course",
+                "history-title" => "Your following courses",
+                "history-title-teacher" => "Your teaching courses"
             ],
             "header" => [
                 "home" => "Home",
