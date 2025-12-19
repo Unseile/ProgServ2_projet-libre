@@ -3,8 +3,6 @@ session_start();
 
 include __DIR__ . '/../src/Includes/header.php';
 
-use Controllers\CoursesController;
-
 // Vérifie si l'utilisateur est authentifié
 $username = $_SESSION['username'] ?? null;
 
@@ -17,25 +15,30 @@ if (!$username) {
 
 use Controllers\UsersController;
 
+$subscriptionsContent = $language->getContent($lang, 'subscriptions');
+
 try {
     $usersController = new UsersController();
 } catch (Exception $e) {
-    $errors = ["erreur lors de la connexion à la base de donnée"]; // A MODIFIER LA LANGUE
+    $errors = $subscriptionsContent["connexion_err"];
 }
-$subscriptionsContent = $language->getContent($lang, 'subscriptions');
 
 try {
     // Récupérer les cours de l'utilisateur
     $userCourses = $usersController->getUserCourses($username);
 } catch (Exception $e) {
-    $errors = ["erreur lors de la récupération de vos cours"]; // A MODIFIER LA LANGUE
+    $errors = $subscriptionsContent["fetch_err"];
 }
 ?>
 
-<h2><?= $subscriptionsContent["history-title"] ?? "Mes cours" ?></h2>
-
+<h2><?= $subscriptionsContent["history-title"] ?></h2>
+<?php if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo "<p class=\"error\">$error</p>";
+    }
+} ?>
 <?php if (empty($userCourses)): ?>
-    <p>Vous n'êtes inscrit à aucun cours pour le moment.</p>
+    <p><?= $subscriptionsContent["no_course"] ?></p>
 <?php else: ?>
     <div class="course-list">
         <?php foreach ($userCourses as $course) { ?>

@@ -45,7 +45,10 @@ class Language
                 "on" => "le",
                 "at" => "à",
                 "hour" => "heure",
-                "course" => "Voir le cours"
+                "course" => "Voir le cours",
+                "connexion_err" => "Erreur lors de la connexion à la base de donnée",
+                "fetch_err" => "Erreur lors de la récupération de vos cours",
+                "no_course" => "Vous n'avez pas encore pris de cours"
             ],
             "header" => [
                 "home" => "Accueil",
@@ -161,7 +164,10 @@ class Language
                 "on" => "on",
                 "at" => "at",
                 "hour" => "hour",
-                "course" => "View course"
+                "course" => "View course",
+                "connexion_err" => "Error when connecting to databasse",
+                "fetch_err" => "Error when trying to fetch courses",
+                "no_course" => "You don't have course"
             ],
             "header" => [
                 "home" => "Home",
