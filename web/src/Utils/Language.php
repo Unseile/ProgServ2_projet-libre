@@ -312,7 +312,10 @@ class Language
 
     public function getCookieLanguage(): ?string
     {
-        return $_COOKIE['language'] ?? 'fr';
+        if (isset($_COOKIE["language"]) && ($_COOKIE['language'] === "fr" || $_COOKIE['language'] === "en")) {
+            return $_COOKIE['language'];
+        }
+        return "fr";
     }
 
     public function getAvailableLanguages(): array
