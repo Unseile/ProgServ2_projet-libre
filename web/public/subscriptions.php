@@ -16,11 +16,12 @@ if (!$username) {
 use Controllers\UsersController;
 
 $subscriptionsContent = $language->getContent($lang, 'subscriptions');
+$errorContent = $language->getContent($lang, 'common_errors');
 
 try {
     $usersController = new UsersController();
 } catch (Exception $e) {
-    $errors = [$subscriptionsContent["connexion_err"]];
+    $errors = [$errorContent["connexion_err"]];
 }
 
 try {
@@ -28,7 +29,7 @@ try {
     $userCourses = $usersController->getUserCourses($username);
     $teacherCourses = $usersController->getTeacherCourses($username);
 } catch (Exception $e) {
-    $errors = [$subscriptionsContent["fetch_err"]];
+    $errors = [$errorContent["fetch_err"]];
 }
 ?>
 

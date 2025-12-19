@@ -7,19 +7,20 @@ include __DIR__ . '/../src/Includes/header.php';
 //Page d'accueil / liste de tous les cours
 $errorContent = $language->getContent($lang, 'common_errors');
 
-
 use Controllers\CoursesController;
+
+$errors = [];
 
 try {
     $courseController = new CoursesController();
 } catch (Exception $e) {
-    $errors = [$errorContent["connecting_db"]];
+    $errors[] = $errorContent["connecting_db"];
 }
 
 try {
     $courses = $courseController->getCourses();
 } catch (Exception $e) {
-    $errors = [$errorContent["fetch_data"]];
+    $errors[] = $errorContent["fetch_data"];
 }
 
 $homeContent = $language->getContent($lang, 'index');

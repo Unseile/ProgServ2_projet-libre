@@ -4,6 +4,8 @@ session_start();
 require_once __DIR__ . '/../src/Config/autoloader.php';
 include __DIR__ . '/../src/Includes/header.php';
 
+$errors = [];
+
 $courseContent = $language->getContent($lang, 'course');
 $errorContent = $language->getContent($lang, 'common_errors');
 
@@ -41,14 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         if (isset($_POST['subscribe'])) {
             if ($course->getTeacherId() === $_SESSION["user_id"]) {
-                throw new Exception($errorContent['subscribe_own_course']); // CHANGER LA LANGUE ET AJOUTER DANS UNE $ERRORS
+                throw new Exception($errorContent['subscribe_own_course']);
             } else {
                 $usersController->followCourse($courseId, $_SESSION['username']);
             }
         }
         if (isset($_POST['unsubscribe'])) {
             if ($course->getTeacherId() === $_SESSION["user_id"]) {
-                throw new Exception($errorContent['unsubscribe_own_course']); // CHANGER LA LANGUE ET METTRE DANS ERREUR
+                throw new Exception($errorContent['unsubscribe_own_course']);
             } else {
                 $usersController->unfollowCourse($courseId, $_SESSION['username']);
             }

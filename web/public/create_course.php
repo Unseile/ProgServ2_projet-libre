@@ -8,6 +8,7 @@ use Controllers\CoursesController;
 use Models\Course;
 
 $createCourseContent = $language->getContent($lang, 'create_course');
+$errorContent = $language->getContent($lang, 'common_errors');
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
