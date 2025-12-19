@@ -62,7 +62,7 @@ try {
 <?php else: ?>
     <h2><?= $subscriptionsContent["history-title-teacher"] ?></h2>
     <div class="course-list">
-        <?php foreach ($userCourses as $course) { ?>
+        <?php foreach ($teacherCourses as $course) { ?>
             <a href="/course.php?id=<?= $course->getId(true) ?>" class="coursebox">
                 <h2 class="title"><?= $course->getTitle(true) ?></h2>
                 <p class="shortdescr"><?= $course->getDescr(true) ?></p>

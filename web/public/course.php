@@ -85,17 +85,27 @@ if ($userUsername) {
 <?php if ($userUsername): ?>
 
     <?php if ($isSubscribed): ?>
+
         <form method="post">
             <button type="submit" name="unsubscribe">
                 <?= $courseContent['unsubscribe'] ?>
             </button>
         </form>
+
     <?php else: ?>
-        <form method="post">
-            <button type="submit" name="subscribe">
-                <?= $courseContent['subscribe'] ?>
-            </button>
-        </form>
+        <?php if (isset($_SESSION["user_id"]) && $course->getTeacherId() === $_SESSION["user_id"]): ?>
+            <form action="">
+                <button type="button" name="">
+                    <?= $courseContent['your_are_teaching'] ?>
+                </button>
+            </form>
+        <?php else: ?>
+            <form method="post">
+                <button type="submit" name="subscribe">
+                    <?= $courseContent['subscribe'] ?>
+                </button>
+            </form>
+        <?php endif; ?>
     <?php endif; ?>
 
 <?php else: ?>

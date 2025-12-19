@@ -65,7 +65,24 @@ class UsersController
 
     public function getTeacherCourses(string $username): array
     {
-        $sql = "SELECT * FROM course WHERE fk_teacher_id = (SELECT id FROM user WHERE username = :username) ORDER BY course.start_datetime ASC";
+        $sql = "SELECT 
+        course.id,
+        course.fk_teacher_id,
+        user.first_name AS \"teacher_firstname\",
+        user.last_name AS \"teacher_lastname\",
+        course.title, 
+        course.subject,
+        course.start_datetime,
+        course.duration,
+        course.descr,
+        course.location,
+        course.price_per_student,
+        course.number_stud_max,
+        course.number_stud_sub
+        FROM course
+        INNER JOIN user ON user.id = course.fk_teacher_id
+        WHERE fk_teacher_id = (SELECT id FROM user WHERE username = :username) 
+        ORDER BY course.start_datetime ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(":username", $username);
         $stmt->execute();
