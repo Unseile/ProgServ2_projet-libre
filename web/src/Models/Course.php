@@ -131,7 +131,7 @@ class Course
                 return $this->id;
             }
         }
-        return '';
+        return null;
     }
 
     public function getTeacherId(bool $specialCharacters = false): ?int
@@ -143,7 +143,7 @@ class Course
                 return $this->teacherId;
             }
         }
-        return '';
+        return null;
     }
 
     public function getTitle(bool $specialCharacters = false): ?string
@@ -191,7 +191,7 @@ class Course
                 return $this->duration;
             }
         }
-        return 0;
+        return null;
     }
 
     public function getDescr(bool $specialCharacters = false): ?string
@@ -227,7 +227,7 @@ class Course
                 return $this->pricePerStudent;
             }
         }
-        return '';
+        return null;
     }
 
     public function getMaxStudents(bool $specialCharacters = false): ?int
@@ -239,7 +239,7 @@ class Course
                 return $this->maxStudents;
             }
         }
-        return '';
+        return null;
     }
 
     public function getSubStudents(bool $specialCharacters = false): ?int
@@ -251,7 +251,7 @@ class Course
                 return $this->subStudents;
             }
         }
-        return '';
+        return null;
     }
 
     public function getTeacherFirstname(bool $specialCharacters = false): ?string
