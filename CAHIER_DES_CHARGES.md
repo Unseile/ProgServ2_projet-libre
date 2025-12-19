@@ -81,6 +81,7 @@ Avec un formulaire qui contient les champs suivants :
 #### Page de consultation D'UN cours (version connectée)
 
 Changement du bouton "se connecter" en bouton d'inscription au cours
+> ou en bouton de désinscription au cours
 
 #### Page de profil utilisateur
 
