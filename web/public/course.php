@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (isset($_POST['unsubscribe'])) {
         if ($course->getTeacherId() === $_SESSION["user_id"]) {
-            echo "impossible de se désinscrire, vous êtes l'enseignant";
+            echo "impossible de se désinscrire, vous êtes l'enseignant"; // CHANGER LA LANGUE ET METTRE DANS ERREUR
         } else {
             $usersController->unfollowCourse($courseId, $_SESSION['username']);
         }
