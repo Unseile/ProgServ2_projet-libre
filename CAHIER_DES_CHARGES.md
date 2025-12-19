@@ -43,7 +43,8 @@ Affiche tous les cours disponibles avec les informations suivants :
 - La date
 - L'heure
 
-_Facultatif : Il doit y avoir la possibilité de trier les cours par matière et afficher uniquement la matière sélectionnée. > Qui n'as été effectué par manque de temps
+Facultatif : Il doit y avoir la possibilité de trier les cours par matière et afficher uniquement la matière sélectionnée. 
+> L'option facultatif n'as pas été effectué par manque de temps
 
 #### Page de consultation D'UN cours (version déconnectée)
 
@@ -98,11 +99,11 @@ On y retrouve :
 
 
 ## Les pages optionnels pour lesquels ils nous manquaient du temps
-#### (Optionnel) Page de modification du mot du passe
+#### Page de modification du mot du passe
 
-#### (Optionnel) Page de modification de cours
+#### Page de modification de cours
 
-#### (Optionnel) Page de suppression de cours
+#### Page de suppression de cours
 
 ## Autres critères à faire attention
 
