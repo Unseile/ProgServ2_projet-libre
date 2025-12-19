@@ -5,6 +5,7 @@ require_once __DIR__ . '/../src/Config/autoloader.php';
 include __DIR__ . '/../src/Includes/header.php';
 
 $courseContent = $language->getContent($lang, 'course');
+$errorContent = $language->getContent($lang, 'common_errors');
 
 $courseId = $_GET['id'] ?? null;
 if (!$courseId) {
@@ -21,12 +22,12 @@ try {
     $usersController = new UsersController();
     $courseController = new CoursesController();
 } catch (Exception $e) {
-    $errors = ["Erreur lors de la connexion à la base de donnée"]; //A CHANGER LA LANGUE
+    $errors = [$errorContent["connecting_db"]];
 }
 try {
     $course = $courseController->getCourse($courseId);
 } catch (Exception $e) {
-    $errors = ["Erreur lors de la récupération du cours"]; //A CHANGER LA LANGUE
+    $errors =[$errorContent["fetch_data"]];
 }
 
 if (!$course) {
@@ -70,6 +71,12 @@ if ($userUsername) {
 <a href="index.php">
     <?= $courseContent['back'] ?>
 </a>
+
+<?php if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo "<p class=\"error\">$error</p>";
+    }
+} ?>
 
 <h2 class="title"><?= $course->getTitle(true) ?></h2>
 <p class="shortdescr"><?= $course->getDescr(true) ?></p>

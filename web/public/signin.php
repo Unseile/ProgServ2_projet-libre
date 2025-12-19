@@ -5,6 +5,7 @@ set_time_limit(60); // Augmente le timeout à 60 secondes pour l'envoi d'email
 require_once __DIR__ . '/../src/Config/autoloader.php';
 include __DIR__ . '/../src/Includes/header.php';
 
+$errorContent = $language->getContent($lang, 'common_errors');
 
 use Controllers\UsersController;
 use Models\User;
@@ -16,7 +17,7 @@ $signInContent = $language->getContent($lang, 'signin');
 try {
     $usercontroller = new UsersController();
 } catch (Exception $e) {
-    $errors = ["erreur lors de la connexion à la base de donnée"]; // A CHANGER LA LANGUE DE L'ERREUR
+    $errors = [$errorContent["connecting_db"]];
 }
 $username = $_SESSION['username'] ?? null;
 $emailVerified = $_SESSION["emailVerified"] ?? null;
@@ -148,7 +149,7 @@ if (
     if (isset($_POST["code"]) && $_POST["code"] === codeUnique($_SESSION["username"])) {
         try{
         $usercontroller->setEmailValidate($username);}catch(Exception $e){
-            $errors = ["erreur lors de la validation de l'email"]; // A MODIFIER LA LANGUE
+            $errors = [$signInContent["email_err"]]; 
         }
         $_SESSION["emailVerified"] = true;
         $validateEmail = true;

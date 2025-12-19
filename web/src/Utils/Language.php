@@ -101,7 +101,8 @@ class Language
                 "invalide_code" => "Code invalide",
                 "valide_code" => "Succès, votre email est maintenant vérifié",
                 "return_home" => "Retourner à l'accueil",
-                "is_teacher" => "Je m'inscris en tant qu'enseignant"
+                "is_teacher" => "Je m'inscris en tant qu'enseignant",
+                "email_err" => "Erreur lors de l'envoie de l'emails"
             ],
             "create_course" => [
                 "title" => "Créer un cours",
@@ -129,6 +130,12 @@ class Language
                 "user_email_not_verified" => " n'est pas vérifié.",
                 "subscriptions" => "Mes inscriptions",
                 "verify_email" => "Vérifier mon email"
+            ],
+            "common_errors" => [
+                "connecting_db" => "Erreur de connexion à la base de donnée",
+                "fetch_data" => "Erreur lors de la récupération des données",
+                "adding_data" => "Erreur lors de l'ajout de données",
+                "updating_data" => "Erreur lors de la mise à jour des données"
             ]
         ],
         "en" => [
@@ -224,7 +231,8 @@ class Language
                 "invalide_code" => "Invalide code",
                 "valide_code" => "Success, your email is now verified",
                 "return_home" => "Return to home",
-                "is_teacher" => "I register as teacher"
+                "is_teacher" => "I register as teacher",
+                "email_err" => "error when trying to send the email"
 
             ],
             "create_course" => [
@@ -253,6 +261,12 @@ class Language
                 "user_email_not_verified" => " is not verified.",
                 "subscriptions" => "My subscriptions",
                 "verify_email" => "Verify my email"
+            ],
+            "common_errors" => [
+                "connecting_db" => "Error when connecting to db",
+                "fetch_data" => "Error when trying to fetch data",
+                "adding_data" => "Error when adding data",
+                "updating_data" => "Error when updating data"
             ]
         ]
     ];

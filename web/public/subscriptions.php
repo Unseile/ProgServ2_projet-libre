@@ -20,7 +20,7 @@ $subscriptionsContent = $language->getContent($lang, 'subscriptions');
 try {
     $usersController = new UsersController();
 } catch (Exception $e) {
-    $errors = $subscriptionsContent["connexion_err"];
+    $errors = [$subscriptionsContent["connexion_err"]];
 }
 
 try {
@@ -28,7 +28,7 @@ try {
     $userCourses = $usersController->getUserCourses($username);
     $teacherCourses = $usersController->getTeacherCourses($username);
 } catch (Exception $e) {
-    $errors = $subscriptionsContent["fetch_err"];
+    $errors = [$subscriptionsContent["fetch_err"]];
 }
 ?>
 
