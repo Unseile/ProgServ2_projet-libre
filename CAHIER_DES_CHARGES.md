@@ -19,7 +19,7 @@ Formulaire avec :
 - Pseudo
 - Email
 - Mot de passe
-- **Checkbox s'il est enseignant**
+- > Checkbox s'il est enseignant
 - Bouton d'envoi
 - Une fois le compte créé, on doit pouvoir vérifier l'email
 
@@ -27,7 +27,7 @@ Formulaire avec :
 
 Formulaire avec :
 
-- **Pseudo**
+- > Pseudo
 - Mot de passe
 - Option de choix de connection : prof ou élève
 - Bouton d'envoie
@@ -43,7 +43,8 @@ Affiche tous les cours disponibles avec les informations suivants :
 - La date
 - L'heure
 
-_Facultatif : Il doit y avoir la possibilité de trier les cours par matière et afficher uniquement la matière sélectionnée. **Qui n'as été effectué**
+Facultatif : Il doit y avoir la possibilité de trier les cours par matière et afficher uniquement la matière sélectionnée. 
+> L'option facultatif n'as pas été effectué par manque de temps
 
 #### Page de consultation D'UN cours (version déconnectée)
 
@@ -80,6 +81,7 @@ Avec un formulaire qui contient les champs suivants :
 #### Page de consultation D'UN cours (version connectée)
 
 Changement du bouton "se connecter" en bouton d'inscription au cours
+> ou en bouton de désinscription au cours
 
 #### Page de profil utilisateur
 
@@ -88,21 +90,21 @@ On y retrouve :
 - Le nom
 - Le prénom
 - Pseudo
-- L'email **et si il est vérifié ou non**
+- L'email > et si il est vérifié ou non
 - (Optionnel) Une option pour passer le compte en compte professeur
 
 ### Page de déconnexion
-**Qui renvoie à la page d'accueil, en étant déconnecté**
+> Qui renvoie à la page d'accueil, en étant déconnecté
 
 ### L'historique des cours pris et des cours données
 
 
-### Les pages optionnels pour lesquels ils nous manquaient du temps
-#### (Optionnel) Page de modification du mot du passe
+## Les pages optionnels pour lesquels ils nous manquaient du temps
+#### Page de modification du mot du passe
 
-#### (Optionnel) Page de modification de cours
+#### Page de modification de cours
 
-#### (Optionnel) Page de suppression de cours
+#### Page de suppression de cours
 
 ## Autres critères à faire attention
 
