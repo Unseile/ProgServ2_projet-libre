@@ -57,7 +57,7 @@ try {
     </div>
 <?php endif; ?>
 
-<?php if (empty($userCourses)): ?>
+<?php if (empty($teacherCourses)): ?>
     <p><?= $subscriptionsContent["no_course_given"] ?></p>
 <?php else: ?>
     <h2><?= $subscriptionsContent["history-title-teacher"] ?></h2>
