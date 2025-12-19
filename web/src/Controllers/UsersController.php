@@ -3,6 +3,8 @@
 //Implémentations du gestionnaire d'utilisateurs
 namespace Controllers;
 
+use Exception;
+
 require_once __DIR__ . '/../Config/autoloader.php';
 
 use Config\Database, PDO, Models\User, Models\Course;
@@ -90,36 +92,82 @@ class UsersController
         $courses = $this->toCourses($teacherCourses);
         return $courses;
     }
-    public function followCourse(int $courseId, string $username): void //A CHANGER IMPÉRATIVEMENT !!!!!
+    public function followCourse(int $courseId, string $username): void
     {
-        // 1) Récupérer l'ID de l'utilisateur à partir du username
-        $sql = "SELECT id FROM user WHERE username = :username";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([":username" => $username]);
-        $userId = $stmt->fetchColumn();
+        try {
+            // Démarrer la transaction
+            $this->pdo->beginTransaction();
 
-        if (!$userId) {
-            throw new \Exception("Utilisateur introuvable");
+            // 1) Récupérer l'ID de l'utilisateur à partir du username
+            $sql = "SELECT id, is_teacher FROM user WHERE username = :username";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([":username" => $username]);
+            $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            if (!$user) {
+                throw new Exception("Utilisateur introuvable");
+            }
+
+            $userId = $user['id'];
+
+            // 2) Vérifier que le cours existe et récupérer ses informations
+            $sql = "SELECT number_stud_sub, number_stud_max, fk_teacher_id 
+                    FROM course 
+                    WHERE id = :course";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([":course" => $courseId]);
+            $course = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$course) {
+                throw new Exception("Cours introuvable");
+            }
+
+            // 3) Vérifier qu'il reste de la place dans le cours
+            if ($course['number_stud_sub'] >= $course['number_stud_max']) {
+                throw new Exception("Le cours est complet");
+            }
+
+            // 4) Vérifier que l'utilisateur n'est pas déjà inscrit
+            $sql = "SELECT COUNT(*) FROM subscription 
+                    WHERE fk_course_id = :course AND fk_student_id = :user";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ":course" => $courseId,
+                ":user" => $userId
+            ]);
+            $alreadySubscribed = $stmt->fetchColumn();
+
+            if ($alreadySubscribed > 0) {
+                throw new Exception("Vous êtes déjà inscrit à ce cours");
+            }
+
+            // 5) Inscrire l'utilisateur au cours
+            $sql = "INSERT INTO subscription (fk_course_id, fk_student_id)
+                VALUES (:course, :user)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ":user" => $userId,
+                ":course" => $courseId
+            ]);
+
+            // 6) Incrémenter le compteur d'étudiants
+            $sql = "UPDATE course
+                SET number_stud_sub = number_stud_sub + 1
+                WHERE id = :course";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ":course" => $courseId
+            ]);
+
+            // Valider la transaction
+            $this->pdo->commit();
+        } catch (Exception $e) {
+            // Annuler la transaction en cas d'erreur
+            $this->pdo->rollBack();
+            throw $e;
         }
-
-        // 2) Inscrire l'utilisateur au cours
-        $sql = "INSERT INTO subscription (fk_course_id, fk_student_id)
-            VALUES (:course, :user)";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ":user" => $userId,
-            ":course" => $courseId
-        ]);
-
-        $sql = "UPDATE course
-            SET number_stud_sub = number_stud_sub + 1
-            WHERE id = :course";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ":course" => $courseId
-        ]);
     }
-    public function unfollowCourse(int $courseId, string $username): void //A CHANGER IMPÉRATIVEMENT !!!!!
+    public function unfollowCourse(int $courseId, string $username): void
     {
         $user = $this->getUser($username);
         if (!$user) {
@@ -128,23 +176,37 @@ class UsersController
 
         $userId = $user->getId();
 
-        $sql = "DELETE FROM subscription
-            WHERE fk_course_id = :course
-            AND fk_student_id = :user";
+        try {
+            // Démarrer la transaction
+            $this->pdo->beginTransaction();
 
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':course' => $courseId,
-            ':user'   => $userId
-        ]);
+            // 1) Supprimer l'inscription
+            $sql = "DELETE FROM subscription
+                WHERE fk_course_id = :course
+                AND fk_student_id = :user";
 
-        $sql = "UPDATE course
-            SET number_stud_sub = number_stud_sub - 1
-            WHERE id = :course";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ":course" => $courseId
-        ]);
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':course' => $courseId,
+                ':user'   => $userId
+            ]);
+
+            // 2) Décrémenter le compteur d'étudiants
+            $sql = "UPDATE course
+                SET number_stud_sub = number_stud_sub - 1
+                WHERE id = :course";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ":course" => $courseId
+            ]);
+
+            // Valider la transaction
+            $this->pdo->commit();
+        } catch (Exception $e) {
+            // Annuler la transaction en cas d'erreur
+            $this->pdo->rollBack();
+            throw $e;
+        }
     }
 
     public function isSubscribed(int $courseId, string $username): bool
