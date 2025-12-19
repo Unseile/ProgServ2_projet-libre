@@ -11,6 +11,7 @@ class Language
         "fr" => [
             "index" => [
                 "welcome" => "Bienvenue sur SPEEP.CH, ta référence pour tes cours d'appui !",
+                "description" => "Où chaque élève peut être à la fois enseignant et apprenant, en donnant ou recevant du soutien dans les matières de son choix. Simple, collaboratif et efficace, SPEEP transforme l’entraide entre élèves en véritable force de réussite.",
                 "available-courses" => "Tous les cours disponibles",
                 "subject" => "sujet",
                 "teacher" => "enseignant",
@@ -151,6 +152,7 @@ class Language
         "en" => [
             "index" => [
                 "welcome" => "Welcome to SPEEP.CH, your go-to platform for tutoring courses!",
+                "description" => "Where every student can be both a teacher and a learner, giving or receiving support in the subjects of their choice. Simple, collaborative, and effective, SPEEP transforms peer assistance into a true force for success.",
                 "available-courses" => "All available courses",
                 "subject" => "subject",
                 "teacher" => "teacher",

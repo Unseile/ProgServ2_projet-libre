@@ -26,6 +26,7 @@ $homeContent = $language->getContent($lang, 'index');
 ?>
 
 <h2><?= $homeContent["welcome"] ?></h2>
+<p><?= $homeContent["description"] ?></p>
 
 <?php if (!empty($errors)) {
     foreach ($errors as $error) {
