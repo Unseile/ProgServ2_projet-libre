@@ -5,6 +5,8 @@ namespace Models;
 
 require_once __DIR__ . '/../Config/autoloader.php';
 
+use Utils\Language;
+
 class User
 {
     private int $id;
@@ -16,6 +18,8 @@ class User
     private bool $isTeacher;
     private string $passwordHash;
     private string $entredPassword;
+    private Language $language;
+    private array $translations;
 
     public function __construct($lastname, $firstname, $username, $email, $isTeacher = false)
     {
@@ -25,6 +29,9 @@ class User
         $this->email = trim($email);
         $this->isEmailVerified = false;
         $this->isTeacher = $isTeacher;
+        $this->language = new Language();
+        $lang = $this->language->getCookieLanguage();
+        $this->translations = $this->language->getContent($lang, 'validation_user');
     }
 
     public function setClearPassword(string $entredPassword): void
@@ -48,22 +55,22 @@ class User
     {
         $errors = [];
         if (empty($this->lastname) || strlen($this->lastname) < 1) {
-            array_push($errors, "Nom obligatoire de au moins 1 caractère");
+            array_push($errors, $this->translations['lastname_required']);
         }
         if (empty($this->firstname) || strlen($this->firstname) < 1) {
-            array_push($errors, "Prénom obligatoire de au moins 1 caractère");
+            array_push($errors, $this->translations['firstname_required']);
         }
         if (strlen($this->username) < 2) {
-            array_push($errors, "Le nom d'utilisateur doit avoir plus de 2 caractères");
+            array_push($errors, $this->translations['username_too_short']);
         }
         if (!isset($this->isTeacher) || ($this->isTeacher != true && $this->isTeacher != false)) {
-            array_push($errors, "Valeur d'enseignement invalide");
+            array_push($errors, $this->translations['teacher_value_invalid']);
         }
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            array_push($errors, "Email invalide");
+            array_push($errors, $this->translations['email_invalid']);
         }
         if (empty($this->entredPassword) || strlen($this->entredPassword) < 5) {
-            array_push($errors, "Le mot de passe doit avoir au moins 5 caractères");
+            array_push($errors, $this->translations['password_too_short']);
         }
         return $errors;
     }

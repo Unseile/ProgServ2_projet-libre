@@ -8,15 +8,21 @@ use Exception;
 require_once __DIR__ . '/../Config/autoloader.php';
 
 use Config\Database, PDO, Models\User, Models\Course;
+use Utils\Language;
 
 class UsersController
 {
     private PDO $pdo;
+    private Language $language;
+    private array $translations;
 
     public function __construct()
     {
         $database = new Database();
         $this->pdo = $database->getPDO();
+        $this->language = new Language();
+        $lang = $this->language->getCookieLanguage();
+        $this->translations = $this->language->getContent($lang, 'controller_errors');
     }
 
     public function addUser(User $user): void
@@ -92,6 +98,7 @@ class UsersController
         $courses = $this->toCourses($teacherCourses);
         return $courses;
     }
+
     public function followCourse(int $courseId, string $username): void
     {
         try {
@@ -105,7 +112,7 @@ class UsersController
             $user = $stmt->fetch(\PDO::FETCH_ASSOC);
 
             if (!$user) {
-                throw new Exception("Utilisateur introuvable");
+                throw new Exception($this->translations['user_not_found']);
             }
 
             $userId = $user['id'];
@@ -119,12 +126,12 @@ class UsersController
             $course = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$course) {
-                throw new Exception("Cours introuvable");
+                throw new Exception($this->translations['course_not_found']);
             }
 
             // Vérifier qu'il reste de la place dans le cours
             if ($course['number_stud_sub'] >= $course['number_stud_max']) {
-                throw new Exception("Le cours est complet");
+                throw new Exception($this->translations['course_full']);
             }
 
             // Vérifier que l'utilisateur n'est pas déjà inscrit
@@ -138,7 +145,7 @@ class UsersController
             $alreadySubscribed = $stmt->fetchColumn();
 
             if ($alreadySubscribed > 0) {
-                throw new Exception("Vous êtes déjà inscrit à ce cours");
+                throw new Exception($this->translations['already_subscribed']);
             }
 
             // Inscrire l'utilisateur au cours

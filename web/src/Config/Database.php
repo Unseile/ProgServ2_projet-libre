@@ -14,17 +14,18 @@ class Database
 {
     private PDO $pdo;
     private Language $language;
+    private array $translations;
 
 
     public function __construct()
     {
         $this->language = new Language();
         $lang = $this->language->getCookieLanguage();
-        $translations = $this->language->getContent($lang, 'common_errors');
+        $this->translations = $this->language->getContent($lang, 'common_errors');
         
         $config = parse_ini_file(DATABASE_CONFIGURATION_FILE, true);
         if (!$config) {
-            throw new Exception($translations['reading_db_config'] . " " . DATABASE_CONFIGURATION_FILE);
+            throw new Exception($this->translations['reading_db_config'] . " " . DATABASE_CONFIGURATION_FILE);
         }
         $host = $config['host'];
         $port = $config['port'];
