@@ -6,19 +6,25 @@ namespace Config;
 require_once __DIR__ . '/autoloader.php';
 
 use PDO, Exception;
+use Utils\Language;
 
 const DATABASE_CONFIGURATION_FILE = __DIR__ . '/database.ini';
 
 class Database
 {
     private PDO $pdo;
+    private Language $language;
 
 
     public function __construct()
     {
+        $this->language = new Language();
+        $lang = $this->language->getCookieLanguage();
+        $translations = $this->language->getContent($lang, 'common_errors');
+        
         $config = parse_ini_file(DATABASE_CONFIGURATION_FILE, true);
         if (!$config) {
-            throw new Exception("Erreur en essayant de lire " . DATABASE_CONFIGURATION_FILE);
+            throw new Exception($translations['reading_db_config'] . " " . DATABASE_CONFIGURATION_FILE);
         }
         $host = $config['host'];
         $port = $config['port'];

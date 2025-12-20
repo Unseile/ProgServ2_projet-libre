@@ -142,7 +142,8 @@ class Language
                 "login_error" => "Nom d'utilisateur ou mot de passe invalide",
                 "login_connexion" => "Erreur lors de la connexion",
                 "connexion_err" => "Erreur lors de la connexion à la base de donnée",
-                "fetch_err" => "Erreur lors de la récupération de vos cours"
+                "fetch_err" => "Erreur lors de la récupération de vos cours",
+                "reading_db_config" => "Erreur lors de la lecture de"
             ]
         ],
         "en" => [
@@ -281,7 +282,8 @@ class Language
                 "login_error" => "Invalid username or password",
                 "login_connexion" => "Error when connecting",
                 "connexion_err" => "Error when connecting to databasse",
-                "fetch_err" => "Error when trying to fetch courses"
+                "fetch_err" => "Error when trying to fetch courses",
+                "reading_db_config" => "Error when reading "
             ]
         ]
     ];
