@@ -6,6 +6,7 @@ namespace Models;
 require_once __DIR__ . '/../Config/autoloader.php';
 
 use DateTime;
+use Utils\Language;
 
 const SCHOOL_SUBJECT = [
     'Anglais',
@@ -39,6 +40,8 @@ class Course
     private int $subStudents;
     private string $teacherFirstname;
     private string $teacherLastname;
+    private Language $language;
+    private array $translations;
 
     public function __construct(
         int $teacherId,
@@ -62,6 +65,9 @@ class Course
         $this->pricePerStudent = $pricePerStudent;
         $this->maxStudents = $maxStudents;
         $this->subStudents = $subStudents;
+        $this->language = new Language();
+        $lang = $this->language->getCookieLanguage();
+        $this->translations = $this->language->getContent($lang, 'validation_course');
     }
 
     public function setId(int $id): void
@@ -79,43 +85,43 @@ class Course
     {
         $errors = [];
         if (!isset($this->teacherId)) {
-            array_push($errors, "Un enseignant doit exister");
+            array_push($errors, $this->translations['teacher_required']);
         }
         if (empty($this->title) || strlen($this->title) < 2) {
-            array_push($errors, "Le titre est obligatoire et doit avoir 5 caractèrs minimum");
+            array_push($errors, $this->translations['title_required']);
         }
         if (!isset($this->subject) || !in_array($this->subject, SCHOOL_SUBJECT)) {
-            array_push($errors, "Le sujet de cours n'existe pas");
+            array_push($errors, $this->translations['subject_invalid']);
         }
         if (empty($this->startDatetime)) {
-            array_push($errors, "La date et l'heure de début sont obligatoires");
+            array_push($errors, $this->translations['datetime_required']);
         } else {
             if (!preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/', $this->startDatetime)) {
-                array_push($errors, "Le format de la date doit être YYYY-MM-DDThh:mm");
+                array_push($errors, $this->translations['datetime_format_invalid']);
             } else {
                 $dateTime = DateTime::createFromFormat('Y-m-d\TH:i', $this->startDatetime);
                 if (!$dateTime || $dateTime->format('Y-m-d\TH:i') !== $this->startDatetime) {
-                    array_push($errors, "La date et l'heure spécifiées ne sont pas valides");
+                    array_push($errors, $this->translations['datetime_invalid']);
                 }
                 if ($dateTime < new DateTime()) {
-                    array_push($errors, "La date de début ne peut pas être dans le passé");
+                    array_push($errors, $this->translations['datetime_past']);
                 }
             }
         }
         if (empty($this->duration) || !is_int($this->duration) || $this->duration < 15 || $this->duration > 300) {
-            array_push($errors, "La durée du cours est obligatoire et doit être copmrise entre 15 minutes et 300 minutes");
+            array_push($errors, $this->translations['duration_invalid']);
         }
         if (empty($this->descr)) {
-            array_push($errors, "La description est obligatoire");
+            array_push($errors, $this->translations['description_required']);
         }
         if (empty($this->location)) {
-            array_push($errors, "La salle est obligatoire");
+            array_push($errors, $this->translations['location_required']);
         }
         if (!isset($this->pricePerStudent) || !is_float($this->pricePerStudent) || $this->pricePerStudent < 0 || $this->pricePerStudent > 30) {
-            array_push($errors, "Le prix est obligatoire, doit être positif et inférieur à 30, 0 = gratuit");
+            array_push($errors, $this->translations['price_invalid']);
         }
         if (!isset($this->maxStudents) || !is_int($this->maxStudents) || $this->maxStudents < 1 || $this->maxStudents > 30) {
-            array_push($errors, "Le nombre max d'élèves est de 30. Min 1");
+            array_push($errors, $this->translations['max_students_invalid']);
         }
 
         return $errors;

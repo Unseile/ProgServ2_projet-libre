@@ -144,6 +144,34 @@ class Language
                 "connexion_err" => "Erreur lors de la connexion à la base de donnée",
                 "fetch_err" => "Erreur lors de la récupération de vos cours",
                 "reading_db_config" => "Erreur lors de la lecture de"
+            ],
+            "validation_user" => [
+                "lastname_required" => "Nom obligatoire de au moins 1 caractère",
+                "firstname_required" => "Prénom obligatoire de au moins 1 caractère",
+                "username_too_short" => "Le nom d'utilisateur doit avoir plus de 2 caractères",
+                "teacher_value_invalid" => "Valeur d'enseignement invalide",
+                "email_invalid" => "Email invalide",
+                "password_too_short" => "Le mot de passe doit avoir au moins 5 caractères"
+            ],
+            "validation_course" => [
+                "teacher_required" => "Un enseignant doit exister",
+                "title_required" => "Le titre est obligatoire et doit avoir 5 caractèrs minimum",
+                "subject_invalid" => "Le sujet de cours n'existe pas",
+                "datetime_required" => "La date et l'heure de début sont obligatoires",
+                "datetime_format_invalid" => "Le format de la date doit être YYYY-MM-DDThh:mm",
+                "datetime_invalid" => "La date et l'heure spécifiées ne sont pas valides",
+                "datetime_past" => "La date de début ne peut pas être dans le passé",
+                "duration_invalid" => "La durée du cours est obligatoire et doit être copmrise entre 15 minutes et 300 minutes",
+                "description_required" => "La description est obligatoire",
+                "location_required" => "La salle est obligatoire",
+                "price_invalid" => "Le prix est obligatoire, doit être positif et inférieur à 30, 0 = gratuit",
+                "max_students_invalid" => "Le nombre max d'élèves est de 30. Min 1"
+            ],
+            "controller_errors" => [
+                "user_not_found" => "Utilisateur introuvable",
+                "course_not_found" => "Cours introuvable",
+                "course_full" => "Le cours est complet",
+                "already_subscribed" => "Vous êtes déjà inscrit à ce cours"
             ]
         ],
         "en" => [
@@ -284,6 +312,34 @@ class Language
                 "connexion_err" => "Error when connecting to databasse",
                 "fetch_err" => "Error when trying to fetch courses",
                 "reading_db_config" => "Error when reading "
+            ],
+            "validation_user" => [
+                "lastname_required" => "Last name required with at least 1 character",
+                "firstname_required" => "First name required with at least 1 character",
+                "username_too_short" => "Username must have more than 2 characters",
+                "teacher_value_invalid" => "Invalid teacher value",
+                "email_invalid" => "Invalid email",
+                "password_too_short" => "Password must have at least 5 characters"
+            ],
+            "validation_course" => [
+                "teacher_required" => "A teacher must exist",
+                "title_required" => "Title is required and must have at least 5 characters",
+                "subject_invalid" => "Course subject does not exist",
+                "datetime_required" => "Start date and time are required",
+                "datetime_format_invalid" => "Date format must be YYYY-MM-DDThh:mm",
+                "datetime_invalid" => "The specified date and time are not valid",
+                "datetime_past" => "Start date cannot be in the past",
+                "duration_invalid" => "Course duration is required and must be between 15 and 300 minutes",
+                "description_required" => "Description is required",
+                "location_required" => "Room is required",
+                "price_invalid" => "Price is required, must be positive and less than 30, 0 = free",
+                "max_students_invalid" => "Maximum number of students is 30. Minimum 1"
+            ],
+            "controller_errors" => [
+                "user_not_found" => "User not found",
+                "course_not_found" => "Course not found",
+                "course_full" => "The course is full",
+                "already_subscribed" => "You are already subscribed to this course"
             ]
         ]
     ];
